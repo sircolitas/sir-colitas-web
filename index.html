@@ -46,14 +46,16 @@
             margin: auto;
         }
 
+/* --- ESTILOS DEL LOGO IMAGEN --- */
         .logo {
-            font-family: 'Oranienbaum', serif;
-            font-style: italic;
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 80px; /* Ajusta este número si lo quieres más grande o chico */
+            width: auto;  /* Mantiene la proporción para que no se deforme */
+            object-fit: contain;
         }
 
         .nav-links a {
@@ -304,7 +306,10 @@
 
     <header>
         <nav>
-            <div class="logo">SIR COLITAS</div>
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="Logo Sir Colitas">
+            </a>
+            
             <div class="nav-links">
                 <a href="#colecciones">Colecciones</a>
                 <a href="#tallas">Tallas</a>
