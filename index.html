@@ -7,10 +7,10 @@
     <style>
         /* --- ESTILOS ELEGANTES (Azul Marino y Dorado) --- */
         :root {
-            --primary: #0A192F; /* Azul Marino Profundo (Base de la marca) */
-            --gold: #C5A059;    /* Dorado Opaco (Para botones y acentos) */
-            --dark: #111111;    /* Texto negro suave */
-            --light: #F4F4F4;   /* Fondos gris muy claro */
+            --primary: #0A192F; /* Azul Marino Profundo */
+            --gold: #C5A059;    /* Dorado Opaco */
+            --dark: #111111;    
+            --light: #F4F4F4;   
             --white: #FFFFFF;
         }
         
@@ -191,32 +191,35 @@
         .badge-special { background-color: #D32F2F; } /* Rojo F1 */
         .badge-signature { background-color: #C5A059; } /* Dorado Alba */
         .badge-atelier { background-color: #0A192F; border: 1px solid #C5A059; } /* Azul/Dorado Atelier */
-
-        .category {
-            font-size: 0.85rem;
-            color: #888 !important; /* Forzar color gris */
-            margin-bottom: 5px;
-            font-style: italic;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        .badge-coming { background-color: #333; opacity: 0.9; }
 
         /* --- GUÍA DE TALLAS --- */
         .size-guide {
             background-color: var(--light);
         }
 
+        .table-title {
+            text-align: left;
+            color: var(--primary);
+            font-weight: bold;
+            margin-top: 30px;
+            margin-bottom: 10px;
+            border-left: 5px solid var(--gold);
+            padding-left: 10px;
+            text-transform: uppercase;
+        }
+
         table {
             width: 100%;
-            max-width: 900px;
             border-collapse: collapse;
             background: var(--white);
-            margin: auto;
+            margin-bottom: 20px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            font-size: 0.9rem;
         }
 
         th, td {
-            padding: 18px;
+            padding: 12px;
             text-align: center;
             border-bottom: 1px solid #eee;
         }
@@ -225,8 +228,15 @@
             background-color: var(--primary);
             color: var(--gold);
             text-transform: uppercase;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             letter-spacing: 1px;
+        }
+        
+        /* Resalta la primera columna (Talla) */
+        td:first-child {
+            font-weight: bold;
+            color: var(--primary);
+            background-color: #fafafa;
         }
 
         /* --- FOOTER --- */
@@ -308,7 +318,6 @@
                 </div>
                 <div class="card-content">
                     <h3>Racing F1</h3>
-                    <p class="category">Categoría: Temática (TM)</p>
                     <p>La velocidad hecha moda. Poleras exclusivas de las escuderías Red Bull, Ferrari y McLaren.</p>
                 </div>
             </div>
@@ -320,7 +329,6 @@
                 </div>
                 <div class="card-content">
                     <h3>Colección Alba</h3>
-                    <p class="category">Línea Signature (SIGN)</p>
                     <p>Frescura y elegancia. Diseños de autor y accesorios funcionales para disfrutar el sol.</p>
                 </div>
             </div>
@@ -332,7 +340,6 @@
                 </div>
                 <div class="card-content">
                     <h3>Línea Atelier</h3>
-                    <p class="category">Alta Costura (ATEL)</p>
                     <p>Confección a medida exacta. <strong>Lujo accesible</strong> y ajuste perfecto para una elegancia sin esfuerzo.</p>
                     <a href="https://wa.me/51961743825?text=Hola,%20me%20interesa%20cotizar%20una%20prenda%20Atelier" style="color: var(--gold); text-decoration: none; font-weight: bold; font-size: 0.9rem;">Cotizar a medida &rarr;</a>
                 </div>
@@ -340,13 +347,13 @@
 
             <div class="card">
                 <div class="card-image-container">
-                    <img src="https://placehold.co/400x500/333/666/png?text=Invierno+2026" alt="Invierno">
-                    <span class="badge" style="background:#555; color:white;">Próximamente</span>
+                    <img src="https://placehold.co/400x500/111/333/png?text=PROXIMAMENTE" alt="Invierno">
+                    <span class="badge badge-coming">Próximamente</span>
                 </div>
                 <div class="card-content">
                     <h3>Invierno 2026</h3>
-                    <p class="category">Adelanto de temporada</p>
-                    <p>Estamos diseñando la colección de abrigo más sofisticada para la temporada fría.</p>
+                    <p>Estamos preparando el lanzamiento de nuestra colección de abrigo más sofisticada.</p>
+                    <p style="font-size: 0.85rem; color: #888;">Disponible próximamente</p>
                 </div>
             </div>
 
@@ -354,68 +361,103 @@
     </section>
 
     <section id="tallas" class="size-guide">
-        <div class="container">
+        <div class="container" style="max-width: 800px;">
             <h2>Guía de Tallas</h2>
             <p style="text-align: center; margin-bottom: 30px;">
-                Manejamos un sistema de tallas numérico para mayor precisión.
+                Manejamos un sistema de tallas numérico. <br>
+                <em style="font-size: 0.9rem; color: #666;">* Las medidas incluyen una holgura aproximada de +/- 1.5 cm.</em>
             </p>
+
+            <div class="table-title">PERROS</div>
             <table>
                 <thead>
                     <tr>
-                        <th>Código</th>
-                        <th>Referencia (Aprox)</th>
-                        <th>Lomo (cm)</th>
+                        <th>Talla</th>
+                        <th>Cuello (cm)</th>
                         <th>Pecho (cm)</th>
+                        <th>Espalda (cm)</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>00</td>
-                        <td>Mini Toy / Gatos Pequeños</td>
-                        <td>20-22</td>
-                        <td>28-32</td>
+                        <td>0</td>
+                        <td>22.5 - 25.5</td>
+                        <td>32.5 - 35.5</td>
+                        <td>24.5 - 27.5</td>
                     </tr>
                     <tr>
-                        <td>01</td>
-                        <td>Toy / Gatos Promedio</td>
-                        <td>23-26</td>
-                        <td>33-37</td>
+                        <td>1</td>
+                        <td>32.5 - 35.5</td>
+                        <td>47.5 - 50.5</td>
+                        <td>32.5 - 35.5</td>
                     </tr>
                     <tr>
-                        <td>02</td>
-                        <td>Cachorros / Gatos Grandes</td>
-                        <td>27-31</td>
-                        <td>38-42</td>
+                        <td>2</td>
+                        <td>35.5 - 38.5</td>
+                        <td>53.5 - 56.5</td>
+                        <td>36.5 - 39.5</td>
                     </tr>
                     <tr>
-                        <td>03</td>
-                        <td>Pequeño (S)</td>
-                        <td>32-36</td>
-                        <td>43-48</td>
+                        <td>3</td>
+                        <td>39.5 - 42.5</td>
+                        <td>63.5 - 66.5</td>
+                        <td>43.5 - 46.5</td>
                     </tr>
                     <tr>
-                        <td>04</td>
-                        <td>Mediano Pequeño (M)</td>
-                        <td>37-41</td>
-                        <td>49-55</td>
+                        <td>4</td>
+                        <td>44.5 - 47.5</td>
+                        <td>70.5 - 73.5</td>
+                        <td>46.5 - 49.5</td>
                     </tr>
                     <tr>
-                        <td>05</td>
-                        <td>Mediano (L)</td>
-                        <td>42-47</td>
-                        <td>56-62</td>
+                        <td>5</td>
+                        <td>49.5 - 52.5</td>
+                        <td>80.5 - 83.5</td>
+                        <td>53.5 - 56.5</td>
                     </tr>
                     <tr>
-                        <td>06</td>
-                        <td>Grande (XL)</td>
-                        <td>48-54</td>
-                        <td>63-70</td>
+                        <td>6</td>
+                        <td>54.5 - 57.5</td>
+                        <td>91.5 - 94.5</td>
+                        <td>61.5 - 64.5</td>
                     </tr>
-                     <tr>
-                        <td>07-08</td>
-                        <td>Razas Grandes (Atelier)</td>
-                        <td>55+</td>
-                        <td>71+</td>
+                    <tr>
+                        <td>7</td>
+                        <td>65.5 - 68.5</td>
+                        <td>104.5 - 107.5</td>
+                        <td>67.5 - 70.5</td>
+                    </tr>
+                    <tr>
+                        <td>8</td>
+                        <td>68.5 - 71.5</td>
+                        <td>117.5 - 120.5</td>
+                        <td>74.5 - 77.5</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="table-title">GATOS</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Talla</th>
+                        <th>Cuello (cm)</th>
+                        <th>Pecho (cm)</th>
+                        <th>Espalda (cm)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>23.5 - 26.5</td>
+                        <td>38.5 - 41.5</td>
+                        <td>33.5 - 36.5</td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>28.5 - 31.5</td>
+                        <td>48.5 - 51.5</td>
+                        <td>43.5 - 46.5</td>
                     </tr>
                 </tbody>
             </table>
