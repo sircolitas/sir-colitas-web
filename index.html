@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sir Colitas - Moda para Mascotas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
         /* --- ESTILOS ELEGANTES (Azul Marino y Dorado) --- */
         :root {
@@ -66,7 +67,8 @@
 
         /* --- HERO (PORTADA) --- */
         .hero {
-            background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.5)), url('https://placehold.co/1920x800/222/FFF/png?text=Sir+Colitas+Exclusive');
+            /* Fondo azul marino sólido, sin texto */
+            background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)), url('https://placehold.co/1920x800/0A192F/0A192F/png');
             background-size: cover;
             background-position: center;
             height: 85vh;
@@ -78,10 +80,12 @@
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            margin-bottom: 15px;
-            letter-spacing: 1px;
-            text-transform: uppercase;
+            /* Nueva tipografía cursiva elegante */
+            font-family: 'Great Vibes', cursive;
+            font-size: 5rem; /* Tamaño más grande para que destaque */
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            font-weight: normal; /* Las cursivas suelen verse mejor sin negrita */
         }
 
         .hero p {
@@ -232,7 +236,6 @@
             letter-spacing: 1px;
         }
         
-        /* Resalta la primera columna (Talla) */
         td:first-child {
             font-weight: bold;
             color: var(--primary);
@@ -299,7 +302,7 @@
 
     <section class="hero">
         <div>
-            <h1>SIR COLITAS</h1>
+            <h1>Sir Colitas</h1>
             <p>Elegancia y confort para los engreídos de la casa</p>
             <br>
             <a href="#colecciones" class="btn">Ver Modelos</a>
