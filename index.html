@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sir Colitas - Moda para Mascotas</title>
+    <style>
+        /* --- ESTILOS GENERALES --- */
+        :root {
+            /* Rojo intenso para la marca Sir Colitas */
+            --primary: #D32F2F; 
+            --dark: #222;
+            --light: #f9f9f9;
+            --white: #fff;
+        }
+        
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            color: var(--dark);
+        }
+
+        /* --- NAVEGACIÓN --- */
+        header {
+            background: var(--white);
+            padding: 1rem 0;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            margin-left: 20px;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* --- HERO (PORTADA) --- */
+        .hero {
+            /* Fondo oscuro con degradado para que resalten las letras */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1920x800/222/FFF/png?text=Sir+Colitas+Moda');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: var(--white);
+            padding: 12px 35px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: #b71c1c;
+            transform: scale(1.05);
+        }
+
+        /* --- SECCIONES --- */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: auto;
+            padding: 80px 0;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 50px;
+            font-size: 2.2rem;
+            color: var(--dark);
+        }
+
+        /* --- GALERÍA (GRID) --- */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 350px; 
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .card-content h3 {
+            margin-top: 0;
+            color: var(--primary);
+        }
+
+        /* --- GUÍA DE TALLAS --- */
+        .size-guide {
+            background-color: var(--light);
+        }
+
+        table {
+            width: 100%;
+            max-width: 800px;
+            border-collapse: collapse;
+            background: var(--white);
+            margin: auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        th {
+            background-color: var(--dark);
+            color: var(--white);
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 40px 0;
+            font-size: 0.9rem;
+        }
+        
+        /* --- BOTÓN WHATSAPP --- */
+        .btn-whatsapp {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            text-decoration: none;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .btn-whatsapp:hover {
+            transform: scale(1.1);
+            background-color: #20ba5a;
+        }
+
+        .btn-whatsapp svg {
+            width: 32px;
+            height: 32px;
+            fill: white;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">SIR COLITAS</div>
+            <div class="nav-links">
+                <a href="#colecciones">Colecciones</a>
+                <a href="#tallas">Tallas</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div>
+            <h1>SIR COLITAS</h1>
+            <p>Moda exclusiva para los engreídos de la casa</p>
+            <br>
+            <a href="#colecciones" class="btn">Ver Modelos</a>
+        </div>
+    </section>
+
+    <section id="colecciones" class="container">
+        <h2>Nuestras Colecciones</h2>
+        <div class="gallery">
+            
+            <div class="card">
+                <img src="https://placehold.co/400x500/D32F2F/FFF/png?text=F1+Racing" alt="Ropa Formula 1">
+                <div class="card-content">
+                    <h3>Colección Racing (F1)</h3>
+                    <p>Poleras inspiradas en la velocidad: Red Bull, Ferrari y McLaren.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://placehold.co/400x500/2E7D32/FFF/png?text=Navidad+Verano" alt="Ropa Navidad">
+                <div class="card-content">
+                    <h3>Colección Navidad</h3>
+                    <p>Polos ligeros perfectos para celebrar el verano navideño.</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <img src="https://placehold.co/400x500/333/FFF/png?text=Invierno+2026" alt="Proximamente">
+                <div class="card-content">
+                    <h3>Próximamente</h3>
+                    <p>Estamos preparando nuevos diseños exclusivos para este invierno.</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="tallas" class="size-guide">
+        <div class="container">
+            <h2>Guía de Tallas</h2>
+            <p style="text-align: center; margin-bottom: 30px;">
+                Estas medidas son referenciales para nuestros modelos (Perros y Gatos).
+            </p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Talla</th>
+                        <th>Cuello (cm)</th>
+                        <th>Pecho (cm)</th>
+                        <th>Lomo (cm)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>XS</td>
+                        <td>20-24</td>
+                        <td>30-34</td>
+                        <td>20-25</td>
+                    </tr>
+                    <tr>
+                        <td>S</td>
+                        <td>24-28</td>
+                        <td>34-38</td>
+                        <td>25-30</td>
+                    </tr>
+                    <tr>
+                        <td>M</td>
+                        <td>28-32</td>
+                        <td>38-44</td>
+                        <td>30-35</td>
+                    </tr>
+                    <tr>
+                        <td>L</td>
+                        <td>32-36</td>
+                        <td>44-50</td>
+                        <td>35-40</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <footer id="contacto">
+        <h3>Sir Colitas</h3>
+        <p>Lima, Perú</p>
+        <p>Síguenos en Instagram para ver nuevos modelos.</p>
+        <br>
+        <p style="font-size: 0.8rem; opacity: 0.7;">&copy; 2026 Sir Colitas. Todos los derechos reservados.</p>
+    </footer>
+
+    <a href="https://wa.me/51961743825?text=Hola,%20quisiera%20saber%20mas%20sobre%20la%20ropa%20de%20Sir%20Colitas" class="btn-whatsapp" target="_blank">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3 18.6-68.1-4.4-6.9c-18.4-29.3-28.1-63.5-28.1-98.2 0-101.4 82.3-183.8 183.8-183.8 49 0 95.1 19.1 129.8 53.8 34.7 34.7 53.8 80.8 53.8 129.8 0 101.4-82.3 183.8-183.8 183.8zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-4-10.5-6.8z"/>
+        </svg>
+    </a>
+
+</body>
+</html>
