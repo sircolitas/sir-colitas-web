@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sir Colitas - Moda para Mascotas</title>
     <style>
-        /* --- ESTILOS GENERALES --- */
+        /* --- ESTILOS ELEGANTES (Azul Marino y Dorado) --- */
         :root {
-            /* Rojo intenso para la marca Sir Colitas */
-            --primary: #D32F2F; 
-            --dark: #222;
-            --light: #f9f9f9;
-            --white: #fff;
+            --primary: #0A192F; /* Azul Marino Profundo (Base de la marca) */
+            --gold: #C5A059;    /* Dorado Opaco (Para botones y acentos) */
+            --dark: #111111;    /* Texto negro suave */
+            --light: #F4F4F4;   /* Fondos gris muy claro */
+            --white: #FFFFFF;
         }
         
         body {
@@ -20,13 +20,15 @@
             padding: 0;
             line-height: 1.6;
             color: var(--dark);
+            background-color: var(--white);
         }
 
         /* --- NAVEGACIÓN --- */
         header {
             background: var(--white);
-            padding: 1rem 0;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            padding: 1.2rem 0;
+            /* Borde dorado sutil abajo para dar elegancia */
+            border-bottom: 3px solid var(--gold); 
             position: sticky;
             top: 0;
             z-index: 100;
@@ -42,32 +44,34 @@
         }
 
         .logo {
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: 800;
-            color: var(--primary);
+            color: var(--primary); /* Logo en Azul Marino */
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
         }
 
         .nav-links a {
             text-decoration: none;
-            color: var(--dark);
-            margin-left: 20px;
-            font-weight: 500;
+            color: var(--primary);
+            margin-left: 25px;
+            font-weight: 600;
             font-size: 0.9rem;
+            text-transform: uppercase;
+            transition: color 0.3s;
         }
 
         .nav-links a:hover {
-            color: var(--primary);
+            color: var(--gold); /* Se pone dorado al pasar el mouse */
         }
 
         /* --- HERO (PORTADA) --- */
         .hero {
-            /* Fondo oscuro con degradado para que resalten las letras */
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://placehold.co/1920x800/222/FFF/png?text=Sir+Colitas+Moda');
+            /* Filtro oscuro azulado sobre la foto */
+            background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.5)), url('https://placehold.co/1920x800/222/FFF/png?text=Sir+Colitas+Exclusive');
             background-size: cover;
             background-position: center;
-            height: 80vh;
+            height: 85vh;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -77,30 +81,34 @@
 
         .hero h1 {
             font-size: 3.5rem;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .hero p {
-            font-size: 1.2rem;
-            margin-bottom: 20px;
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            font-weight: 300;
         }
 
         .btn {
-            background: var(--primary);
+            background: var(--gold); /* Botón Dorado */
             color: var(--white);
-            padding: 12px 35px;
+            padding: 14px 40px;
             text-decoration: none;
-            border-radius: 30px;
+            border-radius: 2px; /* Bordes menos redondeados son más elegantes */
             font-weight: bold;
             transition: 0.3s;
             text-transform: uppercase;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
+            border: 1px solid var(--gold);
         }
 
         .btn:hover {
-            background: #b71c1c;
-            transform: scale(1.05);
+            background: transparent;
+            color: var(--gold); /* Efecto invertido al pasar el mouse */
+            border: 1px solid var(--gold);
         }
 
         /* --- SECCIONES --- */
@@ -108,49 +116,58 @@
             width: 90%;
             max-width: 1200px;
             margin: auto;
-            padding: 80px 0;
+            padding: 90px 0;
         }
 
         h2 {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 60px;
             font-size: 2.2rem;
-            color: var(--dark);
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
 
         /* --- GALERÍA (GRID) --- */
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
+            gap: 40px;
         }
 
         .card {
             background: var(--white);
-            border-radius: 12px;
+            border-radius: 4px;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08); /* Sombra suave */
+            transition: transform 0.3s ease;
         }
 
         .card:hover {
-            transform: translateY(-8px);
+            transform: translateY(-10px);
         }
 
         .card img {
             width: 100%;
-            height: 350px; 
+            height: 400px; 
             object-fit: cover;
         }
 
         .card-content {
-            padding: 25px;
+            padding: 30px;
             text-align: center;
         }
         
         .card-content h3 {
             margin-top: 0;
             color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            color: #666;
+            font-size: 0.95rem;
         }
 
         /* --- GUÍA DE TALLAS --- */
@@ -160,33 +177,39 @@
 
         table {
             width: 100%;
-            max-width: 800px;
+            max-width: 900px;
             border-collapse: collapse;
             background: var(--white);
             margin: auto;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
         }
 
         th, td {
-            padding: 15px;
+            padding: 18px;
             text-align: center;
             border-bottom: 1px solid #eee;
         }
 
         th {
-            background-color: var(--dark);
-            color: var(--white);
+            background-color: var(--primary); /* Cabecera Azul Marino */
+            color: var(--gold); /* Texto Dorado */
             text-transform: uppercase;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
         }
 
         /* --- FOOTER --- */
         footer {
-            background: var(--dark);
+            background: var(--primary); /* Footer Azul Marino */
             color: var(--white);
             text-align: center;
-            padding: 40px 0;
-            font-size: 0.9rem;
+            padding: 60px 0;
+        }
+        
+        footer h3 {
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
         }
         
         /* --- BOTÓN WHATSAPP --- */
@@ -194,7 +217,7 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background-color: #25d366;
+            background-color: #25d366; /* El verde de WA no se cambia para que la gente lo reconozca */
             color: white;
             width: 60px;
             height: 60px;
@@ -210,7 +233,6 @@
 
         .btn-whatsapp:hover {
             transform: scale(1.1);
-            background-color: #20ba5a;
         }
 
         .btn-whatsapp svg {
