@@ -4,7 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sir Colitas - Moda para Mascotas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Oranienbaum&display=swap" rel="stylesheet">
+    
     <style>
         /* --- ESTILOS ELEGANTES (Azul Marino y Dorado) --- */
         :root {
@@ -43,12 +46,15 @@
             margin: auto;
         }
 
+        /* --- AQUÍ ESTÁ EL CAMBIO DEL LOGO --- */
         .logo {
-            font-size: 1.6rem;
-            font-weight: 800;
+            font-family: 'Oranienbaum', serif; /* Tipografía Oranienbaum */
+            font-style: italic;                /* En Cursiva */
+            font-size: 1.8rem;
+            font-weight: 800; /* Un poco más grueso para que se lea bien */
             color: var(--primary);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
         }
 
         .nav-links a {
@@ -67,7 +73,7 @@
 
         /* --- HERO (PORTADA) --- */
         .hero {
-            /* Fondo azul marino sólido, sin texto */
+            /* Fondo azul marino sólido limpio */
             background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)), url('https://placehold.co/1920x800/0A192F/0A192F/png');
             background-size: cover;
             background-position: center;
@@ -80,18 +86,20 @@
         }
 
         .hero h1 {
-            /* Nueva tipografía cursiva elegante */
+            /* Tipografía "Firma" para el centro */
             font-family: 'Great Vibes', cursive;
-            font-size: 5rem; /* Tamaño más grande para que destaque */
-            margin-bottom: 10px;
+            font-size: 6rem; 
+            margin-bottom: 0px;
             letter-spacing: 2px;
-            font-weight: normal; /* Las cursivas suelen verse mejor sin negrita */
+            font-weight: normal;
+            line-height: 1.2;
         }
 
         .hero p {
             font-size: 1.3rem;
             margin-bottom: 30px;
             font-weight: 300;
+            margin-top: 10px;
         }
 
         .btn {
