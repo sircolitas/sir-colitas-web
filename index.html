@@ -27,7 +27,6 @@
         header {
             background: var(--white);
             padding: 1.2rem 0;
-            /* Borde dorado sutil abajo para dar elegancia */
             border-bottom: 3px solid var(--gold); 
             position: sticky;
             top: 0;
@@ -46,7 +45,7 @@
         .logo {
             font-size: 1.6rem;
             font-weight: 800;
-            color: var(--primary); /* Logo en Azul Marino */
+            color: var(--primary);
             text-transform: uppercase;
             letter-spacing: 2px;
         }
@@ -62,12 +61,11 @@
         }
 
         .nav-links a:hover {
-            color: var(--gold); /* Se pone dorado al pasar el mouse */
+            color: var(--gold);
         }
 
         /* --- HERO (PORTADA) --- */
         .hero {
-            /* Filtro oscuro azulado sobre la foto */
             background: linear-gradient(rgba(10, 25, 47, 0.7), rgba(10, 25, 47, 0.5)), url('https://placehold.co/1920x800/222/FFF/png?text=Sir+Colitas+Exclusive');
             background-size: cover;
             background-position: center;
@@ -93,11 +91,11 @@
         }
 
         .btn {
-            background: var(--gold); /* Botón Dorado */
+            background: var(--gold);
             color: var(--white);
             padding: 14px 40px;
             text-decoration: none;
-            border-radius: 2px; /* Bordes menos redondeados son más elegantes */
+            border-radius: 2px;
             font-weight: bold;
             transition: 0.3s;
             text-transform: uppercase;
@@ -107,7 +105,7 @@
 
         .btn:hover {
             background: transparent;
-            color: var(--gold); /* Efecto invertido al pasar el mouse */
+            color: var(--gold);
             border: 1px solid var(--gold);
         }
 
@@ -139,7 +137,7 @@
             background: var(--white);
             border-radius: 4px;
             overflow: hidden;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.08); /* Sombra suave */
+            box-shadow: 0 10px 20px rgba(0,0,0,0.08);
             transition: transform 0.3s ease;
         }
 
@@ -168,6 +166,39 @@
         .card-content p {
             color: #666;
             font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* --- ESTILOS ETIQUETAS (BADGES) --- */
+        .card-image-container {
+            position: relative;
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            padding: 5px 15px;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 2px;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .badge-special { background-color: #D32F2F; } /* Rojo F1 */
+        .badge-signature { background-color: #C5A059; } /* Dorado Alba */
+        .badge-atelier { background-color: #0A192F; border: 1px solid #C5A059; } /* Azul/Dorado Atelier */
+
+        .category {
+            font-size: 0.85rem;
+            color: #888 !important; /* Forzar color gris */
+            margin-bottom: 5px;
+            font-style: italic;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* --- GUÍA DE TALLAS --- */
@@ -191,8 +222,8 @@
         }
 
         th {
-            background-color: var(--primary); /* Cabecera Azul Marino */
-            color: var(--gold); /* Texto Dorado */
+            background-color: var(--primary);
+            color: var(--gold);
             text-transform: uppercase;
             font-size: 0.85rem;
             letter-spacing: 1px;
@@ -200,7 +231,7 @@
 
         /* --- FOOTER --- */
         footer {
-            background: var(--primary); /* Footer Azul Marino */
+            background: var(--primary);
             color: var(--white);
             text-align: center;
             padding: 60px 0;
@@ -210,6 +241,7 @@
             color: var(--gold);
             text-transform: uppercase;
             letter-spacing: 2px;
+            margin-bottom: 10px;
         }
         
         /* --- BOTÓN WHATSAPP --- */
@@ -217,7 +249,7 @@
             position: fixed;
             bottom: 30px;
             right: 30px;
-            background-color: #25d366; /* El verde de WA no se cambia para que la gente lo reconozca */
+            background-color: #25d366;
             color: white;
             width: 60px;
             height: 60px;
@@ -258,7 +290,7 @@
     <section class="hero">
         <div>
             <h1>SIR COLITAS</h1>
-            <p>Moda exclusiva para los engreídos de la casa</p>
+            <p>Elegancia y confort para los engreídos de la casa</p>
             <br>
             <a href="#colecciones" class="btn">Ver Modelos</a>
         </div>
@@ -266,29 +298,55 @@
 
     <section id="colecciones" class="container">
         <h2>Nuestras Colecciones</h2>
+        
         <div class="gallery">
             
             <div class="card">
-                <img src="https://placehold.co/400x500/D32F2F/FFF/png?text=F1+Racing" alt="Ropa Formula 1">
+                <div class="card-image-container">
+                    <img src="https://placehold.co/400x500/D32F2F/FFF/png?text=F1+Racing+Team" alt="Colección F1">
+                    <span class="badge badge-special">Edición Especial</span>
+                </div>
                 <div class="card-content">
-                    <h3>Colección Racing (F1)</h3>
-                    <p>Poleras inspiradas en la velocidad: Red Bull, Ferrari y McLaren.</p>
+                    <h3>Racing F1</h3>
+                    <p class="category">Categoría: Temática (TM)</p>
+                    <p>La velocidad hecha moda. Poleras exclusivas de las escuderías Red Bull, Ferrari y McLaren.</p>
                 </div>
             </div>
 
             <div class="card">
-                <img src="https://placehold.co/400x500/2E7D32/FFF/png?text=Navidad+Verano" alt="Ropa Navidad">
+                <div class="card-image-container">
+                    <img src="https://placehold.co/400x500/C5A059/FFF/png?text=Alba+Verano+26" alt="Colección Alba">
+                    <span class="badge badge-signature">Verano 2026</span>
+                </div>
                 <div class="card-content">
-                    <h3>Colección Navidad</h3>
-                    <p>Polos ligeros perfectos para celebrar el verano navideño.</p>
+                    <h3>Colección Alba</h3>
+                    <p class="category">Línea Signature (SIGN)</p>
+                    <p>Frescura y elegancia. Diseños de autor y accesorios funcionales para disfrutar el sol.</p>
                 </div>
             </div>
 
             <div class="card">
-                <img src="https://placehold.co/400x500/333/FFF/png?text=Invierno+2026" alt="Proximamente">
+                <div class="card-image-container">
+                    <img src="https://placehold.co/400x500/0A192F/C5A059/png?text=Atelier+Exclusive" alt="Atelier">
+                    <span class="badge badge-atelier">Servicio Personalizado</span>
+                </div>
                 <div class="card-content">
-                    <h3>Próximamente</h3>
-                    <p>Estamos preparando nuevos diseños exclusivos para este invierno.</p>
+                    <h3>Línea Atelier</h3>
+                    <p class="category">Alta Costura (ATEL)</p>
+                    <p>Confección a medida exacta. <strong>Lujo accesible</strong> y ajuste perfecto para una elegancia sin esfuerzo.</p>
+                    <a href="https://wa.me/51961743825?text=Hola,%20me%20interesa%20cotizar%20una%20prenda%20Atelier" style="color: var(--gold); text-decoration: none; font-weight: bold; font-size: 0.9rem;">Cotizar a medida &rarr;</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image-container">
+                    <img src="https://placehold.co/400x500/333/666/png?text=Invierno+2026" alt="Invierno">
+                    <span class="badge" style="background:#555; color:white;">Próximamente</span>
+                </div>
+                <div class="card-content">
+                    <h3>Invierno 2026</h3>
+                    <p class="category">Adelanto de temporada</p>
+                    <p>Estamos diseñando la colección de abrigo más sofisticada para la temporada fría.</p>
                 </div>
             </div>
 
@@ -299,41 +357,65 @@
         <div class="container">
             <h2>Guía de Tallas</h2>
             <p style="text-align: center; margin-bottom: 30px;">
-                Estas medidas son referenciales para nuestros modelos (Perros y Gatos).
+                Manejamos un sistema de tallas numérico para mayor precisión.
             </p>
             <table>
                 <thead>
                     <tr>
-                        <th>Talla</th>
-                        <th>Cuello (cm)</th>
-                        <th>Pecho (cm)</th>
+                        <th>Código</th>
+                        <th>Referencia (Aprox)</th>
                         <th>Lomo (cm)</th>
+                        <th>Pecho (cm)</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>XS</td>
-                        <td>20-24</td>
-                        <td>30-34</td>
-                        <td>20-25</td>
-                    </tr>
-                    <tr>
-                        <td>S</td>
-                        <td>24-28</td>
-                        <td>34-38</td>
-                        <td>25-30</td>
-                    </tr>
-                    <tr>
-                        <td>M</td>
+                        <td>00</td>
+                        <td>Mini Toy / Gatos Pequeños</td>
+                        <td>20-22</td>
                         <td>28-32</td>
-                        <td>38-44</td>
-                        <td>30-35</td>
                     </tr>
                     <tr>
-                        <td>L</td>
+                        <td>01</td>
+                        <td>Toy / Gatos Promedio</td>
+                        <td>23-26</td>
+                        <td>33-37</td>
+                    </tr>
+                    <tr>
+                        <td>02</td>
+                        <td>Cachorros / Gatos Grandes</td>
+                        <td>27-31</td>
+                        <td>38-42</td>
+                    </tr>
+                    <tr>
+                        <td>03</td>
+                        <td>Pequeño (S)</td>
                         <td>32-36</td>
-                        <td>44-50</td>
-                        <td>35-40</td>
+                        <td>43-48</td>
+                    </tr>
+                    <tr>
+                        <td>04</td>
+                        <td>Mediano Pequeño (M)</td>
+                        <td>37-41</td>
+                        <td>49-55</td>
+                    </tr>
+                    <tr>
+                        <td>05</td>
+                        <td>Mediano (L)</td>
+                        <td>42-47</td>
+                        <td>56-62</td>
+                    </tr>
+                    <tr>
+                        <td>06</td>
+                        <td>Grande (XL)</td>
+                        <td>48-54</td>
+                        <td>63-70</td>
+                    </tr>
+                     <tr>
+                        <td>07-08</td>
+                        <td>Razas Grandes (Atelier)</td>
+                        <td>55+</td>
+                        <td>71+</td>
                     </tr>
                 </tbody>
             </table>
