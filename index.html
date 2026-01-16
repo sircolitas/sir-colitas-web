@@ -218,7 +218,82 @@
             font-weight: 600;
             text-decoration: none;
         }
+<section id="resumen-pedido" style="padding: 80px 5%; background: #fdfdfd; border-top: 1px solid var(--gold);">
+    <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+        <h2 style="text-transform: uppercase; letter-spacing: 3px; font-size: 1.5rem;">Tu Selección</h2>
+        <p style="color: #888; margin-bottom: 40px;">Revisa tu pedido antes de enviarlo por WhatsApp</p>
+        
+        <div id="lista-pedido" style="background: white; padding: 30px; border: 1px solid #eee; text-align: left; margin-bottom: 30px;">
+            <p style="text-align: center; color: #ccc;">Tu carrito está vacío</p>
+        </div>
 
+        <button onclick="enviarWhatsApp()" id="btn-final" style="background: #25d366; color: white; padding: 18px 40px; border: none; font-weight: 600; cursor: pointer; border-radius: 4px; display: none; width: 100%; text-transform: uppercase; letter-spacing: 1px;">
+            Confirmar Pedido vía WhatsApp
+        </button>
+        
+        <a href="javascript:void(0)" onclick="vaciarPedido()" id="btn-vaciar" style="display: none; margin-top: 20px; color: #ff4d4d; font-size: 0.8rem; text-decoration: none;">Vaciar carrito</a>
+    </div>
+</section>
+
+<script>
+    function cargarResumen() {
+        const cart = JSON.parse(localStorage.getItem('sirColitasCart')) || [];
+        const lista = document.getElementById('lista-pedido');
+        const btnFinal = document.getElementById('btn-final');
+        const btnVaciar = document.getElementById('btn-vaciar');
+
+        if(cart.length === 0) return;
+
+        btnFinal.style.display = "block";
+        btnVaciar.style.display = "inline-block";
+        lista.innerHTML = "";
+        let total = 0;
+
+        cart.forEach((item, index) => {
+            total += item.subtotal;
+            lista.innerHTML += `
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f9f9f9; padding: 15px 0;">
+                    <div>
+                        <strong style="color: var(--primary);">${item.qty}x</strong> ${item.name} 
+                        <span style="display: block; font-size: 0.75rem; color: var(--gold);">Talla: ${item.talla}</span>
+                    </div>
+                    <span style="font-weight: 600;">S/ ${item.subtotal.toFixed(2)}</span>
+                </div>
+            `;
+        });
+
+        lista.innerHTML += `
+            <div style="margin-top: 20px; display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: 600;">
+                <span>TOTAL ESTIMADO</span>
+                <span style="color: var(--gold);">S/ ${total.toFixed(2)}</span>
+            </div>
+        `;
+    }
+
+    function enviarWhatsApp() {
+        const cart = JSON.parse(localStorage.getItem('sirColitasCart')) || [];
+        let mensaje = "¡Hola Sir Colitas! 👋 Quisiera concretar el siguiente pedido:%0A%0A";
+        let total = 0;
+
+        cart.forEach(item => {
+            mensaje += `✅ *${item.qty}x* ${item.name} (Talla ${item.talla}) - S/ ${item.subtotal.toFixed(2)}%0A`;
+            total += item.subtotal;
+        });
+
+        mensaje += `%0A💰 *TOTAL: S/ ${total.toFixed(2)}*%0A%0A¿Podemos coordinar la entrega y el pago?`;
+        window.open(`https://wa.me/51961743825?text=${mensaje}`, '_blank');
+    }
+
+    function vaciarPedido() {
+        if(confirm('¿Deseas vaciar tu selección?')) {
+            localStorage.removeItem('sirColitasCart');
+            location.reload();
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', cargarResumen);
+</script>
+        
         /* --- FOOTER --- */
         footer {
             padding: 60px 5%;
