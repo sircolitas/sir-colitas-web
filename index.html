@@ -38,7 +38,6 @@
             border-bottom: 1px solid #eee;
             color: #666;
         }
-
         .top-bar div span { margin-right: 15px; }
 
         /* --- HEADER --- */
@@ -47,7 +46,6 @@
             padding: 20px 0;
             text-align: center;
         }
-
         .logo-container img {
             height: 100px;
             width: auto;
@@ -60,39 +58,35 @@
             border-bottom: 1px solid var(--gold);
             padding: 15px 0;
             margin-top: 10px;
+            position: sticky;
+            top: 0;
+            background: white;
+            z-index: 1000;
         }
-
         .nav-links {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 40px;
+            gap: 30px;
         }
-
         .nav-links a {
             text-decoration: none;
             color: var(--primary);
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             letter-spacing: 2px;
             transition: 0.3s;
         }
-
         .nav-links a:hover { color: var(--gold); }
 
-        .social-icons-nav {
-            display: flex;
-            gap: 15px;
-            margin-left: 20px;
-            border-left: 1px solid #ddd;
-            padding-left: 20px;
-        }
-
-        .social-icons-nav svg {
-            width: 18px;
-            fill: var(--primary);
-            transition: 0.3s;
+        /* Botón de Carrito en Nav */
+        .btn-resumen-nav {
+            background: var(--primary);
+            color: var(--gold) !important;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.7rem !important;
         }
 
         /* --- HERO --- */
@@ -105,21 +99,13 @@
             text-align: center;
             color: var(--white);
         }
-
         .hero-content h1 {
             font-family: 'Great Vibes', cursive;
             font-size: 5.5rem;
             margin: 0;
             color: var(--gold);
-            font-weight: normal;
         }
-
-        .hero-content p {
-            font-size: 1.2rem;
-            font-weight: 300;
-            letter-spacing: 1px;
-            margin-bottom: 30px;
-        }
+        .hero-content p { font-size: 1.2rem; font-weight: 300; margin-bottom: 30px; }
 
         .btn-gold {
             background: var(--gold);
@@ -130,7 +116,6 @@
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 2px;
-            transition: 0.3s;
         }
 
         /* --- COLECCIONES --- */
@@ -142,158 +127,40 @@
             border-bottom: 1px solid #eee;
             margin-bottom: 40px;
             color: var(--primary);
+            text-align: center;
         }
-
         .gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 20px;
             padding: 0 5% 80px;
         }
-
-        .card-link { text-decoration: none; color: inherit; }
-
-        .card {
-            position: relative;
-            background: var(--white);
-            transition: 0.3s;
-        }
-
-        .card img {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            object-fit: cover;
-            display: block;
-        }
+        .card { position: relative; transition: 0.3s; }
+        .card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
 
         /* SELLOS CIRCULARES */
         .stamp {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            font-size: 8px;
-            font-weight: bold;
-            text-transform: uppercase;
-            color: white;
-            padding: 10px;
-            line-height: 1.1;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            z-index: 2;
+            position: absolute; top: 20px; left: 20px; width: 70px; height: 70px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            text-align: center; font-size: 8px; font-weight: bold; text-transform: uppercase;
+            color: white; padding: 10px; line-height: 1.1; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 2;
         }
-
         .stamp-red { background: rgba(211, 47, 47, 0.9); border: 1px solid white; }
         .stamp-gold { background: rgba(197, 160, 89, 0.9); border: 1px solid white; }
         .stamp-dark { background: rgba(10, 25, 47, 0.9); border: 1px solid white; }
 
-        .card-info {
-            padding: 20px 0;
-            text-align: left;
+        .card-info { padding: 20px 0; }
+        .card-info h3 { font-size: 1rem; text-transform: uppercase; color: var(--primary); margin: 0; }
+        .card-info p { font-size: 0.85rem; color: #666; margin: 10px 0; }
+
+        /* --- WHATSAPP FLOAT --- */
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+            background: #25d366; border-radius: 50%; display: flex; align-items: center;
+            justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 1000;
         }
+        .whatsapp-float svg { fill: white; width: 30px; }
 
-        .card-info h3 {
-            margin: 0;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--primary);
-        }
-
-        .card-info p {
-            font-size: 0.85rem;
-            color: #666;
-            margin: 10px 0;
-            line-height: 1.4;
-        }
-
-        .cotizar-link {
-            color: var(--gold);
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-decoration: none;
-        }
-<section id="resumen-pedido" style="padding: 80px 5%; background: #fdfdfd; border-top: 1px solid var(--gold);">
-    <div style="max-width: 700px; margin: 0 auto; text-align: center;">
-        <h2 style="text-transform: uppercase; letter-spacing: 3px; font-size: 1.5rem;">Tu Selección</h2>
-        <p style="color: #888; margin-bottom: 40px;">Revisa tu pedido antes de enviarlo por WhatsApp</p>
-        
-        <div id="lista-pedido" style="background: white; padding: 30px; border: 1px solid #eee; text-align: left; margin-bottom: 30px;">
-            <p style="text-align: center; color: #ccc;">Tu carrito está vacío</p>
-        </div>
-
-        <button onclick="enviarWhatsApp()" id="btn-final" style="background: #25d366; color: white; padding: 18px 40px; border: none; font-weight: 600; cursor: pointer; border-radius: 4px; display: none; width: 100%; text-transform: uppercase; letter-spacing: 1px;">
-            Confirmar Pedido vía WhatsApp
-        </button>
-        
-        <a href="javascript:void(0)" onclick="vaciarPedido()" id="btn-vaciar" style="display: none; margin-top: 20px; color: #ff4d4d; font-size: 0.8rem; text-decoration: none;">Vaciar carrito</a>
-    </div>
-</section>
-
-<script>
-    function cargarResumen() {
-        const cart = JSON.parse(localStorage.getItem('sirColitasCart')) || [];
-        const lista = document.getElementById('lista-pedido');
-        const btnFinal = document.getElementById('btn-final');
-        const btnVaciar = document.getElementById('btn-vaciar');
-
-        if(cart.length === 0) return;
-
-        btnFinal.style.display = "block";
-        btnVaciar.style.display = "inline-block";
-        lista.innerHTML = "";
-        let total = 0;
-
-        cart.forEach((item, index) => {
-            total += item.subtotal;
-            lista.innerHTML += `
-                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f9f9f9; padding: 15px 0;">
-                    <div>
-                        <strong style="color: var(--primary);">${item.qty}x</strong> ${item.name} 
-                        <span style="display: block; font-size: 0.75rem; color: var(--gold);">Talla: ${item.talla}</span>
-                    </div>
-                    <span style="font-weight: 600;">S/ ${item.subtotal.toFixed(2)}</span>
-                </div>
-            `;
-        });
-
-        lista.innerHTML += `
-            <div style="margin-top: 20px; display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: 600;">
-                <span>TOTAL ESTIMADO</span>
-                <span style="color: var(--gold);">S/ ${total.toFixed(2)}</span>
-            </div>
-        `;
-    }
-
-    function enviarWhatsApp() {
-        const cart = JSON.parse(localStorage.getItem('sirColitasCart')) || [];
-        let mensaje = "¡Hola Sir Colitas! 👋 Quisiera concretar el siguiente pedido:%0A%0A";
-        let total = 0;
-
-        cart.forEach(item => {
-            mensaje += `✅ *${item.qty}x* ${item.name} (Talla ${item.talla}) - S/ ${item.subtotal.toFixed(2)}%0A`;
-            total += item.subtotal;
-        });
-
-        mensaje += `%0A💰 *TOTAL: S/ ${total.toFixed(2)}*%0A%0A¿Podemos coordinar la entrega y el pago?`;
-        window.open(`https://wa.me/51961743825?text=${mensaje}`, '_blank');
-    }
-
-    function vaciarPedido() {
-        if(confirm('¿Deseas vaciar tu selección?')) {
-            localStorage.removeItem('sirColitasCart');
-            location.reload();
-        }
-    }
-
-    document.addEventListener('DOMContentLoaded', cargarResumen);
-</script>
-        
         /* --- FOOTER --- */
         footer {
             padding: 60px 5%;
@@ -303,18 +170,8 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 40px;
         }
-
-        footer h4 { text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 20px; }
-        footer p, footer a { font-size: 0.8rem; color: #666; text-decoration: none; display: block; margin-bottom: 10px; }
-        footer a:hover { color: var(--gold); }
-        
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
-            background: #25d366; border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 1000;
-        }
-
-        .whatsapp-float svg { fill: white; width: 30px; }
+        footer h4 { text-transform: uppercase; font-size: 0.8rem; margin-bottom: 20px; }
+        footer a { font-size: 0.8rem; color: #666; text-decoration: none; display: block; margin-bottom: 10px; }
     </style>
 </head>
 <body>
@@ -332,15 +189,8 @@
             <div class="nav-links">
                 <a href="#colecciones">Colecciones</a>
                 <a href="tallas.html">Tallas</a>
+                <a href="#resumen-pedido" class="btn-resumen-nav">Mi Pedido 🛒</a>
                 <a href="#contacto">Contacto</a>
-                <div class="social-icons-nav">
-                    <a href="https://www.instagram.com/sir_colitas" target="_blank">
-                        <svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s 102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
-                    </a>
-                    <a href="https://www.tiktok.com/@sir_colitas" target="_blank">
-                        <svg viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.32c7.87 33.32 31.27 60.33 64.07 74.19A121.75 121.75 0 0 0 448 109.48z"/></svg>
-                    </a>
-                </div>
             </div>
         </nav>
     </header>
@@ -356,7 +206,7 @@
     <div id="colecciones" class="section-title">Nuestras Colecciones</div>
 
     <section class="gallery">
-        <a href="formula1.html" class="card-link">
+        <a href="formula1.html" style="text-decoration:none">
             <div class="card">
                 <div class="stamp stamp-red">Edición<br>Especial</div>
                 <img src="Polera Ferrari.png" alt="F1">
@@ -367,7 +217,7 @@
             </div>
         </a>
 
-        <a href="alba.html" class="card-link">
+        <a href="alba.html" style="text-decoration:none">
             <div class="card">
                 <div class="stamp stamp-gold">Verano<br>2026</div>
                 <img src="bandana.jpg" alt="Alba">
@@ -378,17 +228,33 @@
             </div>
         </a>
 
-        <a href="atelier.html" class="card-link">
+        <a href="atelier.html" style="text-decoration:none">
             <div class="card">
                 <div class="stamp stamp-dark">Servicio<br>Exclusivo</div>
                 <img src="Smoking1.jpg" alt="Atelier">
                 <div class="card-info">
                     <h3>Línea Atelier</h3>
                     <p>Lujo accesible diseñado a medida exacta.</p>
-                    <span class="cotizar-link">Cotizar a medida &rarr;</span>
                 </div>
             </div>
         </a>
+    </section>
+
+    <section id="resumen-pedido" style="padding: 80px 5%; background: #fdfdfd; border-top: 1px solid var(--gold);">
+        <div style="max-width: 700px; margin: 0 auto; text-align: center;">
+            <h2 style="text-transform: uppercase; letter-spacing: 3px; font-size: 1.5rem; color: var(--primary);">Tu Selección</h2>
+            <p style="color: #888; margin-bottom: 40px;">Revisa tu pedido antes de enviarlo por WhatsApp</p>
+            
+            <div id="lista-pedido" style="background: white; padding: 30px; border: 1px solid #eee; text-align: left; margin-bottom: 30px; min-height: 100px;">
+                <p style="text-align: center; color: #ccc;">Tu carrito está vacío</p>
+            </div>
+
+            <button onclick="enviarWhatsApp()" id="btn-final" style="background: #25d366; color: white; padding: 18px 40px; border: none; font-weight: 600; cursor: pointer; border-radius: 4px; display: none; width: 100%; text-transform: uppercase; letter-spacing: 1px;">
+                Confirmar Pedido vía WhatsApp
+            </button>
+            
+            <a href="javascript:void(0)" onclick="vaciarPedido()" id="btn-vaciar" style="display: none; margin-top: 20px; color: #ff4d4d; font-size: 0.8rem; text-decoration: none;">Vaciar carrito</a>
+        </div>
     </section>
 
     <footer id="contacto">
@@ -413,5 +279,74 @@
         <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3 18.6-68.1-4.4-6.9c-18.4-29.3-28.1-63.5-28.1-98.2 0-101.4 82.3-183.8 183.8-183.8 49 0 95.1 19.1 129.8 53.8 34.7 34.7 53.8 80.8 53.8 129.8 0 101.4-82.3 183.8-183.8 183.8zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-4-10.5-6.8z"/></svg>
     </a>
 
+    <script>
+        function cargarResumen() {
+            const cart = JSON.parse(localStorage.getItem('sirColitasCart')) || [];
+            const lista = document.getElementById('lista-pedido');
+            const btnFinal = document.getElementById('btn-final');
+            const btnVaciar = document.getElementById('btn-vaciar');
+
+            if(cart.length === 0) {
+                lista.innerHTML = '<p style="text-align: center; color: #ccc;">Tu carrito está vacío</p>';
+                btnFinal.style.display = "none";
+                btnVaciar.style.display = "none";
+                return;
+            }
+
+            btnFinal.style.display = "block";
+            btnVaciar.style.display = "inline-block";
+            lista.innerHTML = "";
+            let total = 0;
+
+            cart.forEach((item) => {
+                total += item.subtotal;
+                lista.innerHTML += `
+                    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f9f9f9; padding: 15px 0;">
+                        <div>
+                            <strong style="color: var(--primary);">${item.qty}x</strong> ${item.name} 
+                            <span style="display: block; font-size: 0.75rem; color: var(--gold);">Talla: ${item.talla}</span>
+                        </div>
+                        <span style="font-weight: 600;">S/ ${item.subtotal.toFixed(2)}</span>
+                    </div>
+                `;
+            });
+
+            lista.innerHTML += `
+                <div style="margin-top: 20px; display: flex; justify-content: space-between; font-size: 1.2rem; font-weight: 600;">
+                    <span>TOTAL ESTIMADO</span>
+                    <span style="color: var(--gold);">S/ ${total.toFixed(2)}</span>
+                </div>
+            `;
+        }
+
+        function enviarWhatsApp() {
+            const cart = JSON.parse(localStorage.getItem('sirColitasCart')) || [];
+            if(cart.length === 0) return;
+            
+            let mensaje = "¡Hola Sir Colitas! 👋 Quisiera concretar el siguiente pedido:%0A%0A";
+            let total = 0;
+
+            cart.forEach(item => {
+                mensaje += `✅ *${item.qty}x* ${item.name} (Talla ${item.talla}) - S/ ${item.subtotal.toFixed(2)}%0A`;
+                total += item.subtotal;
+            });
+
+            mensaje += `%0A💰 *TOTAL: S/ ${total.toFixed(2)}*%0A%0A¿Podemos coordinar la entrega?`;
+            window.open(`https://wa.me/51961743825?text=${mensaje}`, '_blank');
+        }
+
+        function vaciarPedido() {
+            if(confirm('¿Deseas vaciar tu selección?')) {
+                localStorage.removeItem('sirColitasCart');
+                cargarResumen();
+            }
+        }
+
+        // Ejecutar al cargar la página
+        document.addEventListener('DOMContentLoaded', cargarResumen);
+        
+        // Refrescar cuando se vuelve a la pestaña (por si se agregaron items en otra página)
+        window.addEventListener('focus', cargarResumen);
+    </script>
 </body>
 </html>
