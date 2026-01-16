@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Pedido - Sir Colitas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #0A192F; --gold: #C5A059; --light: #F9F9F9; --white: #FFFFFF; }
+        body { font-family: 'Montserrat', sans-serif; margin: 0; background: var(--white); color: var(--primary); }
+        
+        header { padding: 30px 0; text-align: center; border-bottom: 1px solid var(--gold); }
+        .logo-container img { height: 70px; width: auto; }
+        .back-nav { padding: 15px 0; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; text-align: center; }
+        .back-nav a { text-decoration: none; color: #888; }
+
+        .container { width: 90%; max-width: 800px; margin: 40px auto; min-height: 60vh; }
+        .page-title { text-align: center; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 40px; }
+
+        /* Estilos del Carrito */
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid #eee;
+        }
+        .item-details h3 { font-size: 0.9rem; margin: 0; text-transform: uppercase; }
+        .item-details p { font-size: 0.8rem; color: var(--gold); margin: 5px 0 0; }
+        
+        .item-right { text-align: right; display: flex; align-items: center; gap: 20px; }
+        .item-price { font-weight: 600; }
+        
+        .btn-remove {
+            background: none;
+            border: none;
+            color: #ff4d4d;
+            cursor: pointer;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 5px;
+        }
+        .btn-remove:hover { text-decoration: underline; }
+
+        .cart-total {
+            margin-top: 40px;
+            text-align: right;
+            font-size: 1.4rem;
+            font-weight: 600;
+            border-top: 2px solid var(--primary);
+            padding-top: 20px;
+        }
+
+        .actions {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .btn-whatsapp {
+            background: #25d366;
+            color: white;
+            padding: 18px 40px;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: 100%;
+            text-align: center;
+            border-radius: 4px;
+        }
+        
+        .empty-msg { text-align: center; color: #ccc; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="index.html"><img src="Logo Sir Colitas Oficial Final.jpg" alt="Sir Colitas"></a>
+        </div>
+        <div class="back-nav"><a href="index.html">&larr; Seguir Comprando</a></div>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">Tu Selección</h1>
+        
+        <div id="cart-content">
+            </div>
+
+        <div id="cart-footer" style="display: none;">
+            <div class="cart-total">Total: S/ <span id="total-amount">0.00</span></div>
+            <div class="actions">
+                <a href="#" onclick="enviarWhatsApp()" class="btn-whatsapp">Confirmar Pedido vía WhatsApp</a>
+                <a href="javascript:void(0)" onclick="vaciarTodo()" style="color: #888; font-size: 0.7rem; text-decoration: none; text-transform: uppercase;">Vaciar todo el carrito</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function renderCart() {
+            const cart = JSON.parse(localStorage.getItem('sirColitasCart')) || [];
+            const container = document.getElementById('cart-content');
+            const footer = document.getElementById('cart-footer');
+            
+            if (cart.length === 0) {
+                container.innerHTML = '<p class="empty-msg">Tu carrito está vacío</p>';
+                footer.style.display = 'none';
+                return;
+            }
+
+            footer.style.display = 'block';
+            container.innerHTML = '';
+            let total = 0;
+
+            cart.forEach((item, index) => {
+                total += item.subtotal;
+                container.innerHTML += `
+                    <div class="cart-item">
+                        <div class="item-details">
+                            <h3>${item.qty}x ${item.name}</h3>
+                            <p>Talla: ${item.talla}</p>
+                        </div>
+                        <div class="item-right">
+                            <span class="item-price">S/ ${item.subtotal.toFixed(2)}</span>
+                            <button class="btn-remove" onclick="removeItem(${index})">Eliminar</button>
+                        </div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('total-amount').innerText = total.toFixed(2);
+        }
+
+        function removeItem(index) {
+            let cart = JSON.parse(localStorage.getItem('sirColitasCart')) || [];
+            cart.splice(index, 1);
+            localStorage.setItem('sirColitasCart', JSON.stringify(cart));
+            renderCart();
+        }
+
+        function vaciarTodo() {
+            if(confirm('¿Deseas eliminar todos los productos?')) {
+                localStorage.removeItem('sirColitasCart');
+                renderCart();
+            }
+        }
+
+        function enviarWhatsApp() {
+            const cart = JSON.parse(localStorage.getItem('sirColitasCart')) || [];
+            let msg = "¡Hola Sir Colitas! 👋 Quisiera concretar este pedido:%0A%0A";
+            let total = 0;
+            cart.forEach(item => {
+                msg += `• ${item.qty}x ${item.name} (Talla ${item.talla}) - S/ ${item.subtotal.toFixed(2)}%0A`;
+                total += item.subtotal;
+            });
+            msg += `%0A*TOTAL: S/ ${total.toFixed(2)}*%0A%0A¿Tienen disponibilidad?`;
+            window.open(`https://wa.me/51961743825?text=${msg}`, '_blank');
+        }
+
+        window.onload = renderCart;
+    </script>
+</body>
+</html>
