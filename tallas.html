@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Tallas - Sir Colitas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root { --primary: #0A192F; --gold: #C5A059; --light: #F9F9F9; --white: #FFFFFF; }
+        body { font-family: 'Montserrat', sans-serif; margin: 0; background: var(--white); color: var(--primary); }
+        
+        header { padding: 30px 0; text-align: center; border-bottom: 1px solid var(--gold); }
+        .logo-container img { height: 70px; width: auto; }
+        .back-nav { padding: 15px 0; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; text-align: center; }
+        .back-nav a { text-decoration: none; color: #888; transition: 0.3s; }
+        .back-nav a:hover { color: var(--gold); }
+
+        .container { width: 90%; max-width: 800px; margin: 60px auto; }
+        .page-title { text-align: center; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 10px; }
+        .subtitle { text-align: center; font-weight: 300; color: #666; margin-bottom: 50px; }
+
+        /* Estilo de la Tabla */
+        .table-container { overflow-x: auto; background: var(--light); padding: 20px; border-radius: 4px; }
+        table { width: 100%; border-collapse: collapse; background: white; }
+        th, td { padding: 18px; border: 1px solid #eee; text-align: center; font-size: 0.9rem; }
+        th { background: var(--primary); color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
+        tr:nth-child(even) { background-color: #fcfcfc; }
+
+        .tips { margin-top: 50px; padding: 30px; border: 1px dashed var(--gold); background: #fffcf5; }
+        .tips h3 { text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; margin-top: 0; }
+        .tips ul { font-size: 0.85rem; color: #555; line-height: 1.8; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <a href="index.html"><img src="Logo Sir Colitas Oficial Final.jpg" alt="Sir Colitas"></a>
+        </div>
+        <div class="back-nav">
+            <a href="index.html">&larr; Volver al Inicio</a>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">Guía de Tallas</h1>
+        <p class="subtitle">Encuentra el ajuste perfecto para tu engreído</p>
+        
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Talla</th>
+                        <th>Cuello (cm)</th>
+                        <th>Pecho (cm)</th>
+                        <th>Espalda (cm)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>0</strong></td><td>22 - 25</td><td>32 - 35</td><td>24 - 27</td></tr>
+                    <tr><td><strong>1</strong></td><td>32 - 35</td><td>47 - 50</td><td>32 - 35</td></tr>
+                    <tr><td><strong>2</strong></td><td>35 - 38</td><td>53 - 56</td><td>36 - 39</td></tr>
+                    <tr><td><strong>3</strong></td><td>39 - 42</td><td>63 - 66</td><td>43 - 46</td></tr>
+                    <tr><td><strong>4</strong></td><td>44 - 47</td><td>70 - 73</td><td>46 - 49</td></tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tips">
+            <h3>¿Cómo medir a tu mascota?</h3>
+            <ul>
+                <li><strong>Cuello:</strong> Mide la base del cuello donde descansaría el collar.</li>
+                <li><strong>Pecho:</strong> Mide la parte más ancha del torso (justo detrás de las patas delanteras).</li>
+                <li><strong>Espalda:</strong> Mide desde la base del cuello hasta donde comienza la cola.</li>
+                <li><em>Nota: Si las medidas de tu mascota están entre dos tallas, te recomendamos elegir la más grande.</em></li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
