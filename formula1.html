@@ -3,122 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colección Formula 1 - Sir Colitas</title>
+    <title>Formula 1 - Sir Colitas</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #0A192F; --gold: #C5A059; --light: #F9F9F9; --white: #FFFFFF; }
-        body { font-family: 'Montserrat', sans-serif; margin: 0; background: var(--white); padding-bottom: 100px; }
+        :root { --primary: #0A192F; --gold: #C5A059; --white: #FFFFFF; --light: #F9F9F9; }
+        body { font-family: 'Montserrat', sans-serif; margin: 0; padding-bottom: 100px; color: var(--primary); }
         
-        header { padding: 30px 0; text-align: center; border-bottom: 1px solid var(--gold); }
-        .logo-container img { height: 70px; width: auto; }
-        .back-nav { padding: 15px 0; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; text-align: center; }
+        header { padding: 25px 0; text-align: center; border-bottom: 1px solid var(--gold); background: white; }
+        header img { height: 60px; }
+        
+        .back-nav { padding: 15px; text-align: center; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; }
         .back-nav a { text-decoration: none; color: #888; }
 
-        .container { width: 90%; max-width: 1200px; margin: 40px auto; }
-        .page-title { text-align: center; text-transform: uppercase; letter-spacing: 4px; color: var(--primary); margin-bottom: 50px; }
+        .container { width: 90%; max-width: 1100px; margin: 20px auto; }
+        .page-title { text-align: center; letter-spacing: 4px; margin-bottom: 40px; }
 
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
-        .product-card { text-align: left; border: 1px solid #eee; padding: 15px; transition: 0.3s; }
-        .product-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .product-card { border: 1px solid #eee; padding: 20px; background: white; transition: 0.3s; }
+        .product-card:hover { box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+        .product-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; margin-bottom: 15px; }
+
+        .controls { margin: 15px 0; display: flex; flex-direction: column; gap: 8px; text-align: left; }
+        label { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; color: #666; }
+        select, input { padding: 12px; border: 1px solid #ddd; font-family: 'Montserrat'; border-radius: 4px; }
+
+        .price-display { font-size: 1.4rem; color: var(--gold); font-weight: 600; margin: 15px 0; }
         
-        .product-info h3 { font-size: 0.9rem; text-transform: uppercase; margin: 15px 0 5px; color: var(--primary); }
-        .product-price { color: var(--gold); font-weight: 600; font-size: 0.9rem; margin-bottom: 15px; }
-        
-        /* BOTONES */
         .btn-add { 
-            display: block; width: 100%; background: var(--primary); color: white; border: none;
-            padding: 12px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; 
-            letter-spacing: 1px; cursor: pointer; transition: 0.3s; margin-bottom: 10px;
+            background: var(--primary); color: white; border: none; padding: 15px; 
+            cursor: pointer; text-transform: uppercase; font-weight: 600; width: 100%; 
+            letter-spacing: 1px; transition: 0.3s;
         }
         .btn-add:hover { background: var(--gold); }
-        
-        .size-link { display: block; text-align: center; font-size: 0.65rem; color: #888; text-decoration: none; text-transform: uppercase; }
+        .size-link { display: block; margin-top: 10px; font-size: 0.65rem; color: #888; text-decoration: underline; text-align: center; }
 
-        /* CARRITO FLOTANTE */
-        .cart-float {
-            position: fixed; bottom: 0; left: 0; width: 100%; background: var(--primary);
-            color: white; padding: 20px; display: none; justify-content: space-between;
-            align-items: center; z-index: 1000; box-shadow: 0 -5px 15px rgba(0,0,0,0.2);
+        /* Carrito Flotante */
+        .cart-bar { 
+            position: fixed; bottom: 0; left: 0; width: 100%; background: var(--primary); 
+            color: white; padding: 20px; display: none; justify-content: space-around; 
+            align-items: center; z-index: 1000; box-shadow: 0 -5px 20px rgba(0,0,0,0.2); 
         }
-        .btn-whatsapp-cart {
-            background: #25d366; color: white; padding: 10px 25px; text-decoration: none;
-            border-radius: 4px; font-weight: 600; font-size: 0.8rem; text-transform: uppercase;
+        .btn-go-cart { 
+            background: #25d366; color: white; padding: 12px 25px; 
+            text-decoration: none; font-weight: 600; border-radius: 4px; text-transform: uppercase; font-size: 0.8rem;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <a href="index.html"><img src="Logo Sir Colitas Oficial Final.jpg" alt="Sir Colitas"></a>
-        </div>
-        <div class="back-nav"><a href="index.html">&larr; Volver</a></div>
-    </header>
+<header>
+    <a href="index.html"><img src="Logo Sir Colitas Oficial Final.jpg" alt="Sir Colitas"></a>
+    <div class="back-nav"><a href="index.html">&larr; Volver al Inicio</a></div>
+</header>
 
-    <div class="container">
-        <h1 class="page-title">Colección Formula 1</h1>
+<div class="container">
+    <h1 class="page-title">COLECCIÓN FORMULA 1</h1>
+    
+    <div class="products-grid">
+        <div class="product-card">
+            <img src="Polera Ferrari.png" alt="Polera Ferrari">
+            <h3>Polera Escudería Ferrari</h3>
+            
+            <div class="controls">
+                <label>Elegir Talla:</label>
+                <select class="size-select" onchange="updatePrice(this)">
+                    <option value="45" data-talla="0">Talla 0 (S/ 45.00)</option>
+                    <option value="45" data-talla="1">Talla 1 (S/ 45.00)</option>
+                    <option value="55" data-talla="2">Talla 2 (S/ 55.00)</option>
+                    <option value="69" data-talla="3">Talla 3 (S/ 69.00)</option>
+                    <option value="69" data-talla="4">Talla 4 (S/ 69.00)</option>
+                </select>
+                
+                <label>Cantidad:</label>
+                <input type="number" class="qty-input" value="1" min="1">
+            </div>
+
+            <div class="price-display">S/ <span class="current-price">45.00</span></div>
+            <button class="btn-add" onclick="addToCart('Polera Ferrari', this)">Añadir al pedido</button>
+            <a href="tallas.html" target="_blank" class="size-link">Ver Guía de Tallas</a>
+        </div>
+
+        <div class="product-card">
+            <img src="https://placehold.co/400x400/0A192F/C5A059/png?text=RED+BULL" alt="Polera Red Bull">
+            <h3>Polera Escudería Red Bull</h3>
+            
+            <div class="controls">
+                <label>Elegir Talla:</label>
+                <select class="size-select" onchange="updatePrice(this)">
+                    <option value="45" data-talla="0">Talla 0 (S/ 45.00)</option>
+                    <option value="45" data-talla="1">Talla 1 (S/ 45.00)</option>
+                    <option value="55" data-talla="2">Talla 2 (S/ 55.00)</option>
+                    <option value="69" data-talla="3">Talla 3 (S/ 69.00)</option>
+                    <option value="69" data-talla="4">Talla 4 (S/ 69.00)</option>
+                </select>
+                
+                <label>Cantidad:</label>
+                <input type="number" class="qty-input" value="1" min="1">
+            </div>
+
+            <div class="price-display">S/ <span class="current-price">45.00</span></div>
+            <button class="btn-add" onclick="addToCart('Polera Red Bull', this)">Añadir al pedido</button>
+            <a href="tallas.html" target="_blank" class="size-link">Ver Guía de Tallas</a>
+        </div>
+    </div>
+</div>
+
+<div id="cart-bar" class="cart-bar">
+    <div>Items en pedido: <span id="cart-count">0</span></div>
+    <a href="index.html#resumen-pedido" class="btn-go-cart">Ver Resumen y Pedir</a>
+</div>
+
+<script>
+    function updatePrice(select) {
+        const price = select.value;
+        select.closest('.product-card').querySelector('.current-price').innerText = parseFloat(price).toFixed(2);
+    }
+
+    function addToCart(name, btn) {
+        const card = btn.closest('.product-card');
+        const select = card.querySelector('.size-select');
+        const price = select.value;
+        const talla = select.options[select.selectedIndex].getAttribute('data-talla');
+        const qty = card.querySelector('.qty-input').value;
+
+        const item = {
+            name: name,
+            talla: talla,
+            price: parseFloat(price),
+            qty: parseInt(qty),
+            subtotal: parseFloat(price) * parseInt(qty)
+        };
+
+        let cart = JSON.parse(localStorage.getItem('sirColitasCart')) || [];
+        cart.push(item);
+        localStorage.setItem('sirColitasCart', JSON.stringify(cart));
         
-        <div class="products-grid">
-            <div class="product-card">
-                <img src="Polera Ferrari.png" alt="Ferrari">
-                <div class="product-info">
-                    <h3>Polera Escudería Ferrari</h3>
-                    <div class="product-price">S/ 45.00</div>
-                    <button class="btn-add" onclick="addToCart('Polera Ferrari', 45)">Añadir al pedido</button>
-                    <a href="tallas.html" target="_blank" class="size-link">Ver Guía de Tallas</a>
-                </div>
-            </div>
+        updateUI();
+        alert('Producto añadido al pedido');
+    }
 
-            <div class="product-card">
-                <img src="https://placehold.co/400x400/0A192F/C5A059/png?text=RED+BULL" alt="Red Bull">
-                <div class="product-info">
-                    <h3>Polera Escudería Red Bull</h3>
-                    <div class="product-price">S/ 45.00</div>
-                    <button class="btn-add" onclick="addToCart('Polera Red Bull', 45)">Añadir al pedido</button>
-                    <a href="tallas.html" target="_blank" class="size-link">Ver Guía de Tallas</a>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div id="cart-bar" class="cart-float">
-        <div>
-            <span id="cart-count">0</span> productos seleccionados
-        </div>
-        <a href="#" id="whatsapp-send" class="btn-whatsapp-cart" onclick="sendOrder()">Confirmar por WhatsApp</a>
-    </div>
-
-    <script>
-        let cart = [];
-
-        function addToCart(name, price) {
-            cart.push({name, price});
-            updateCartUI();
+    function updateUI() {
+        const cart = JSON.parse(localStorage.getItem('sirColitasCart')) || [];
+        if(cart.length > 0) {
+            document.getElementById('cart-bar').style.display = 'flex';
+            document.getElementById('cart-count').innerText = cart.length;
         }
-
-        function updateCartUI() {
-            const bar = document.getElementById('cart-bar');
-            const count = document.getElementById('cart-count');
-            if(cart.length > 0) {
-                bar.style.display = 'flex';
-                count.innerText = cart.length;
-            }
-        }
-
-        function sendOrder() {
-            const phone = "51961743825";
-            let message = "¡Hola Sir Colitas! Me gustaría concretar el pedido de estos productos:%0A%0A";
-            
-            cart.forEach((item, index) => {
-                message += `${index + 1}. ${item.name} - S/ ${item.price}%0A`;
-            });
-
-            const total = cart.reduce((sum, item) => sum + item.price, 0);
-            message += `%0A*Total estimado: S/ ${total}*%0A%0A¿Podemos coordinar las tallas?`;
-            
-            window.open(`https://wa.me/${phone}?text=${message}`, '_blank');
-        }
-    </script>
-
+    }
+    
+    window.onload = updateUI;
+</script>
 </body>
 </html>
