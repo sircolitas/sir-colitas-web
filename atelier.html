@@ -3,77 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Atelier - Sir Colitas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Oranienbaum&display=swap" rel="stylesheet">
+    <title>Línea Atelier - Sir Colitas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Oranienbaum&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        /* Estilos Elegantes (Base) */
-        :root { --primary: #0A192F; --gold: #C5A059; --dark: #111111; --light: #F4F4F4; --white: #FFFFFF; }
-        body { font-family: 'Helvetica Neue', Arial, sans-serif; margin: 0; padding: 0; color: var(--dark); background: var(--light); }
+        :root { --primary: #0A192F; --gold: #C5A059; --light: #F9F9F9; --white: #FFFFFF; }
+        body { font-family: 'Montserrat', sans-serif; margin: 0; background: #fff; }
+        header { padding: 30px 0; text-align: center; border-bottom: 1px solid var(--gold); }
+        .logo-container img { height: 70px; width: auto; }
+        .back-nav { padding: 15px 0; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; text-align: center;}
+        .back-nav a { text-decoration: none; color: #888; }
+        .container { width: 90%; max-width: 900px; margin: 40px auto; }
+        .page-title { text-align: center; text-transform: uppercase; letter-spacing: 4px; color: var(--primary); }
         
-        header { background: var(--white); padding: 1rem 0; border-bottom: 3px solid var(--gold); text-align: center;}
-        .logo { font-family: 'Oranienbaum', serif; font-style: italic; font-size: 1.5rem; color: var(--primary); text-decoration: none; text-transform: uppercase; }
-        .back-link { display: block; margin-top: 10px; color: #666; text-decoration: none; font-size: 0.9rem; }
+        .atelier-intro { text-align: center; line-height: 1.8; color: #555; margin-bottom: 60px; font-weight: 300; }
         
-        .container { width: 90%; max-width: 1200px; margin: 40px auto; }
-        h1 { text-align: center; color: var(--primary); text-transform: uppercase; margin-bottom: 10px; }
-        .subtitle { text-align: center; color: #666; margin-bottom: 40px; font-style: italic; }
+        .atelier-showcase { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+        .atelier-item img { width: 100%; object-fit: cover; border: 1px solid #eee; }
+        .atelier-item h3 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin-top: 20px; color: var(--primary); }
         
-        /* Grid de Productos */
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; }
-        .product-card { background: white; border-radius: 4px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); text-align: center; padding-bottom: 20px; transition: transform 0.3s; }
-        .product-card:hover { transform: translateY(-5px); }
-        .product-card img { width: 100%; height: 250px; object-fit: cover; }
-        .product-title { font-weight: bold; margin: 15px 0 5px; color: var(--primary); }
-        .product-desc { font-size: 0.85rem; color: #777; margin-bottom: 10px; padding: 0 10px; }
-        
-        /* En Atelier no mostramos precio fijo, sino "Desde" o "Cotizar" */
-        .product-price { color: var(--gold); font-weight: bold; font-size: 1.1rem; }
-        
-        .buy-btn {
-            display: inline-block; background: var(--primary); color: white; padding: 8px 20px; 
-            margin-top: 10px; text-decoration: none; border-radius: 20px; font-size: 0.9rem; transition: 0.3s;
-            border: 1px solid var(--primary);
-        }
-        .buy-btn:hover { background: transparent; color: var(--primary); }
+        .quote-section { margin-top: 80px; text-align: center; padding: 40px; background: var(--light); }
+        .quote-btn { background: var(--primary); color: white; padding: 15px 40px; text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; font-weight: 600; display: inline-block; transition: 0.3s; }
+        .quote-btn:hover { background: var(--gold); }
     </style>
 </head>
 <body>
 
     <header>
-        <a href="index.html" class="logo">SIR COLITAS</a>
-        <a href="index.html" class="back-link">&larr; Volver al Inicio</a>
+        <div class="logo-container">
+            <a href="index.html"><img src="Logo Sir Colitas Oficial Final.jpg" alt="Sir Colitas"></a>
+        </div>
+        <div class="back-nav">
+            <a href="index.html">&larr; Volver a Colecciones</a>
+        </div>
     </header>
 
     <div class="container">
-        <h1>Línea Atelier</h1>
-        <p class="subtitle">Alta costura a medida | Lujo Accesible</p>
+        <h1 class="page-title">Línea Atelier</h1>
+        <div class="atelier-intro">
+            <p>Piezas únicas creadas bajo los más altos estándares de sastrería canina. Nuestro servicio Atelier ofrece un ajuste perfecto y materiales premium para ocasiones que exigen distinción.</p>
+        </div>
         
-        <div class="products-grid">
-            
-            <div class="product-card">
-                <img src="Chanel 1.jpg" alt="Traje Gala"> 
-                <div class="product-title">Traje de Gala a Medida</div>
-                <div class="product-desc">Smoking o vestido ajustado al cuerpo.</div>
-                <div class="product-price">Cotizar</div>
-                <a href="https://wa.me/51961743825?text=Hola,%20me%20interesa%20cotizar%20un%20Traje%20de%20Gala" class="buy-btn">Consultar WhatsApp</a>
+        <div class="atelier-showcase">
+            <div class="atelier-item">
+                <img src="Smoking1.jpg" alt="Smoking">
+                <h3>Sastrería de Gala</h3>
+                <p style="font-size:0.8rem; color:#777;">Diseños personalizados para ceremonias.</p>
+            </div>
             </div>
 
-            <div class="product-card">
-                <img src="Traje europeo.jpg" alt="Disfraz Temático">
-                <div class="product-title">Diseño Temático</div>
-                <div class="product-desc">¿Tienes una idea loca? La hacemos realidad.</div>
-                <div class="product-price">Cotizar</div>
-                <a href="https://wa.me/51961743825?text=Hola,%20tengo%20una%20idea%20para%20un%20diseño%20personalizado" class="buy-btn">Enviar mi idea</a>
-            </div>
-            
-            <div class="product-card">
-                <img src="Smoking1.jpg" alt="Pack Novios">
-                <div class="product-title">Pack Matrimonio</div>
-                <div class="product-desc">Para llevar los anillos con estilo.</div>
-                <div class="product-price">Cotizar</div>
-                <a href="https://wa.me/51961743825?text=Hola,%20me%20interesa%20ropa%20para%20Matrimonio" class="buy-btn">Consultar WhatsApp</a>
-            </div>
-
+        <div class="quote-section">
+            <p style="text-transform:uppercase; letter-spacing:2px; font-size:0.7rem; margin-bottom:20px;">Cada pieza es un proyecto único</p>
+            <a href="https://wa.me/51961743825?text=Hola,%20me%20gustaria%20una%20pieza%20Atelier%20a%20medida" class="quote-btn">Solicitar Cotización</a>
         </div>
     </div>
 
