@@ -9,18 +9,22 @@
         :root { --primary: #0A192F; --gold: #C5A059; --light: #F9F9F9; --white: #FFFFFF; }
         body { font-family: 'Montserrat', sans-serif; margin: 0; background: var(--white); }
         
-        /* Header Minimalista (Igual al Index) */
+        /* Header Minimalista */
         header { padding: 30px 0; text-align: center; border-bottom: 1px solid var(--gold); }
         .logo-container img { height: 70px; width: auto; }
-        .back-nav { padding: 15px 0; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; }
+        .back-nav { padding: 15px 0; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; text-align: center; }
         .back-nav a { text-decoration: none; color: #888; transition: 0.3s; }
         .back-nav a:hover { color: var(--gold); }
 
         .container { width: 90%; max-width: 1200px; margin: 40px auto; }
         .page-title { text-align: center; text-transform: uppercase; letter-spacing: 4px; color: var(--primary); margin-bottom: 50px; }
 
-        /* Grid de Productos Refinado */
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 40px; }
+        /* Grid de Productos */
+        .products-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+            gap: 40px; 
+        }
         .product-card { text-align: left; position: relative; }
         .product-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; background: var(--light); transition: 0.4s; }
         .product-card:hover img { opacity: 0.8; }
@@ -29,7 +33,27 @@
         .product-info h3 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; margin: 0; color: var(--primary); }
         .product-price { color: var(--gold); font-weight: 600; margin-top: 10px; font-size: 0.9rem; }
         
-        .buy-link { display: inline-block; margin-top: 15px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--primary); text-decoration: none; border-bottom: 1px solid var(--gold); padding-bottom: 2px; }
+        .buy-link, .size-guide-link { 
+            display: inline-block; 
+            margin-top: 15px; 
+            font-size: 0.75rem; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 1px; 
+            color: var(--primary); 
+            text-decoration: none; 
+            border-bottom: 1px solid var(--gold); 
+            padding-bottom: 2px; 
+            margin-right: 15px; /* Espacio entre los dos botones */
+        }
+        .size-guide-link {
+            color: #666; /* Un color un poco más suave para la guía de tallas */
+            border-bottom: 1px dashed #bbb;
+        }
+        .size-guide-link:hover {
+            color: var(--gold);
+            border-bottom-style: solid;
+        }
     </style>
 </head>
 <body>
@@ -48,14 +72,46 @@
         
         <div class="products-grid">
             <div class="product-card">
-                <img src="Polera Ferrari.png" alt="Ferrari">
+                <img src="Polera Ferrari.png" alt="Polera Ferrari">
                 <div class="product-info">
-                    <h3>Polera Escudería Red</h3>
-                    <div class="product-price">S/ 45.00</div>
-                    <a href="https://wa.me/51961743825?text=Hola,%20me%20interesa%20la%20Polera%20Escuderia%20Roja" class="buy-link">Comprar en WhatsApp</a>
+                    <h3>Polera Escudería Ferrari</h3>
+                    <div class="product-price">S/ 45.00 - S/ 69.00</div>
+                    <a href="https://wa.me/51961743825?text=Hola,%20me%20interesa%20la%20Polera%20Escuderia%20Ferrari" class="buy-link">Comprar en WhatsApp</a>
+                    <a href="tallas.html" class="size-guide-link" target="_blank">Ver Guía de Tallas</a>
                 </div>
             </div>
+
+            <div class="product-card">
+                <img src="https://placehold.co/400x400/0A192F/C5A059/png?text=RED+BULL" alt="Polera Red Bull"> 
+                <div class="product-info">
+                    <h3>Polera Escudería Red Bull</h3>
+                    <div class="product-price">S/ 45.00 - S/ 69.00</div>
+                    <a href="https://wa.me/51961743825?text=Hola,%20me%20interesa%20la%20Polera%20Escuderia%20Red%20Bull" class="buy-link">Comprar en WhatsApp</a>
+                    <a href="tallas.html" class="size-guide-link" target="_blank">Ver Guía de Tallas</a>
+                </div>
             </div>
+
+            <div class="product-card">
+                <img src="https://placehold.co/400x400/0A192F/C5A059/png?text=McLAREN" alt="Polera McLaren">
+                <div class="product-info">
+                    <h3>Polera Escudería McLaren</h3>
+                    <div class="product-price">S/ 45.00 - S/ 69.00</div>
+                    <a href="https://wa.me/51961743825?text=Hola,%20me%20interesa%20la%20Polera%20Escuderia%20McLaren" class="buy-link">Comprar en WhatsApp</a>
+                    <a href="tallas.html" class="size-guide-link" target="_blank">Ver Guía de Tallas</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://placehold.co/400x400/0A192F/C5A059/png?text=MERCEDES" alt="Polera Mercedes">
+                <div class="product-info">
+                    <h3>Polera Escudería Mercedes</h3>
+                    <div class="product-price">S/ 45.00 - S/ 69.00</div>
+                    <a href="https://wa.me/51961743825?text=Hola,%20me%20interesa%20la%20Polera%20Escuderia%20Mercedes" class="buy-link">Comprar en WhatsApp</a>
+                    <a href="tallas.html" class="size-guide-link" target="_blank">Ver Guía de Tallas</a>
+                </div>
+            </div>
+
+        </div>
     </div>
 
 </body>
