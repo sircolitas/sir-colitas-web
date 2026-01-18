@@ -26,228 +26,177 @@
             scroll-behavior: smooth;
         }
 
-        /* --- BARRA SUPERIOR --- */
-        .top-bar {
-            background: #fff;
-            padding: 10px 5%;
-            font-size: 10px;
-            display: flex;
-            justify-content: space-between;
+        /* --- HEADER ESTRUCTURAL (ESTILO BOUTIQUE) --- */
+        header {
+            background: var(--white);
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 15px 3%;
+        }
+
+        .nav-container {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr; /* Tres secciones: Izquierda, Logo, Derecha */
             align-items: center;
+        }
+
+        /* Sección Izquierda: Idioma y Contacto */
+        .nav-left {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        /* Sección Derecha: Search, Login, Cart */
+        .nav-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            justify-content: flex-end;
+        }
+
+        /* Centro: Logo y Navegación Principal */
+        .nav-center {
+            text-align: center;
+        }
+
+        .logo-main {
+            height: 60px;
+            width: auto;
+            margin-bottom: 5px;
+        }
+
+        .main-menu {
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        /* Estilos de Iconos y Enlaces */
+        .nav-item {
+            text-decoration: none;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 10px;
             text-transform: uppercase;
             letter-spacing: 1px;
-            border-bottom: 1px solid #eee;
-            color: #666;
-        }
-        .top-bar div span { margin-right: 15px; }
-
-        /* Icono Bolsa Carrito */
-        .cart-icon-container {
-            position: relative;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            color: var(--primary);
-        }
-        .cart-icon-container svg {
-            width: 20px;
-            height: 20px;
-            fill: var(--primary);
+            font-weight: 400;
             transition: 0.3s;
         }
-        .cart-icon-container:hover svg { fill: var(--gold); }
-        
+
+        .nav-item:hover { color: var(--gold); }
+        .nav-item svg { width: 18px; height: 18px; fill: currentColor; }
+
+        .menu-link {
+            text-decoration: none;
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+        .menu-link:hover { color: var(--gold); }
+
+        /* Badge del Carrito */
+        .cart-wrapper { position: relative; }
         .cart-badge {
             position: absolute;
             top: -8px;
-            right: -10px;
+            right: -8px;
             background: var(--gold);
             color: white;
-            font-size: 9px;
-            font-weight: bold;
-            width: 16px;
-            height: 16px;
+            font-size: 8px;
+            width: 15px;
+            height: 15px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            border: 1px solid white;
         }
-
-        /* --- HEADER --- */
-        header {
-            background: var(--white);
-            padding: 20px 0;
-            text-align: center;
-        }
-        .logo-container img {
-            height: 100px;
-            width: auto;
-            margin-bottom: 10px;
-        }
-
-        /* --- NAVEGACIÓN --- */
-        nav {
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid var(--gold);
-            padding: 15px 0;
-            margin-top: 10px;
-            position: sticky;
-            top: 0;
-            background: white;
-            z-index: 1000;
-        }
-        .nav-links {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-        }
-        .nav-links a {
-            text-decoration: none;
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 0.85rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: 0.3s;
-        }
-        .nav-links a:hover { color: var(--gold); }
-
-        .social-icons-nav {
-            display: flex;
-            gap: 15px;
-            margin-left: 20px;
-            border-left: 1px solid #ddd;
-            padding-left: 20px;
-        }
-        .social-icons-nav svg { width: 16px; fill: var(--primary); transition: 0.3s; }
-        .social-icons-nav a:hover svg { fill: var(--gold); }
 
         /* --- HERO --- */
         .hero {
-            background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.85)), url('https://placehold.co/1920x600/0A192F/0A192F/png');
-            height: 450px;
+            background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.8)), url('https://placehold.co/1920x600/0A192F/0A192F/png');
+            height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            color: var(--white);
-        }
-        .hero-content h1 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 5.5rem;
-            margin: 0;
-            color: var(--gold);
-        }
-        .hero-content p { font-size: 1.2rem; font-weight: 300; margin-bottom: 30px; }
-
-        .btn-gold {
-            background: var(--gold);
             color: white;
-            padding: 12px 35px;
-            text-decoration: none;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 2px;
         }
+        .hero h1 { font-family: 'Great Vibes', cursive; font-size: 5rem; color: var(--gold); margin: 0; }
 
         /* --- COLECCIONES --- */
-        .section-title {
-            padding: 60px 5% 20px;
-            font-size: 1.2rem;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            border-bottom: 1px solid #eee;
-            margin-bottom: 40px;
-            color: var(--primary);
-            text-align: center;
-        }
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            padding: 0 5% 80px;
-        }
-        .card { position: relative; transition: 0.3s; }
-        .card img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; display: block; }
-        .card:hover { transform: translateY(-5px); }
+        .section-title { padding: 50px 0 20px; text-align: center; text-transform: uppercase; letter-spacing: 3px; font-size: 1.2rem; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 0 5% 80px; }
+        .card { position: relative; background: var(--white); }
+        .card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
+        .card-info { padding: 20px 0; text-align: left; }
+        .card-info h3 { font-size: 0.9rem; text-transform: uppercase; color: var(--primary); margin: 0; }
 
-        /* SELLOS CIRCULARES */
+        /* SELLOS */
         .stamp {
-            position: absolute; top: 20px; left: 20px; width: 70px; height: 70px;
+            position: absolute; top: 15px; left: 15px; width: 60px; height: 60px;
             border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            text-align: center; font-size: 8px; font-weight: bold; text-transform: uppercase;
-            color: white; padding: 10px; line-height: 1.1; box-shadow: 0 4px 10px rgba(0,0,0,0.2); z-index: 2;
+            text-align: center; font-size: 7px; font-weight: bold; text-transform: uppercase;
+            color: white; line-height: 1.1; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
-        .stamp-red { background: rgba(211, 47, 47, 0.9); border: 1px solid white; }
-        .stamp-gold { background: rgba(197, 160, 89, 0.9); border: 1px solid white; }
-        .stamp-dark { background: rgba(10, 25, 47, 0.9); border: 1px solid white; }
+        .stamp-red { background: rgba(211, 47, 47, 0.9); }
+        .stamp-gold { background: rgba(197, 160, 89, 0.9); }
+        .stamp-dark { background: rgba(10, 25, 47, 0.9); }
 
-        .card-info { padding: 20px 0; }
-        .card-info h3 { font-size: 1rem; text-transform: uppercase; color: var(--primary); margin: 0; }
-        .card-info p { font-size: 0.85rem; color: #666; margin: 10px 0; }
-
-        /* --- FOOTER --- */
-        footer {
-            padding: 60px 5%;
-            background: #fff;
-            border-top: 1px solid #eee;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 40px;
-        }
-        footer h4 { text-transform: uppercase; font-size: 0.8rem; margin-bottom: 20px; }
-        footer p, footer a { font-size: 0.8rem; color: #666; text-decoration: none; display: block; margin-bottom: 10px; }
-        footer a:hover { color: var(--gold); }
-
-        .whatsapp-float {
-            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
-            background: #25d366; border-radius: 50%; display: flex; align-items: center;
-            justify-content: center; box-shadow: 0 4px 12px rgba(0,0,0,0.2); z-index: 1000;
-        }
-        .whatsapp-float svg { fill: white; width: 30px; }
+        footer { padding: 50px 5%; background: #fff; border-top: 1px solid #eee; text-align: center; font-size: 0.8rem; }
     </style>
 </head>
 <body>
 
-    <div class="top-bar">
-        <div><span>🇵🇪 Perú</span> <span>Contáctanos</span> <span>Boutique</span></div>
-        <a href="carrito.html" class="cart-icon-container" title="Ver mi pedido">
-            <svg viewBox="0 0 448 512">
-                <path d="M160 112c0-35.3 28.7-64 64-64s64 28.7 64 64v48H160V112zm-48 48H48c-26.5 0-48 21.5-48 48V416c0 53 43 96 96 96H352c53 0 96-43 96-96V208c0-26.5-21.5-48-48-48H336V112C336 50.1 285.9 0 224 0S112 50.1 112 112v48zm24 48a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm152 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0z"/>
-            </svg>
-            <div id="cart-count-badge" class="cart-badge" style="display: none;">0</div>
-        </a>
-    </div>
-
     <header>
-        <div class="logo-container">
-            <img src="Logo Sir Colitas Oficial Final.jpg" alt="Sir Colitas Logo">
-        </div>
-        <nav>
-            <div class="nav-links">
-                <a href="#colecciones">Colecciones</a>
-                <a href="tallas.html">Tallas</a>
-                <a href="#contacto">Contacto</a>
-                <div class="social-icons-nav">
-                    <a href="https://www.instagram.com/sir_colitas" target="_blank">
-                        <svg viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s 102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
-                    </a>
-                    <a href="https://www.tiktok.com/@sir_colitas" target="_blank">
-                        <svg viewBox="0 0 448 512"><path d="M448 209.91a210.06 210.06 0 0 1-122.77-39.25V349.38A162.55 162.55 0 1 1 185 188.31V278.2a74.62 74.62 0 1 0 52.23 71.18V0l88 0a121.18 121.18 0 0 0 1.86 22.32c7.87 33.32 31.27 60.33 64.07 74.19A121.75 121.75 0 0 0 448 109.48z"/></svg>
-                    </a>
+        <div class="nav-container">
+            <div class="nav-left">
+                <a href="idioma.html" class="nav-item">
+                    <svg viewBox="0 0 512 512"><path d="M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm-12.2 411.5c-44.5-5.2-83.3-30.7-107.5-67.6 15.3-10.3 32.5-17.5 51.1-20.9 9.8-1.8 19.8-2.7 30-2.7h26.4v91.2zm26.4-91.2h26.4c10.2 0 20.2.9 30 2.7 18.6 3.4 35.8 10.6 51.1 20.9-24.2 36.9-63 62.4-107.5 67.6V328.3z"/></svg>
+                    Perú
+                </a>
+                <a href="mailto:contacto@sircolitas.com" class="nav-item">
+                    <svg viewBox="0 0 512 512"><path d="M256 80c-8.8 0-16 7.2-16 16V192c0 8.8 7.2 16 16 16s16-7.2 16-16V96c0-8.8-7.2-16-16-16zM144 192C144 130.1 194.1 80 256 80s112 50.1 112 112V320c0 8.8-7.2 16-16 16H160c-8.8 0-16-7.2-16-16V192zM256 432c-61.9 0-112-50.1-112-112V288H368v32c0 61.9-50.1 112-112 112z"/></svg>
+                    Contáctanos
+                </a>
+            </div>
+
+            <div class="nav-center">
+                <a href="index.html"><img src="Logo Sir Colitas Oficial Final.jpg" class="logo-main" alt="Sir Colitas"></a>
+                <div class="main-menu">
+                    <a href="#colecciones" class="menu-link">Colecciones</a>
+                    <a href="tallas.html" class="menu-link">Tallas</a>
+                    <a href="noticias.html" class="menu-link">Noticias</a>
                 </div>
             </div>
-        </nav>
+
+            <div class="nav-right">
+                <a href="buscar.html" class="nav-item" title="Buscar">
+                    <svg viewBox="0 0 512 512"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0s208 93.1 208 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
+                </a>
+                <a href="cuenta.html" class="nav-item" title="Mi Cuenta">
+                    <svg viewBox="0 0 448 512"><path d="M224 256c70.7 0 128-57.3 128-128S294.7 0 224 0 96 57.3 96 128s57.3 128 128 128zm89.6 32h-16.7c-22.2 10.2-46.9 16-72.9 16s-50.6-5.8-72.9-16h-16.7C60.2 288 0 348.2 0 422.4V464c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48v-41.6c0-74.2-60.2-134.4-134.4-134.4z"/></svg>
+                </a>
+                <a href="carrito.html" class="nav-item cart-wrapper" title="Carrito">
+                    <svg viewBox="0 0 448 512"><path d="M160 112c0-35.3 28.7-64 64-64s64 28.7 64 64v48H160V112zm-48 48H48c-26.5 0-48 21.5-48 48V416c0 53 43 96 96 96H352c53 0 96-43 96-96V208c0-26.5-21.5-48-48-48H336V112C336 50.1 285.9 0 224 0S112 50.1 112 112v48zm24 48a24 24 0 1 1 0 48 24 24 0 1 1 0-48zm152 24a24 24 0 1 1 48 0 24 24 0 1 1 -48 0z"/></svg>
+                    <span id="cart-count-badge" class="cart-badge" style="display: none;">0</span>
+                </a>
+            </div>
+        </div>
     </header>
 
     <section class="hero">
-        <div class="hero-content">
+        <div>
             <h1>Sir Colitas</h1>
             <p>Elegancia y confort para los engreídos de la casa</p>
-            <a href="#colecciones" class="btn-gold">Ver Modelos</a>
         </div>
     </section>
 
@@ -260,55 +209,32 @@
                 <img src="Polera Ferrari.png" alt="F1">
                 <div class="card-info">
                     <h3>Colección Formula 1</h3>
-                    <p>Inspiración Racing para los más veloces.</p>
                 </div>
             </div>
         </a>
-
         <a href="alba.html" style="text-decoration:none">
             <div class="card">
                 <div class="stamp stamp-gold">Verano<br>2026</div>
                 <img src="bandana.jpg" alt="Alba">
                 <div class="card-info">
                     <h3>Colección Alba</h3>
-                    <p>Frescura y accesorios de autor.</p>
                 </div>
             </div>
         </a>
-
         <a href="atelier.html" style="text-decoration:none">
             <div class="card">
                 <div class="stamp stamp-dark">Servicio<br>Exclusivo</div>
                 <img src="Smoking1.jpg" alt="Atelier">
                 <div class="card-info">
                     <h3>Línea Atelier</h3>
-                    <p>Lujo accesible diseñado a medida exacta.</p>
                 </div>
             </div>
         </a>
     </section>
 
-    <footer id="contacto">
-        <div>
-            <h4>Servicio al Cliente</h4>
-            <a href="tallas.html">Guía de tallas</a>
-            <a href="#">Guía de compra</a>
-            <a href="#">Envíos y Entregas</a>
-        </div>
-        <div>
-            <h4>Filosofía</h4>
-            <p>Sir Colitas nace de la pasión por el diseño y el respeto por nuestros compañeros.</p>
-        </div>
-        <div>
-            <h4>Información General</h4>
-            <p>Lima, Perú</p>
-            <p>Atención personalizada vía WhatsApp.</p>
-        </div>
+    <footer>
+        <p>&copy; 2026 Sir Colitas. Boutique de Mascotas. Lima, Perú.</p>
     </footer>
-
-    <a href="https://wa.me/51961743825" class="whatsapp-float">
-        <svg viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3 18.6-68.1-4.4-6.9c-18.4-29.3-28.1-63.5-28.1-98.2 0-101.4 82.3-183.8 183.8-183.8 49 0 95.1 19.1 129.8 53.8 34.7 34.7 53.8 80.8 53.8 129.8 0 101.4-82.3 183.8-183.8 183.8zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-4-10.5-6.8z"/></svg>
-    </a>
 
     <script>
         function updateBadge() {
@@ -321,7 +247,6 @@
                 badge.style.display = 'none';
             }
         }
-        // Actualiza al cargar y cada vez que la ventana vuelve a estar activa
         document.addEventListener('DOMContentLoaded', updateBadge);
         window.addEventListener('focus', updateBadge);
     </script>
