@@ -6,26 +6,59 @@
     <title>Contacto - Sir Colitas</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #0A192F; --gold: #C5A059; --dark: #111111; }
+        :root { --primary: #0A192F; --gold: #C5A059; --dark: #111111; --light-gray: #fcfcfc; --border: #ccc; }
         body { font-family: 'Montserrat', sans-serif; margin: 0; background: white; color: var(--dark); }
+        
+        /* HEADER SIMPLE */
         header { padding: 20px; text-align: center; border-bottom: 1px solid #eee; }
-        .back-link { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #888; }
+        .back-link { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #888; transition: 0.3s; }
+        .back-link:hover { color: var(--gold); }
+
+        /* CONTENEDOR PRINCIPAL */
         .container { max-width: 800px; margin: 60px auto; padding: 0 40px; }
-        h1 { font-weight: 300; font-size: 3rem; text-align: center; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 15px; }
-        .intro-text { text-align: center; color: #333; font-size: 1rem; margin-bottom: 60px; }
+        
+        h1 { font-weight: 300; font-size: 2.8rem; text-align: center; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 15px; color: var(--dark); }
+        .intro-text { text-align: center; color: #555; font-size: 1rem; margin-bottom: 60px; font-weight: 300; }
+
+        /* SECCIÓN DEL FORMULARIO */
         .form-section { border-top: 1px solid #eee; padding-top: 40px; }
-        .form-group { margin-bottom: 25px; display: flex; flex-direction: column; }
-        label { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; margin-bottom: 12px; }
-        input, select, textarea { 
-            width: 100%; padding: 15px; border: 1px solid #ccc; font-family: 'Montserrat'; font-size: 1rem; box-sizing: border-box;
+        
+        .section-header { 
+            display: flex; align-items: center; gap: 15px; 
+            font-size: 0.9rem; letter-spacing: 2px; text-transform: uppercase; 
+            margin-bottom: 40px; font-weight: 600; color: var(--dark);
         }
+        .section-header svg { width: 22px; fill: var(--dark); }
+
+        .form-group { margin-bottom: 25px; display: flex; flex-direction: column; }
+        
+        label { font-size: 0.8rem; font-weight: 600; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 1px; color: #333; }
+        
+        input, select, textarea { 
+            width: 100%; padding: 15px; border: 1px solid var(--border); 
+            font-family: 'Montserrat'; font-size: 0.95rem; outline: none; transition: 0.3s;
+            box-sizing: border-box; background-color: var(--light-gray); color: #333;
+        }
+        
+        input:focus, select:focus, textarea:focus { 
+            border-color: var(--dark); background-color: #fff; 
+        }
+
+        /* BOTÓN DE ENVÍO */
         .submit-btn {
             background: var(--primary); color: white; border: none; width: 100%; 
-            padding: 25px; font-weight: 600; text-transform: uppercase; letter-spacing: 3px;
-            cursor: pointer; margin-top: 40px; font-size: 1rem; transition: 0.4s;
+            padding: 22px; font-weight: 600; text-transform: uppercase; letter-spacing: 3px;
+            cursor: pointer; margin-top: 40px; font-size: 0.9rem; transition: 0.3s;
         }
         .submit-btn:hover { background: var(--gold); }
-        #result { text-align: center; margin-top: 20px; font-weight: 600; }
+        .submit-btn:disabled { background: #ccc; cursor: not-allowed; }
+
+        /* MENSAJES DE ESTADO */
+        #result { text-align: center; margin-top: 25px; font-weight: 600; font-size: 0.9rem; padding: 10px; border-radius: 4px; }
+        
+        /* TEXTO LEGAL */
+        .legal-text { font-size: 0.75rem; color: #777; margin-top: 20px; line-height: 1.5; }
+        .legal-text a { color: var(--dark); text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -35,31 +68,70 @@
     </header>
 
     <div class="container">
-        <h1>¿PODEMOS AYUDARTE?</h1>
-        <p class="intro-text">Nuestro Servicio de Atención al Cliente te responderá directamente a tu email.</p>
+        <h1>¿Podemos Ayudarte?</h1>
+        <p class="intro-text">Nuestro Servicio de Atención al Cliente estará encantado de ayudarte con tus solicitudes.</p>
 
-        <form action="https://api.web3forms.com/submit" method="POST" id="form">
-            <input type="hidden" name="access_key" value="098f993d-82d2-4303-9d8a-624029286438">
-            <input type="hidden" name="to" value="sircolitas@gmail.com">
-            <input type="hidden" name="from_name" value="Sir Colitas Boutique">
-            <input type="hidden" name="subject" value="Nueva consulta desde la Web">
+        <form action="https://api.web3forms.com/submit" method="POST" id="form" class="form-section">
+            
+            <input type="hidden" name="access_key" value="2ae5aa73-4853-429d-b045-7867c19f5695">
+            
+            <input type="hidden" name="subject" value="Nueva Solicitud - Web Sir Colitas">
+            <input type="hidden" name="from_name" value="Boutique Sir Colitas">
+
+            <div class="section-header">
+                <svg viewBox="0 0 512 512"><path d="M48 64C21.5 64 0 85.5 0 112V336c0 26.5 21.5 48 48 48H464c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zM48 112H464L256 240 48 112z"/></svg>
+                Escríbenos tu solicitud
+            </div>
+
+            <div class="form-group">
+                <label>Tipo de solicitud*</label>
+                <select name="tipo_solicitud" required>
+                    <option value="">Seleccionar...</option>
+                    <option value="Informacion Pedido">Información sobre pedido</option>
+                    <option value="Atelier">Cotización Atelier</option>
+                    <option value="Tallas">Consulta de Tallas</option>
+                    <option value="Otro">Otro asunto</option>
+                </select>
+            </div>
 
             <div class="form-group">
                 <label>Nombre*</label>
-                <input type="text" name="name" required>
+                <input type="text" name="nombre" required placeholder="Tu nombre">
+            </div>
+
+            <div class="form-group">
+                <label>Apellido*</label>
+                <input type="text" name="apellido" required placeholder="Tu apellido">
             </div>
 
             <div class="form-group">
                 <label>Correo electrónico*</label>
-                <input type="email" name="email" required>
+                <input type="email" name="email" required placeholder="ejemplo@correo.com">
+            </div>
+
+            <div class="form-group">
+                <label>Teléfono</label>
+                <input type="tel" name="telefono" placeholder="+51 999 999 999">
+            </div>
+
+            <div class="form-group">
+                <label>Idioma*</label>
+                <select name="idioma" required>
+                    <option value="Español">Español</option>
+                    <option value="Ingles">Inglés</option>
+                </select>
             </div>
 
             <div class="form-group">
                 <label>Mensaje*</label>
-                <textarea name="message" rows="6" required placeholder="Escribe aquí tu consulta..."></textarea>
+                <textarea name="mensaje" rows="6" required placeholder="Escribe aquí tu mensaje..."></textarea>
             </div>
 
-            <button type="submit" class="submit-btn">ENVIAR CORREO ELECTRÓNICO</button>
+            <p class="legal-text">
+                Al enviar este formulario, confirmas haber leído nuestra <a href="#">Política de privacidad</a>. Tus datos están protegidos.
+            </p>
+
+            <button type="submit" class="submit-btn" id="submit-button">ENVIAR CORREO ELECTRÓNICO</button>
             <div id="result"></div>
         </form>
     </div>
@@ -67,13 +139,19 @@
     <script>
         const form = document.getElementById('form');
         const result = document.getElementById('result');
+        const btn = document.getElementById('submit-button');
 
         form.addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            // Cambiar estado del botón
+            btn.innerHTML = "ENVIANDO...";
+            btn.disabled = true;
+            result.innerHTML = "";
+
             const formData = new FormData(form);
             const object = Object.fromEntries(formData);
             const json = JSON.stringify(object);
-            result.innerHTML = "Enviando...";
 
             fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
@@ -86,17 +164,24 @@
                 .then(async (response) => {
                     let json = await response.json();
                     if (response.status == 200) {
-                        result.innerHTML = "¡Mensaje enviado con éxito! Te contactaremos pronto.";
-                        result.style.color = "green";
+                        result.innerHTML = "¡GRACIAS! TU MENSAJE HA SIDO ENVIADO CORRECTAMENTE.";
+                        result.style.color = "#2ecc71"; // Verde éxito
                         form.reset();
+                        btn.innerHTML = "ENVIADO";
                     } else {
+                        console.log(response);
                         result.innerHTML = json.message;
-                        result.style.color = "red";
+                        result.style.color = "#e74c3c"; // Rojo error
+                        btn.innerHTML = "REINTENTAR";
+                        btn.disabled = false;
                     }
                 })
                 .catch(error => {
-                    result.innerHTML = "Algo salió mal. Inténtalo de nuevo.";
-                    result.style.color = "red";
+                    console.log(error);
+                    result.innerHTML = "HUBO UN ERROR DE CONEXIÓN. INTÉNTALO DE NUEVO.";
+                    result.style.color = "#e74c3c";
+                    btn.innerHTML = "REINTENTAR";
+                    btn.disabled = false;
                 });
         });
     </script>
