@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mi Cuenta - Sir Colitas Club</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
         :root { --primary: #0A192F; --gold: #C5A059; --dark: #111111; --light: #f4f4f4; }
         body { font-family: 'Montserrat', sans-serif; margin: 0; background: white; color: var(--dark); }
@@ -17,7 +18,7 @@
         /* CONTENEDOR SPLIT */
         .page-wrapper {
             display: flex;
-            min-height: 80vh;
+            min-height: 85vh; /* Altura completa menos el header */
         }
 
         /* LADO IZQUIERDO: IMAGEN/BENEFICIOS */
@@ -33,12 +34,12 @@
             text-align: center;
         }
 
-        .benefits-side h2 { font-family: 'Great Vibes', cursive; font-size: 3rem; color: var(--gold); margin: 0 0 20px 0; font-weight: normal; }
-        .benefits-side h3 { text-transform: uppercase; letter-spacing: 3px; font-size: 1.2rem; margin-bottom: 40px; }
+        .benefits-side h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--gold); margin: 0 0 10px 0; font-weight: normal; }
+        .benefits-side h3 { text-transform: uppercase; letter-spacing: 4px; font-size: 1.2rem; margin-bottom: 50px; }
         
-        .benefit-list { list-style: none; padding: 0; text-align: left; }
-        .benefit-list li { margin-bottom: 20px; display: flex; align-items: center; gap: 15px; font-size: 0.9rem; font-weight: 300; }
-        .benefit-list svg { width: 20px; fill: var(--gold); }
+        .benefit-list { list-style: none; padding: 0; text-align: left; max-width: 400px; }
+        .benefit-list li { margin-bottom: 25px; display: flex; align-items: flex-start; gap: 15px; font-size: 0.95rem; font-weight: 300; line-height: 1.5; }
+        .benefit-list svg { width: 24px; min-width: 24px; fill: var(--gold); margin-top: -2px; }
 
         /* LADO DERECHO: FORMULARIOS */
         .forms-side {
@@ -47,8 +48,9 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            max-width: 500px;
+            max-width: 550px;
             margin: 0 auto;
+            width: 100%;
         }
 
         /* TABS (LOGIN / REGISTRO) */
@@ -57,7 +59,7 @@
             flex: 1; padding: 15px; border: none; background: none;
             font-family: 'Montserrat'; text-transform: uppercase; letter-spacing: 2px;
             font-weight: 600; color: #ccc; cursor: pointer; transition: 0.3s;
-            border-bottom: 2px solid transparent;
+            border-bottom: 2px solid transparent; font-size: 0.8rem;
         }
         .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
 
@@ -65,29 +67,31 @@
         .auth-form { display: none; animation: fadeIn 0.5s; }
         .auth-form.active { display: block; }
         
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         .form-group { margin-bottom: 20px; }
-        label { display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-bottom: 8px; color: #666; }
+        label { display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-bottom: 8px; color: #666; letter-spacing: 1px; }
         input { 
-            width: 100%; padding: 12px; border: 1px solid #ddd; 
-            font-family: 'Montserrat'; font-size: 0.95rem; outline: none; box-sizing: border-box;
+            width: 100%; padding: 14px; border: 1px solid #ddd; 
+            font-family: 'Montserrat'; font-size: 0.95rem; outline: none; box-sizing: border-box; transition: 0.3s;
         }
-        input:focus { border-color: var(--primary); }
+        input:focus { border-color: var(--primary); background-color: #fcfcfc; }
 
         .btn-submit {
             background: var(--primary); color: white; border: none; width: 100%; 
-            padding: 18px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px;
-            cursor: pointer; margin-top: 20px; transition: 0.3s;
+            padding: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px;
+            cursor: pointer; margin-top: 25px; transition: 0.3s; font-size: 0.9rem;
         }
         .btn-submit:hover { background: var(--gold); }
 
-        .forgot-pass { display: block; text-align: center; margin-top: 15px; font-size: 0.75rem; color: #888; text-decoration: none; }
+        .forgot-pass { display: block; text-align: center; margin-top: 20px; font-size: 0.75rem; color: #888; text-decoration: none; }
+        
+        .disclaimer { font-size: 0.7rem; color: #999; margin-top: 20px; line-height: 1.4; text-align: center; }
 
         /* RESPONSIVE */
-        @media (max-width: 768px) {
+        @media (max-width: 900px) {
             .page-wrapper { flex-direction: column; }
-            .benefits-side { padding: 40px 20px; }
+            .benefits-side { padding: 50px 20px; }
             .forms-side { padding: 40px 20px; width: 100%; box-sizing: border-box; }
         }
     </style>
@@ -105,15 +109,15 @@
             <ul class="benefit-list">
                 <li>
                     <svg viewBox="0 0 512 512"><path d="M464 256h-80v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8c-88.4 0-160 71.6-160 160v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48zm-288 0H96v-64c0-35.3 28.7-64 64-64h8c13.3 0 24-10.7 24-24V56c0-13.3-10.7-24-24-24h-8C71.6 32 0 103.6 0 192v240c0 26.5 21.5 48 48 48h128c26.5 0 48-21.5 48-48V304c0-26.5-21.5-48-48-48z"/></svg>
-                    Regalo sorpresa en el cumpleaños de tu mascota.
+                    <span><strong>Regalo sorpresa</strong> en el cumpleaños de tu mascota.</span>
                 </li>
                 <li>
                     <svg viewBox="0 0 576 512"><path d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"/></svg>
-                    Acceso anticipado a colecciones limitadas (F1, Navidad).
+                    <span><strong>Acceso VIP</strong> 24 horas antes a nuevas colecciones limitadas (F1, Navidad).</span>
                 </li>
                 <li>
                     <svg viewBox="0 0 512 512"><path d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"/></svg>
-                    Envíos gratuitos en tu primera compra como miembro.
+                    <span><strong>Envíos gratuitos</strong> en tu primera compra como miembro oficial.</span>
                 </li>
             </ul>
         </div>
@@ -121,13 +125,13 @@
         <div class="forms-side">
             <div class="tabs">
                 <button class="tab-btn active" onclick="switchTab('login')">Ingresar</button>
-                <button class="tab-btn" onclick="switchTab('register')">Crear Cuenta</button>
+                <button class="tab-btn" onclick="switchTab('register')">Unirse al Club</button>
             </div>
 
             <form id="login-form" class="auth-form active" onsubmit="handleLogin(event)">
                 <div class="form-group">
                     <label>Email</label>
-                    <input type="email" placeholder="tu@email.com" required>
+                    <input type="email" placeholder="ejemplo@correo.com" required>
                 </div>
                 <div class="form-group">
                     <label>Contraseña</label>
@@ -140,42 +144,51 @@
             <form id="register-form" action="https://api.web3forms.com/submit" method="POST" class="auth-form">
                 
                 <input type="hidden" name="access_key" value="2ae5aa73-4853-429d-b045-7867c19f5695">
+                
                 <input type="hidden" name="subject" value="NUEVO MIEMBRO - SIR COLITAS CLUB">
-                <input type="hidden" name="from_name" value="Registro Web">
+                <input type="hidden" name="from_name" value="Registro Web Sir Colitas">
 
                 <div class="form-group">
                     <label>Nombre del Dueño*</label>
-                    <input type="text" name="owner_name" required>
+                    <input type="text" name="dueno_nombre" required placeholder="Tu nombre">
                 </div>
+                
                 <div class="form-group">
                     <label>Nombre de la Mascota*</label>
-                    <input type="text" name="pet_name" required>
+                    <input type="text" name="mascota_nombre" required placeholder="Nombre de tu engreído">
                 </div>
+                
                 <div class="form-group">
                     <label>Raza (Opcional)</label>
-                    <input type="text" name="breed">
+                    <input type="text" name="mascota_raza" placeholder="Ej: Bulldog Francés, Mestizo...">
                 </div>
+                
                 <div class="form-group">
                     <label>Email*</label>
-                    <input type="email" name="email" required>
+                    <input type="email" name="email" required placeholder="Para enviarte los descuentos">
                 </div>
+                
                 <div class="form-group">
                     <label>Crear Contraseña (Referencial)</label>
-                    <input type="password" name="password_ref" required>
+                    <input type="password" name="password_ref" required placeholder="Crea una clave segura">
                 </div>
 
-                <button type="submit" class="btn-submit">Unirme al Club</button>
-                <div id="register-result" style="text-align: center; margin-top: 15px; font-weight: 600;"></div>
+                <p class="disclaimer">Al unirte, aceptas recibir novedades exclusivas de Sir Colitas. Tus datos están 100% seguros.</p>
+
+                <button type="submit" class="btn-submit" id="btn-register">CREAR CUENTA</button>
+                <div id="register-result" style="text-align: center; margin-top: 20px; font-weight: 600; font-size: 0.85rem;"></div>
             </form>
         </div>
     </div>
 
     <script>
-        // Lógica de Pestañas
+        // --- 1. LÓGICA DE PESTAÑAS (TABS) ---
         function switchTab(tab) {
+            // Quitar clase active de todos los botones y formularios
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.auth-form').forEach(form => form.classList.remove('active'));
 
+            // Activar el seleccionado
             if (tab === 'login') {
                 document.querySelector('.tab-btn:first-child').classList.add('active');
                 document.getElementById('login-form').classList.add('active');
@@ -185,23 +198,28 @@
             }
         }
 
-        // Simulación de Login
+        // --- 2. SIMULACIÓN DE LOGIN ---
         function handleLogin(e) {
             e.preventDefault();
-            alert("¡Bienvenido de nuevo a Sir Colitas! (Modo demostración)");
+            alert("¡Bienvenido nuevamente! (Esta es una demostración de la interfaz)");
             window.location.href = 'index.html';
         }
 
-        // Lógica de Envío de Registro
+        // --- 3. LÓGICA DE REGISTRO REAL (WEB3FORMS) ---
         const regForm = document.getElementById('register-form');
         const regResult = document.getElementById('register-result');
+        const regBtn = document.getElementById('btn-register');
 
         regForm.addEventListener('submit', function(e) {
             e.preventDefault();
+            
+            regBtn.innerHTML = "PROCESANDO...";
+            regBtn.disabled = true;
+            regResult.innerHTML = "";
+
             const formData = new FormData(regForm);
             const object = Object.fromEntries(formData);
             const json = JSON.stringify(object);
-            regResult.innerHTML = "Procesando...";
 
             fetch('https://api.web3forms.com/submit', {
                     method: 'POST',
@@ -211,17 +229,24 @@
                 .then(async (response) => {
                     let json = await response.json();
                     if (response.status == 200) {
-                        regResult.innerHTML = "¡REGISTRO EXITOSO! BIENVENIDO AL CLUB.";
-                        regResult.style.color = "#2ecc71";
+                        regResult.innerHTML = "¡BIENVENIDO AL CLUB! TE HEMOS REGISTRADO.";
+                        regResult.style.color = "#2ecc71"; // Verde
                         regForm.reset();
+                        regBtn.innerHTML = "CUENTA CREADA";
                     } else {
-                        regResult.innerHTML = "Error al registrarse. Intente nuevamente.";
-                        regResult.style.color = "#e74c3c";
+                        console.log(response);
+                        regResult.innerHTML = "Error: " + json.message;
+                        regResult.style.color = "#e74c3c"; // Rojo
+                        regBtn.innerHTML = "INTENTAR DE NUEVO";
+                        regBtn.disabled = false;
                     }
                 })
                 .catch(error => {
-                    regResult.innerHTML = "Error de conexión.";
+                    console.log(error);
+                    regResult.innerHTML = "Hubo un error de conexión.";
                     regResult.style.color = "#e74c3c";
+                    regBtn.innerHTML = "INTENTAR DE NUEVO";
+                    regBtn.disabled = false;
                 });
         });
     </script>
