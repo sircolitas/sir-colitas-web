@@ -3,37 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Cuenta - Sir Colitas Club</title>
+    <title>Unirse al Club - Sir Colitas</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
         :root { --primary: #0A192F; --gold: #C5A059; --dark: #111111; --light: #f4f4f4; }
         body { font-family: 'Montserrat', sans-serif; margin: 0; background: white; color: var(--dark); }
         
-        /* HEADER SIMPLE */
+        /* HEADER */
         header { padding: 20px; text-align: center; border-bottom: 1px solid #eee; }
         .back-link { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #888; transition: 0.3s; }
         .back-link:hover { color: var(--gold); }
 
-        /* CONTENEDOR SPLIT */
-        .page-wrapper {
-            display: flex;
-            min-height: 85vh;
-        }
+        /* LAYOUT */
+        .page-wrapper { display: flex; min-height: 85vh; }
 
-        /* LADO IZQUIERDO: IMAGEN/BENEFICIOS */
+        /* LADO IZQUIERDO: BENEFICIOS */
         .benefits-side {
-            flex: 1;
-            background: var(--primary);
-            color: white;
-            padding: 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
+            flex: 1; background: var(--primary); color: white; padding: 60px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
         }
-
         .benefits-side h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--gold); margin: 0 0 10px 0; font-weight: normal; }
         .benefits-side h3 { text-transform: uppercase; letter-spacing: 4px; font-size: 1.2rem; margin-bottom: 50px; }
         
@@ -41,33 +30,13 @@
         .benefit-list li { margin-bottom: 25px; display: flex; align-items: flex-start; gap: 15px; font-size: 0.95rem; font-weight: 300; line-height: 1.5; }
         .benefit-list svg { width: 24px; min-width: 24px; fill: var(--gold); margin-top: -2px; }
 
-        /* LADO DERECHO: FORMULARIOS */
+        /* LADO DERECHO: FORMULARIO */
         .forms-side {
-            flex: 1;
-            padding: 60px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            max-width: 550px;
-            margin: 0 auto;
-            width: 100%;
+            flex: 1; padding: 60px; display: flex; flex-direction: column;
+            justify-content: center; max-width: 550px; margin: 0 auto; width: 100%;
         }
 
-        /* TABS (LOGIN / REGISTRO) */
-        .tabs { display: flex; border-bottom: 1px solid #eee; margin-bottom: 40px; }
-        .tab-btn {
-            flex: 1; padding: 15px; border: none; background: none;
-            font-family: 'Montserrat'; text-transform: uppercase; letter-spacing: 2px;
-            font-weight: 600; color: #ccc; cursor: pointer; transition: 0.3s;
-            border-bottom: 2px solid transparent; font-size: 0.8rem;
-        }
-        .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
-
-        /* FORMULARIOS */
-        .auth-form { display: none; animation: fadeIn 0.5s; }
-        .auth-form.active { display: block; }
-        
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .form-title { text-align: center; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 40px; color: var(--primary); }
 
         .form-group { margin-bottom: 20px; }
         label { display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-bottom: 8px; color: #666; letter-spacing: 1px; }
@@ -77,7 +46,7 @@
         }
         input:focus { border-color: var(--primary); background-color: #fcfcfc; }
 
-        /* Estilo para ocultar el campo anti-spam */
+        /* Ocultar Honeypot (Anti-Spam) */
         .hidden-bot-field { display: none !important; }
 
         .btn-submit {
@@ -86,12 +55,9 @@
             cursor: pointer; margin-top: 25px; transition: 0.3s; font-size: 0.9rem;
         }
         .btn-submit:hover { background: var(--gold); }
-
-        .forgot-pass { display: block; text-align: center; margin-top: 20px; font-size: 0.75rem; color: #888; text-decoration: none; }
         
         .disclaimer { font-size: 0.7rem; color: #999; margin-top: 20px; line-height: 1.4; text-align: center; }
 
-        /* RESPONSIVE */
         @media (max-width: 900px) {
             .page-wrapper { flex-direction: column; }
             .benefits-side { padding: 50px 20px; }
@@ -126,25 +92,9 @@
         </div>
 
         <div class="forms-side">
-            <div class="tabs">
-                <button class="tab-btn active" onclick="switchTab('login')">Ingresar</button>
-                <button class="tab-btn" onclick="switchTab('register')">Unirse al Club</button>
-            </div>
+            <h2 class="form-title">Únete al Club</h2>
 
-            <form id="login-form" class="auth-form active" onsubmit="handleLogin(event)">
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" placeholder="ejemplo@correo.com" required>
-                </div>
-                <div class="form-group">
-                    <label>Contraseña</label>
-                    <input type="password" placeholder="••••••••" required>
-                </div>
-                <button type="submit" class="btn-submit">Iniciar Sesión</button>
-                <a href="#" class="forgot-pass">¿Olvidaste tu contraseña?</a>
-            </form>
-
-            <form id="register-form" action="https://api.web3forms.com/submit" method="POST" class="auth-form">
+            <form id="register-form" action="https://api.web3forms.com/submit" method="POST">
                 
                 <input type="hidden" name="access_key" value="2ae5aa73-4853-429d-b045-7867c19f5695">
                 <input type="hidden" name="subject" value="NUEVO MIEMBRO - SIR COLITAS CLUB">
@@ -171,8 +121,8 @@
                 </div>
                 
                 <div class="form-group">
-                    <label>Crear Contraseña (Referencial)</label>
-                    <input type="password" name="password_ref" required placeholder="Crea una clave segura">
+                    <label>Cumpleaños de la Mascota (Día/Mes)</label>
+                    <input type="text" name="mascota_cumple" placeholder="Ej: 15 de Octubre" required>
                 </div>
 
                 <input type="checkbox" name="botcheck" class="hidden-bot-field" style="display: none;">
@@ -186,28 +136,6 @@
     </div>
 
     <script>
-        // --- 1. LÓGICA DE PESTAÑAS (TABS) ---
-        function switchTab(tab) {
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            document.querySelectorAll('.auth-form').forEach(form => form.classList.remove('active'));
-
-            if (tab === 'login') {
-                document.querySelector('.tab-btn:first-child').classList.add('active');
-                document.getElementById('login-form').classList.add('active');
-            } else {
-                document.querySelector('.tab-btn:last-child').classList.add('active');
-                document.getElementById('register-form').classList.add('active');
-            }
-        }
-
-        // --- 2. SIMULACIÓN DE LOGIN ---
-        function handleLogin(e) {
-            e.preventDefault();
-            alert("¡Bienvenido nuevamente! (Esta es una demostración de la interfaz)");
-            window.location.href = 'index.html';
-        }
-
-        // --- 3. LÓGICA DE REGISTRO REAL (WEB3FORMS) ---
         const regForm = document.getElementById('register-form');
         const regResult = document.getElementById('register-result');
         const regBtn = document.getElementById('btn-register');
@@ -231,18 +159,13 @@
                 .then(async (response) => {
                     let json = await response.json();
                     if (response.status == 200) {
-                        regResult.innerHTML = "¡BIENVENIDO AL CLUB! TE HEMOS REGISTRADO.";
+                        regResult.innerHTML = "¡REGISTRO EXITOSO! BIENVENIDO AL CLUB.";
                         regResult.style.color = "#2ecc71"; // Verde éxito
                         regForm.reset();
                         regBtn.innerHTML = "CUENTA CREADA";
                     } else {
                         console.log(response);
-                        // Mensaje amigable si es error de spam
-                        if(json.message.includes("security reasons")) {
-                             regResult.innerHTML = "Error de seguridad. Por favor, inténtalo más tarde.";
-                        } else {
-                             regResult.innerHTML = "Error: " + json.message;
-                        }
+                        regResult.innerHTML = "Error: " + json.message;
                         regResult.style.color = "#e74c3c"; // Rojo error
                         regBtn.innerHTML = "INTENTAR DE NUEVO";
                         regBtn.disabled = false;
