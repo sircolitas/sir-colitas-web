@@ -6,39 +6,45 @@
     <title>Contacto - Sir Colitas</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #0A192F; --gold: #C5A059; --light: #F9F9F9; }
-        body { font-family: 'Montserrat', sans-serif; margin: 0; background: white; color: var(--primary); }
+        :root { --primary: #0A192F; --gold: #C5A059; --dark: #111111; }
+        body { font-family: 'Montserrat', sans-serif; margin: 0; background: white; color: var(--dark); }
         
         header { padding: 20px; text-align: center; border-bottom: 1px solid #eee; }
         .back-link { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #888; }
         
-        .container { max-width: 600px; margin: 60px auto; padding: 0 20px; }
-        h1 { font-weight: 300; font-size: 2.5rem; text-align: center; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
-        .intro-text { text-align: center; color: #666; font-size: 0.9rem; margin-bottom: 50px; }
+        .container { max-width: 800px; margin: 60px auto; padding: 0 40px; }
+        h1 { font-weight: 300; font-size: 3rem; text-align: center; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 15px; }
+        .intro-text { text-align: center; color: #333; font-size: 1rem; margin-bottom: 60px; line-height: 1.6; }
 
         .form-section { border-top: 1px solid #eee; padding-top: 40px; }
-        .section-header { display: flex; align-items: center; gap: 10px; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 30px; }
+        .section-header { display: flex; align-items: center; gap: 15px; font-size: 1.1rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 40px; }
+        .section-header svg { width: 24px; fill: var(--dark); }
+
+        .form-grid { display: grid; grid-template-columns: 1fr; gap: 35px; }
+        .form-group { display: flex; flex-direction: column; }
         
-        .form-group { margin-bottom: 25px; }
-        label { display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-bottom: 8px; }
+        label { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px; }
         
         input, select, textarea { 
-            width: 100%; padding: 12px 0; border: none; border-bottom: 1px solid #ccc; 
-            font-family: 'Montserrat'; font-size: 0.9rem; outline: none; transition: 0.3s;
-            background: transparent;
+            width: 100%; padding: 15px 10px; border: 1px solid #ccc; 
+            font-family: 'Montserrat'; font-size: 1rem; outline: none; transition: 0.3s;
+            box-sizing: border-box; background-color: #fcfcfc;
         }
-        input:focus, select:focus, textarea:focus { border-bottom-color: var(--gold); }
+        input:focus, select:focus, textarea:focus { border-color: var(--dark); background-color: #fff; }
 
         .submit-btn {
             background: var(--primary); color: white; border: none; width: 100%; 
-            padding: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px;
-            cursor: pointer; margin-top: 30px; transition: 0.3s;
+            padding: 25px; font-weight: 600; text-transform: uppercase; letter-spacing: 3px;
+            cursor: pointer; margin-top: 40px; font-size: 1rem; transition: 0.4s;
         }
         .submit-btn:hover { background: var(--gold); }
         
-        #form-status { text-align: center; margin-top: 20px; font-size: 0.8rem; font-weight: 600; }
-        .success { color: #25d366; }
-        .error { color: #ff4d4d; }
+        #form-status { text-align: center; margin-top: 25px; font-weight: 600; font-size: 0.9rem; }
+        .success { color: #2ecc71; }
+        .error { color: #e74c3c; }
+
+        .legal-text { font-size: 0.75rem; color: #666; margin-top: 30px; text-align: left; line-height: 1.5; }
+        .legal-text a { color: var(--dark); text-decoration: underline; }
     </style>
 </head>
 <body>
@@ -48,73 +54,86 @@
     </header>
 
     <div class="container">
-        <h1>¿Podemos Ayudarte?</h1>
-        <p class="intro-text">Nuestro Servicio de Atención al Cliente estará encantado de ayudarte.</p>
+        <h1>¿PODEMOS AYUDARTE?</h1>
+        <p class="intro-text">Nuestro Servicio de Atención al Cliente estará encantado de ayudarte con tus solicitudes.</p>
 
         <form id="contact-form" action="https://formspree.io/f/sircolitas@gmail.com" method="POST" class="form-section">
-            <div class="section-header">Escríbenos tu solicitud</div>
-
-            <div class="form-group">
-                <label>Tipo de solicitud*</label>
-                <select name="tipo_solicitud" required>
-                    <option value="">Seleccionar...</option>
-                    <option value="Pedido">Información sobre pedido</option>
-                    <option value="Atelier">Cotización Atelier</option>
-                    <option value="Tallas">Consulta de Tallas</option>
-                </select>
+            <div class="section-header">
+                <svg viewBox="0 0 512 512"><path d="M48 64C21.5 64 0 85.5 0 112V336c0 26.5 21.5 48 48 48H464c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zM48 112H464L256 240 48 112z"/></svg>
+                ESCRÍBENOS TU SOLICITUD
             </div>
 
-            <div class="form-group">
-                <label>Nombre Completo*</label>
-                <input type="text" name="nombre" required>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Tipo de solicitud*</label>
+                    <select name="tipo_solicitud" required>
+                        <option value="">Seleccionar...</option>
+                        <option value="Pedido">Información sobre pedido</option>
+                        <option value="Atelier">Cotización Atelier</option>
+                        <option value="Tallas">Consulta de Tallas</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Nombre*</label>
+                    <input type="text" name="nombre" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Apellido*</label>
+                    <input type="text" name="apellido" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Correo electrónico*</label>
+                    <input type="email" name="email" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Mensaje</label>
+                    <textarea name="mensaje" rows="6" placeholder="Escribe aquí tu mensaje"></textarea>
+                </div>
             </div>
 
-            <div class="form-group">
-                <label>Correo electrónico*</label>
-                <input type="email" name="email" required>
-            </div>
+            <p class="legal-text">
+                Para obtener más información, consulta nuestra <a href="#">Política de privacidad</a>. Este sitio está protegido por reCAPTCHA y se aplican la Política de privacidad y las Condiciones del servicio de Google.
+            </p>
 
-            <div class="form-group">
-                <label>Mensaje</label>
-                <textarea name="mensaje" rows="4" placeholder="Escribe aquí tu mensaje"></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn" id="submit-button">Enviar correo electrónico</button>
+            <button type="submit" class="submit-btn" id="submit-button">ENVIAR CORREO ELECTRÓNICO</button>
             <p id="form-status"></p>
         </form>
     </div>
 
     <script>
         const form = document.getElementById("contact-form");
-        
         async function handleSubmit(event) {
           event.preventDefault();
           const status = document.getElementById("form-status");
           const data = new FormData(event.target);
+          const button = document.getElementById("submit-button");
           
+          button.disabled = true;
+          button.innerHTML = "ENVIANDO...";
+
           fetch(event.target.action, {
             method: form.method,
             body: data,
-            headers: {
-                'Accept': 'application/json'
-            }
+            headers: { 'Accept': 'application/json' }
           }).then(response => {
             if (response.ok) {
-              status.innerHTML = "¡Gracias! Tu mensaje ha sido enviado con éxito.";
+              status.innerHTML = "¡MENSAJE ENVIADO! NOS PONDREMOS EN CONTACTO PRONTO.";
               status.className = "success";
               form.reset();
+              button.innerHTML = "ENVIAR CORREO ELECTRÓNICO";
+              button.disabled = false;
             } else {
-              response.json().then(data => {
-                if (Object.hasOwn(data, 'errors')) {
-                  status.innerHTML = data["errors"].map(error => error["message"]).join(", ");
-                } else {
-                  status.innerHTML = "Ups! Hubo un problema al enviar el formulario.";
-                }
-              })
+              status.innerHTML = "ERROR: ASEGÚRATE DE HABER CONFIRMADO TU CORREO EN FORMSPREE.";
               status.className = "error";
+              button.innerHTML = "REINTENTAR";
+              button.disabled = false;
             }
           }).catch(error => {
-            status.innerHTML = "Ups! Hubo un problema al conectar con el servidor.";
+            status.innerHTML = "HUBO UN PROBLEMA AL CONECTAR CON EL SERVIDOR.";
             status.className = "error";
           });
         }
