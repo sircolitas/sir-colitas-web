@@ -18,7 +18,7 @@
         /* CONTENEDOR SPLIT */
         .page-wrapper {
             display: flex;
-            min-height: 85vh; /* Altura completa menos el header */
+            min-height: 85vh;
         }
 
         /* LADO IZQUIERDO: IMAGEN/BENEFICIOS */
@@ -76,6 +76,9 @@
             font-family: 'Montserrat'; font-size: 0.95rem; outline: none; box-sizing: border-box; transition: 0.3s;
         }
         input:focus { border-color: var(--primary); background-color: #fcfcfc; }
+
+        /* Estilo para ocultar el campo anti-spam */
+        .hidden-bot-field { display: none !important; }
 
         .btn-submit {
             background: var(--primary); color: white; border: none; width: 100%; 
@@ -144,7 +147,6 @@
             <form id="register-form" action="https://api.web3forms.com/submit" method="POST" class="auth-form">
                 
                 <input type="hidden" name="access_key" value="2ae5aa73-4853-429d-b045-7867c19f5695">
-                
                 <input type="hidden" name="subject" value="NUEVO MIEMBRO - SIR COLITAS CLUB">
                 <input type="hidden" name="from_name" value="Registro Web Sir Colitas">
 
@@ -173,9 +175,11 @@
                     <input type="password" name="password_ref" required placeholder="Crea una clave segura">
                 </div>
 
+                <input type="checkbox" name="botcheck" class="hidden-bot-field" style="display: none;">
+
                 <p class="disclaimer">Al unirte, aceptas recibir novedades exclusivas de Sir Colitas. Tus datos están 100% seguros.</p>
 
-                <button type="submit" class="btn-submit" id="btn-register">CREAR CUENTA</button>
+                <button type="submit" class="btn-submit" id="btn-register">UNIRME AL CLUB</button>
                 <div id="register-result" style="text-align: center; margin-top: 20px; font-weight: 600; font-size: 0.85rem;"></div>
             </form>
         </div>
@@ -184,11 +188,9 @@
     <script>
         // --- 1. LÓGICA DE PESTAÑAS (TABS) ---
         function switchTab(tab) {
-            // Quitar clase active de todos los botones y formularios
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             document.querySelectorAll('.auth-form').forEach(form => form.classList.remove('active'));
 
-            // Activar el seleccionado
             if (tab === 'login') {
                 document.querySelector('.tab-btn:first-child').classList.add('active');
                 document.getElementById('login-form').classList.add('active');
@@ -230,13 +232,18 @@
                     let json = await response.json();
                     if (response.status == 200) {
                         regResult.innerHTML = "¡BIENVENIDO AL CLUB! TE HEMOS REGISTRADO.";
-                        regResult.style.color = "#2ecc71"; // Verde
+                        regResult.style.color = "#2ecc71"; // Verde éxito
                         regForm.reset();
                         regBtn.innerHTML = "CUENTA CREADA";
                     } else {
                         console.log(response);
-                        regResult.innerHTML = "Error: " + json.message;
-                        regResult.style.color = "#e74c3c"; // Rojo
+                        // Mensaje amigable si es error de spam
+                        if(json.message.includes("security reasons")) {
+                             regResult.innerHTML = "Error de seguridad. Por favor, inténtalo más tarde.";
+                        } else {
+                             regResult.innerHTML = "Error: " + json.message;
+                        }
+                        regResult.style.color = "#e74c3c"; // Rojo error
                         regBtn.innerHTML = "INTENTAR DE NUEVO";
                         regBtn.disabled = false;
                     }
