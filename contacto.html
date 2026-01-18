@@ -8,43 +8,24 @@
     <style>
         :root { --primary: #0A192F; --gold: #C5A059; --dark: #111111; }
         body { font-family: 'Montserrat', sans-serif; margin: 0; background: white; color: var(--dark); }
-        
         header { padding: 20px; text-align: center; border-bottom: 1px solid #eee; }
         .back-link { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #888; }
-        
         .container { max-width: 800px; margin: 60px auto; padding: 0 40px; }
         h1 { font-weight: 300; font-size: 3rem; text-align: center; letter-spacing: 4px; text-transform: uppercase; margin-bottom: 15px; }
-        .intro-text { text-align: center; color: #333; font-size: 1rem; margin-bottom: 60px; line-height: 1.6; }
-
+        .intro-text { text-align: center; color: #333; font-size: 1rem; margin-bottom: 60px; }
         .form-section { border-top: 1px solid #eee; padding-top: 40px; }
-        .section-header { display: flex; align-items: center; gap: 15px; font-size: 1.1rem; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 40px; }
-        .section-header svg { width: 24px; fill: var(--dark); }
-
-        .form-grid { display: grid; grid-template-columns: 1fr; gap: 35px; }
-        .form-group { display: flex; flex-direction: column; }
-        
-        label { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; margin-bottom: 12px; letter-spacing: 1px; }
-        
+        .form-group { margin-bottom: 25px; display: flex; flex-direction: column; }
+        label { font-size: 0.85rem; font-weight: 600; text-transform: uppercase; margin-bottom: 12px; }
         input, select, textarea { 
-            width: 100%; padding: 15px 10px; border: 1px solid #ccc; 
-            font-family: 'Montserrat'; font-size: 1rem; outline: none; transition: 0.3s;
-            box-sizing: border-box; background-color: #fcfcfc;
+            width: 100%; padding: 15px; border: 1px solid #ccc; font-family: 'Montserrat'; font-size: 1rem; box-sizing: border-box;
         }
-        input:focus, select:focus, textarea:focus { border-color: var(--dark); background-color: #fff; }
-
         .submit-btn {
             background: var(--primary); color: white; border: none; width: 100%; 
             padding: 25px; font-weight: 600; text-transform: uppercase; letter-spacing: 3px;
             cursor: pointer; margin-top: 40px; font-size: 1rem; transition: 0.4s;
         }
         .submit-btn:hover { background: var(--gold); }
-        
-        #form-status { text-align: center; margin-top: 25px; font-weight: 600; font-size: 0.9rem; }
-        .success { color: #2ecc71; }
-        .error { color: #e74c3c; }
-
-        .legal-text { font-size: 0.75rem; color: #666; margin-top: 30px; text-align: left; line-height: 1.5; }
-        .legal-text a { color: var(--dark); text-decoration: underline; }
+        #result { text-align: center; margin-top: 20px; font-weight: 600; }
     </style>
 </head>
 <body>
@@ -55,90 +36,69 @@
 
     <div class="container">
         <h1>¿PODEMOS AYUDARTE?</h1>
-        <p class="intro-text">Nuestro Servicio de Atención al Cliente estará encantado de ayudarte con tus solicitudes.</p>
+        <p class="intro-text">Nuestro Servicio de Atención al Cliente te responderá directamente a tu email.</p>
 
-        <form id="contact-form" action="https://formspree.io/f/sircolitas@gmail.com" method="POST" class="form-section">
-            <div class="section-header">
-                <svg viewBox="0 0 512 512"><path d="M48 64C21.5 64 0 85.5 0 112V336c0 26.5 21.5 48 48 48H464c26.5 0 48-21.5 48-48V112c0-26.5-21.5-48-48-48H48zM48 112H464L256 240 48 112z"/></svg>
-                ESCRÍBENOS TU SOLICITUD
+        <form action="https://api.web3forms.com/submit" method="POST" id="form">
+            <input type="hidden" name="access_key" value="098f993d-82d2-4303-9d8a-624029286438">
+            <input type="hidden" name="to" value="sircolitas@gmail.com">
+            <input type="hidden" name="from_name" value="Sir Colitas Boutique">
+            <input type="hidden" name="subject" value="Nueva consulta desde la Web">
+
+            <div class="form-group">
+                <label>Nombre*</label>
+                <input type="text" name="name" required>
             </div>
 
-            <div class="form-grid">
-                <div class="form-group">
-                    <label>Tipo de solicitud*</label>
-                    <select name="tipo_solicitud" required>
-                        <option value="">Seleccionar...</option>
-                        <option value="Pedido">Información sobre pedido</option>
-                        <option value="Atelier">Cotización Atelier</option>
-                        <option value="Tallas">Consulta de Tallas</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label>Nombre*</label>
-                    <input type="text" name="nombre" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Apellido*</label>
-                    <input type="text" name="apellido" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Correo electrónico*</label>
-                    <input type="email" name="email" required>
-                </div>
-
-                <div class="form-group">
-                    <label>Mensaje</label>
-                    <textarea name="mensaje" rows="6" placeholder="Escribe aquí tu mensaje"></textarea>
-                </div>
+            <div class="form-group">
+                <label>Correo electrónico*</label>
+                <input type="email" name="email" required>
             </div>
 
-            <p class="legal-text">
-                Para obtener más información, consulta nuestra <a href="#">Política de privacidad</a>. Este sitio está protegido por reCAPTCHA y se aplican la Política de privacidad y las Condiciones del servicio de Google.
-            </p>
+            <div class="form-group">
+                <label>Mensaje*</label>
+                <textarea name="message" rows="6" required placeholder="Escribe aquí tu consulta..."></textarea>
+            </div>
 
-            <button type="submit" class="submit-btn" id="submit-button">ENVIAR CORREO ELECTRÓNICO</button>
-            <p id="form-status"></p>
+            <button type="submit" class="submit-btn">ENVIAR CORREO ELECTRÓNICO</button>
+            <div id="result"></div>
         </form>
     </div>
 
     <script>
-        const form = document.getElementById("contact-form");
-        async function handleSubmit(event) {
-          event.preventDefault();
-          const status = document.getElementById("form-status");
-          const data = new FormData(event.target);
-          const button = document.getElementById("submit-button");
-          
-          button.disabled = true;
-          button.innerHTML = "ENVIANDO...";
+        const form = document.getElementById('form');
+        const result = document.getElementById('result');
 
-          fetch(event.target.action, {
-            method: form.method,
-            body: data,
-            headers: { 'Accept': 'application/json' }
-          }).then(response => {
-            if (response.ok) {
-              status.innerHTML = "¡MENSAJE ENVIADO! NOS PONDREMOS EN CONTACTO PRONTO.";
-              status.className = "success";
-              form.reset();
-              button.innerHTML = "ENVIAR CORREO ELECTRÓNICO";
-              button.disabled = false;
-            } else {
-              status.innerHTML = "ERROR: ASEGÚRATE DE HABER CONFIRMADO TU CORREO EN FORMSPREE.";
-              status.className = "error";
-              button.innerHTML = "REINTENTAR";
-              button.disabled = false;
-            }
-          }).catch(error => {
-            status.innerHTML = "HUBO UN PROBLEMA AL CONECTAR CON EL SERVIDOR.";
-            status.className = "error";
-          });
-        }
-        form.addEventListener("submit", handleSubmit)
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(form);
+            const object = Object.fromEntries(formData);
+            const json = JSON.stringify(object);
+            result.innerHTML = "Enviando...";
+
+            fetch('https://api.web3forms.com/submit', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: json
+                })
+                .then(async (response) => {
+                    let json = await response.json();
+                    if (response.status == 200) {
+                        result.innerHTML = "¡Mensaje enviado con éxito! Te contactaremos pronto.";
+                        result.style.color = "green";
+                        form.reset();
+                    } else {
+                        result.innerHTML = json.message;
+                        result.style.color = "red";
+                    }
+                })
+                .catch(error => {
+                    result.innerHTML = "Algo salió mal. Inténtalo de nuevo.";
+                    result.style.color = "red";
+                });
+        });
     </script>
-
 </body>
 </html>
