@@ -211,20 +211,22 @@
                 const itemTotal = item.price * (item.quantity || 1);
                 total += itemTotal;
 
-                // CORRECCIÓN DE IMAGEN: Si el nombre de la imagen no tiene extensión, se la agregamos
-                let imagePath = item.image;
-                if (imagePath && !imagePath.includes('.')) {
-                    imagePath += ".png"; 
-                }
+                // LOGICA DE IMAGEN ROBUSTA:
+                // Si la imagen es solo un nombre, intentamos cargarla directamente.
+                let imagePath = item.image; 
 
                 container.innerHTML += `
                     <div class="cart-item">
-                        <img src="${imagePath}" alt="${item.name}" class="item-image" onerror="this.src='https://placehold.co/180x216?text=Sir+Colitas'">
+                        <img src="${imagePath}" alt="${item.name}" class="item-image" 
+                             onerror="this.src='https://placehold.co/180x216/F9F8F4/152238?text=Imagen+No+Encontrada'">
+                        
                         <div class="item-details">
                             <h3 class="item-name">${item.name}</h3>
                             <p class="item-meta">Color: ${item.color || 'Único'}</p>
-                            <p class="item-meta">Talla: ${item.size || 'N/A'}</p>
-                            <p class="item-sku">SKU: ${item.sku || 'SC-GEN-001'}</p>
+                            
+                            <p class="item-meta"><strong>Talla: ${item.size || 'No seleccionada'}</strong></p>
+                            
+                            <p class="item-sku">SKU: SC-${index + 100}</p>
                             
                             <div class="quantity-selector">
                                 <button class="quantity-btn" onclick="updateQty(${index}, -1)">−</button>
