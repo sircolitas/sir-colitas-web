@@ -18,11 +18,10 @@
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
-            background-color: var(--white); /* Fondo blanco para el área de contenido como en la imagen */
+            background-color: var(--white);
             color: var(--oxford-blue);
         }
 
-        /* --- HEADER DEL CARRITO --- */
         .cart-header {
             display: flex;
             justify-content: space-between;
@@ -43,15 +42,26 @@
 
         .cart-title svg { width: 22px; fill: var(--oxford-blue); }
 
+        .nav-buttons { display: flex; gap: 20px; align-items: center; }
+
+        /* BOTÓN SEGUIR COMPRANDO */
+        .continue-shopping {
+            text-decoration: none;
+            color: var(--leather-brown);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        .continue-shopping:hover { text-decoration: underline; }
+
         .close-cart {
             text-decoration: none;
             color: var(--oxford-blue);
             font-size: 1.5rem;
-            transition: 0.3s;
         }
-        .close-cart:hover { color: var(--leather-brown); }
 
-        /* --- LISTA DE PRODUCTOS --- */
         .cart-container {
             max-width: 900px;
             margin: 0 auto;
@@ -69,39 +79,17 @@
 
         .item-image {
             width: 180px;
-            aspect-ratio: 1 / 1.2; /* Proporción parecida a la imagen de referencia */
+            aspect-ratio: 1 / 1.2;
             background-color: var(--bone-cream);
             object-fit: cover;
+            border-radius: 4px;
         }
 
-        .item-details {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-        }
+        .item-details { display: flex; flex-direction: column; gap: 8px; }
+        .item-name { font-size: 1rem; font-weight: 400; margin: 0; }
+        .item-meta { font-size: 0.85rem; color: #666; font-weight: 300; margin: 0; }
+        .item-sku { font-size: 0.75rem; color: #999; text-transform: uppercase; }
 
-        .item-name {
-            font-size: 1rem;
-            font-weight: 400;
-            margin: 0 0 10px 0;
-            color: var(--oxford-blue);
-        }
-
-        .item-meta {
-            font-size: 0.85rem;
-            color: #666;
-            margin: 0;
-            font-weight: 300;
-        }
-
-        .item-sku {
-            font-size: 0.75rem;
-            color: #999;
-            text-transform: uppercase;
-            margin-top: 5px;
-        }
-
-        /* Selector de cantidad */
         .quantity-selector {
             display: flex;
             align-items: center;
@@ -111,22 +99,10 @@
         }
 
         .quantity-btn {
-            background: none;
-            border: none;
-            padding: 10px 15px;
-            cursor: pointer;
-            font-family: 'Montserrat';
-            color: var(--oxford-blue);
-            transition: 0.3s;
-        }
-        .quantity-btn:hover { color: var(--leather-brown); }
-
-        .quantity-value {
-            padding: 0 10px;
-            font-size: 0.9rem;
+            background: none; border: none; padding: 10px 15px;
+            cursor: pointer; color: var(--oxford-blue);
         }
 
-        /* Precio y eliminar */
         .item-right {
             display: flex;
             flex-direction: column;
@@ -134,37 +110,22 @@
             align-items: flex-end;
         }
 
-        .delete-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #999;
-            transition: 0.3s;
-        }
+        .delete-btn { background: none; border: none; cursor: pointer; color: #999; }
         .delete-btn:hover { color: #e74c3c; }
         .delete-btn svg { width: 20px; fill: currentColor; }
 
-        .item-price {
-            font-size: 1.1rem;
-            font-weight: 400;
-            letter-spacing: 1px;
-        }
+        /* MONEDA EN SOLES */
+        .item-price { font-size: 1.1rem; font-weight: 400; }
 
-        /* --- RESUMEN Y PAGO --- */
         .cart-summary {
             margin-top: 40px;
-            text-align: right;
             display: flex;
             flex-direction: column;
             align-items: flex-end;
             gap: 20px;
         }
 
-        .total-line {
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-        }
+        .total-line { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; }
 
         .btn-checkout {
             background: var(--oxford-blue);
@@ -181,26 +142,12 @@
         }
         .btn-checkout:hover { background: var(--leather-brown); }
 
-        .empty-msg {
-            text-align: center;
-            padding: 100px 0;
-            font-weight: 300;
-            color: #888;
-        }
+        .empty-msg { text-align: center; padding: 100px 0; color: #888; }
 
-        /* RESPONSIVO */
         @media (max-width: 768px) {
-            .cart-item {
-                grid-template-columns: 120px 1fr;
-            }
+            .cart-item { grid-template-columns: 120px 1fr; }
             .item-image { width: 120px; }
-            .item-right {
-                grid-column: 1 / -1;
-                flex-direction: row;
-                align-items: center;
-                border-top: 1px solid var(--bone-cream);
-                padding-top: 15px;
-            }
+            .item-right { grid-column: 1 / -1; flex-direction: row; padding-top: 15px; }
             .delete-btn { position: absolute; top: 30px; right: 0; }
         }
     </style>
@@ -212,24 +159,27 @@
             <svg viewBox="0 0 448 512"><path d="M160 112c0-35.3 28.7-64 64-64s64 28.7 64 64v48H160V112zm-48 48H48c-26.5 0-48 21.5-48 48V416c0 53 43 96 96 96H352c53 0 96-43 96-96V208c0-26.5-21.5-48-48-48H336V112z"/></svg>
             TU SELECCIÓN ( <span id="cart-count">0</span> )
         </div>
-        <a href="index.html" class="close-cart">✕</a>
+        <div class="nav-buttons">
+            <a href="index.html#colecciones" class="continue-shopping">Seguir Comprando</a>
+            <a href="index.html" class="close-cart">✕</a>
+        </div>
     </div>
 
     <div class="cart-container">
-        <div id="cart-items-list">
-            </div>
+        <div id="cart-items-list"></div>
 
         <div id="cart-footer" style="display: none;">
             <div class="cart-summary">
                 <div class="total-line">
-                    TOTAL: <span id="cart-total">$ 0.00</span>
+                    TOTAL: <span id="cart-total">S/ 0.00</span>
                 </div>
                 <button class="btn-checkout" onclick="processCheckout()">Tramitar Pedido</button>
             </div>
         </div>
 
         <div id="empty-cart-msg" class="empty-msg" style="display: none;">
-            Tu selección está vacía.
+            Tu selección está vacía. <br><br>
+            <a href="index.html#colecciones" class="continue-shopping">Ir a ver productos</a>
         </div>
     </div>
 
@@ -261,14 +211,20 @@
                 const itemTotal = item.price * (item.quantity || 1);
                 total += itemTotal;
 
+                // CORRECCIÓN DE IMAGEN: Si el nombre de la imagen no tiene extensión, se la agregamos
+                let imagePath = item.image;
+                if (imagePath && !imagePath.includes('.')) {
+                    imagePath += ".png"; 
+                }
+
                 container.innerHTML += `
                     <div class="cart-item">
-                        <img src="${item.image}" alt="${item.name}" class="item-image">
+                        <img src="${imagePath}" alt="${item.name}" class="item-image" onerror="this.src='https://placehold.co/180x216?text=Sir+Colitas'">
                         <div class="item-details">
                             <h3 class="item-name">${item.name}</h3>
                             <p class="item-meta">Color: ${item.color || 'Único'}</p>
                             <p class="item-meta">Talla: ${item.size || 'N/A'}</p>
-                            <p class="item-sku">SKU: SC-${Math.random().toString(36).substr(2, 9).toUpperCase()}</p>
+                            <p class="item-sku">SKU: ${item.sku || 'SC-GEN-001'}</p>
                             
                             <div class="quantity-selector">
                                 <button class="quantity-btn" onclick="updateQty(${index}, -1)">−</button>
@@ -280,13 +236,13 @@
                             <button class="delete-btn" onclick="removeItem(${index})" title="Eliminar">
                                 <svg viewBox="0 0 448 512"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
                             </button>
-                            <div class="item-price">$ ${itemTotal.toFixed(2)}</div>
+                            <div class="item-price">S/ ${itemTotal.toFixed(2)}</div>
                         </div>
                     </div>
                 `;
             });
 
-            totalElem.innerText = `$ ${total.toFixed(2)}`;
+            totalElem.innerText = `S/ ${total.toFixed(2)}`;
         }
 
         function updateQty(index, change) {
@@ -305,7 +261,16 @@
         }
 
         function processCheckout() {
-            alert("Redirigiendo a la pasarela de pago segura...");
+            const cart = JSON.parse(localStorage.getItem('sirColitasCart')) || [];
+            let mensaje = "Hola Sir Colitas, deseo tramitar este pedido:\n\n";
+            cart.forEach(item => {
+                mensaje += `- ${item.name} (Talla: ${item.size}, Cant: ${item.quantity}) - S/ ${(item.price * item.quantity).toFixed(2)}\n`;
+            });
+            const total = document.getElementById('cart-total').innerText;
+            mensaje += `\n*TOTAL: ${total}*`;
+            
+            const url = "https://wa.me/51961743825?text=" + encodeURIComponent(mensaje);
+            window.open(url, '_blank');
         }
 
         document.addEventListener('DOMContentLoaded', renderCart);
