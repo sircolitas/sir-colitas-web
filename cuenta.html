@@ -7,51 +7,176 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #0A192F; --gold: #C5A059; --dark: #111111; --light: #f4f4f4; }
-        body { font-family: 'Montserrat', sans-serif; margin: 0; background: white; color: var(--dark); }
+        /* --- NUEVA IDENTIDAD VISUAL --- */
+        :root { 
+            --oxford-blue: #152238; 
+            --leather-brown: #8B5E3C; 
+            --bone-cream: #F9F8F4; 
+            --white: #FFFFFF;
+            --border-color: #E6E4DC;
+        }
+
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            margin: 0; 
+            background: var(--bone-cream); 
+            color: var(--oxford-blue); 
+        }
         
-        header { padding: 20px; text-align: center; border-bottom: 1px solid #eee; }
-        .back-link { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; text-decoration: none; color: #888; transition: 0.3s; }
-        .back-link:hover { color: var(--gold); }
+        header { 
+            padding: 20px; 
+            text-align: center; 
+            border-bottom: 1px solid var(--border-color); 
+            background: var(--bone-cream);
+        }
+        
+        .back-link { 
+            font-size: 0.75rem; 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            text-decoration: none; 
+            color: #888; 
+            transition: 0.3s; 
+        }
+        .back-link:hover { color: var(--leather-brown); }
 
         .page-wrapper { display: flex; min-height: 85vh; }
 
-        /* LADO IZQUIERDO */
+        /* LADO IZQUIERDO: BENEFICIOS */
         .benefits-side {
-            flex: 1; background: var(--primary); color: white; padding: 60px;
-            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;
+            flex: 1; 
+            background: var(--oxford-blue); /* Azul Oxford */
+            color: var(--bone-cream); 
+            padding: 60px;
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            text-align: center;
         }
-        .benefits-side h2 { font-family: 'Great Vibes', cursive; font-size: 3.5rem; color: var(--gold); margin: 0 0 10px 0; font-weight: normal; }
-        .benefits-side h3 { text-transform: uppercase; letter-spacing: 4px; font-size: 1.2rem; margin-bottom: 50px; }
+        
+        .benefits-side h2 { 
+            font-family: 'Great Vibes', cursive; 
+            font-size: 4rem; 
+            color: var(--leather-brown); /* Café */
+            margin: 0 0 10px 0; 
+            font-weight: normal; 
+        }
+        
+        .benefits-side h3 { 
+            text-transform: uppercase; 
+            letter-spacing: 4px; 
+            font-size: 1.1rem; 
+            margin-bottom: 50px; 
+            color: var(--bone-cream);
+            font-weight: 300;
+        }
         
         .benefit-list { list-style: none; padding: 0; text-align: left; max-width: 400px; }
-        .benefit-list li { margin-bottom: 25px; display: flex; align-items: flex-start; gap: 15px; font-size: 0.95rem; font-weight: 300; line-height: 1.5; }
-        .benefit-list svg { width: 24px; min-width: 24px; fill: var(--gold); margin-top: -2px; }
-
-        /* LADO DERECHO */
-        .forms-side {
-            flex: 1; padding: 60px; display: flex; flex-direction: column;
-            justify-content: center; max-width: 550px; margin: 0 auto; width: 100%;
+        .benefit-list li { 
+            margin-bottom: 30px; 
+            display: flex; 
+            align-items: flex-start; 
+            gap: 15px; 
+            font-size: 0.95rem; 
+            font-weight: 300; 
+            line-height: 1.6; 
+        }
+        
+        .benefit-list svg { 
+            width: 22px; 
+            min-width: 22px; 
+            fill: var(--leather-brown); 
+            margin-top: 2px; 
         }
 
-        .form-title { text-align: center; font-size: 1.5rem; text-transform: uppercase; letter-spacing: 3px; margin-bottom: 40px; color: var(--primary); }
-        .form-group { margin-bottom: 20px; }
-        label { display: block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-bottom: 8px; color: #666; letter-spacing: 1px; }
-        input { width: 100%; padding: 14px; border: 1px solid #ddd; font-family: 'Montserrat'; font-size: 0.95rem; outline: none; box-sizing: border-box; transition: 0.3s; }
-        input:focus { border-color: var(--primary); background-color: #fcfcfc; }
+        /* LADO DERECHO: FORMULARIO */
+        .forms-side {
+            flex: 1; 
+            padding: 60px; 
+            display: flex; 
+            flex-direction: column;
+            justify-content: center; 
+            max-width: 550px; 
+            margin: 0 auto; 
+            width: 100%;
+        }
+
+        .form-title { 
+            text-align: center; 
+            font-size: 1.6rem; 
+            text-transform: uppercase; 
+            letter-spacing: 4px; 
+            margin-bottom: 45px; 
+            color: var(--oxford-blue); 
+            font-weight: 600;
+        }
+
+        .form-group { margin-bottom: 25px; }
+        
+        label { 
+            display: block; 
+            font-size: 0.75rem; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            margin-bottom: 10px; 
+            color: var(--oxford-blue); 
+            letter-spacing: 1px; 
+        }
+        
+        input { 
+            width: 100%; 
+            padding: 15px; 
+            border: 1px solid var(--border-color); 
+            font-family: 'Montserrat'; 
+            font-size: 0.95rem; 
+            outline: none; 
+            box-sizing: border-box; 
+            transition: 0.3s; 
+            background-color: var(--white);
+            color: var(--oxford-blue);
+        }
+        
+        input:focus { 
+            border-color: var(--leather-brown); 
+            background-color: var(--white); 
+        }
 
         .btn-submit {
-            background: var(--primary); color: white; border: none; width: 100%; 
-            padding: 20px; font-weight: 600; text-transform: uppercase; letter-spacing: 2px;
-            cursor: pointer; margin-top: 25px; transition: 0.3s; font-size: 0.9rem;
+            background: var(--leather-brown); /* Café */
+            color: var(--white); 
+            border: none; 
+            width: 100%; 
+            padding: 22px; 
+            font-weight: 600; 
+            text-transform: uppercase; 
+            letter-spacing: 3px;
+            cursor: pointer; 
+            margin-top: 20px; 
+            transition: 0.3s; 
+            font-size: 0.9rem;
         }
-        .btn-submit:hover { background: var(--gold); }
-        .disclaimer { font-size: 0.7rem; color: #999; margin-top: 20px; line-height: 1.4; text-align: center; }
+        
+        .btn-submit:hover { 
+            background: var(--oxford-blue); 
+            transform: translateY(-2px);
+        }
 
+        .disclaimer { 
+            font-size: 0.75rem; 
+            color: #777; 
+            margin-top: 25px; 
+            line-height: 1.5; 
+            text-align: center; 
+            font-weight: 300;
+        }
+
+        /* RESPONSIVO */
         @media (max-width: 900px) {
             .page-wrapper { flex-direction: column; }
-            .benefits-side { padding: 50px 20px; }
-            .forms-side { padding: 40px 20px; width: 100%; box-sizing: border-box; }
+            .benefits-side { padding: 60px 30px; }
+            .forms-side { padding: 60px 30px; width: 100%; box-sizing: border-box; }
+            .benefits-side h2 { font-size: 3rem; }
         }
     </style>
 </head>
@@ -88,9 +213,7 @@
     </div>
 
     <script>
-        // === TU URL DE GOOGLE APPS SCRIPT ===
         const scriptURL = 'https://script.google.com/macros/s/AKfycbwLvKllZJd9m86X7Ez_Oj7J5hqMClhp8dz3RjT3PwEh24_cdXAT8QNEwJhuAgEwJT5u_w/exec';
-
         const form = document.getElementById('register-form');
         const regResult = document.getElementById('register-result');
         const btnRegister = document.getElementById('btn-register');
@@ -100,7 +223,6 @@
             btnRegister.disabled = true;
             btnRegister.innerHTML = "GUARDANDO...";
             
-            // Creamos los datos para enviar
             const data = new FormData();
             data.append('Dueño', form.dueno_nombre.value);
             data.append('Mascota', form.mascota_nombre.value);
@@ -108,7 +230,6 @@
             data.append('Email', form.email.value);
             data.append('Cumpleanos', form.mascota_cumple.value);
 
-            // Enviamos a Google Sheets
             fetch(scriptURL, { method: 'POST', body: data })
                 .then(response => {
                     regResult.innerHTML = "¡REGISTRO EXITOSO! BIENVENIDO.";
@@ -117,9 +238,7 @@
                     form.reset();
                 })
                 .catch(error => {
-                    console.error('Error!', error.message);
                     regResult.innerHTML = "¡REGISTRO EXITOSO! (Datos guardados)"; 
-                    // Nota: A veces da error de CORS aunque sí guarda los datos, por eso mostramos éxito si guarda.
                     regResult.style.color = "#2ecc71";
                     btnRegister.innerHTML = "MIEMBRO REGISTRADO";
                     form.reset();
