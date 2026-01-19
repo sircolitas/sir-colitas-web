@@ -9,34 +9,31 @@
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- NUEVA PALETA DE COLORES (IDENTIDAD DE MARCA) --- */
+        /* --- IDENTIDAD VISUAL "OLD MONEY" --- */
         :root {
-            /* AUTORIDAD: Azul "Oxford" - Confianza, Clase, Realeza */
+            /* AUTORIDAD: Azul "Oxford" */
             --oxford-blue: #152238; 
-            
-            /* TOQUE HUMANO: Café - Artesanal, Calidad, Cuero */
+            /* TOQUE HUMANO: Café Artesanal */
             --leather-brown: #8B5E3C; 
-            
-            /* BASE: Crema / Hueso - Orgánico, Puro, Fondo limpio */
+            /* BASE: Crema / Hueso */
             --bone-cream: #F9F8F4; 
-            
-            /* ACENTOS NEUTROS */
+            /* ACENTOS */
             --white: #FFFFFF;
-            --border-color: #E6E4DC; /* Un gris cálido muy suave */
+            --border-color: #E6E4DC;
         }
         
         body {
             font-family: 'Montserrat', sans-serif;
             margin: 0;
             padding: 0;
-            color: var(--oxford-blue); /* Texto principal en Azul Oxford */
-            background-color: var(--bone-cream); /* Fondo Crema */
+            color: var(--oxford-blue);
+            background-color: var(--bone-cream);
             scroll-behavior: smooth;
         }
 
         /* --- HEADER --- */
         header {
-            background: var(--bone-cream); /* El header se funde con el fondo */
+            background: var(--bone-cream);
             border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
@@ -72,27 +69,16 @@
             gap: 6px; font-size: 11px; text-transform: uppercase; letter-spacing: 1px;
             font-weight: 400; transition: 0.3s;
         }
-        /* Hover en Café para dar el toque humano */
         .nav-item-left:hover { color: var(--leather-brown); }
         .nav-item-left svg { width: 16px; fill: currentColor; }
 
-
-        /* --- CENTRO: LOGO --- */
+        /* --- CENTRO --- */
         .nav-center { text-align: center; display: flex; justify-content: center; }
-        
-        .logo-main { 
-            height: 110px; 
-            width: auto; 
-            transition: 0.3s;
-            /* Si tu logo es negro puro, con el fondo crema se verá bien. 
-               Si es transparente, perfecto. */
-        }
+        .logo-main { height: 110px; width: auto; transition: 0.3s; }
         .logo-main:hover { transform: scale(1.02); }
-
 
         /* --- DERECHA --- */
         .nav-right { display: flex; gap: 25px; align-items: center; justify-content: flex-end; }
-
         .menu-links { display: flex; gap: 20px; }
 
         .menu-link {
@@ -117,8 +103,7 @@
         .cart-wrapper { position: relative; }
         .cart-badge {
             position: absolute; top: -8px; right: -8px; 
-            background: var(--leather-brown); /* Badge en Café */
-            color: white;
+            background: var(--leather-brown); color: white;
             font-size: 9px; width: 16px; height: 16px; border-radius: 50%;
             display: flex; align-items: center; justify-content: center;
         }
@@ -126,8 +111,8 @@
         /* Buscador */
         .search-dropdown {
             display: none; position: absolute; top: 100%; right: 0; width: 300px;
-            background: var(--bone-cream); /* Fondo crema para el buscador también */
-            padding: 15px; box-shadow: 0 5px 15px rgba(21, 34, 56, 0.1); /* Sombra azulada sutil */
+            background: var(--bone-cream); padding: 15px; 
+            box-shadow: 0 5px 15px rgba(21, 34, 56, 0.1);
             border: 1px solid var(--border-color); border-top: none; z-index: 1001; animation: slideDown 0.3s ease;
         }
         @keyframes slideDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
@@ -143,44 +128,38 @@
 
         /* --- HERO --- */
         .hero {
-            /* Usamos un overlay Azul Oxford muy suave sobre la imagen para mantener la identidad */
-            background: linear-gradient(rgba(21, 34, 56, 0.6), rgba(21, 34, 56, 0.6)), url('https://placehold.co/1920x600/152238/F9F8F4/png');
+            /* IMAGEN LOCAL 'Cuarto de perro.jpg' CON FILTRO AZUL OXFORD SUAVE */
+            background: linear-gradient(rgba(21, 34, 56, 0.4), rgba(21, 34, 56, 0.4)), url('Cuarto de perro.jpg');
+            
             background-size: cover; background-position: center;
             height: 450px; display: flex; align-items: center; justify-content: center;
             text-align: center; color: var(--bone-cream); padding: 0 20px;
         }
         .hero h1 { 
             font-family: 'Great Vibes', cursive; font-size: 5.5rem; 
-            color: var(--bone-cream); /* Letras Crema sobre fondo oscuro */
-            margin: 0; text-shadow: 0px 4px 10px rgba(0,0,0,0.3); 
+            color: var(--bone-cream); margin: 0; text-shadow: 0px 4px 10px rgba(0,0,0,0.3); 
         }
         .hero p { font-size: 1.1rem; font-weight: 300; letter-spacing: 2px; margin-bottom: 35px; text-transform: uppercase; color: #f0f0f0; }
         
-        /* BOTÓN PRINCIPAL */
         .btn-brand {
-            background: var(--leather-brown); /* Café */
-            color: white; padding: 15px 40px; text-decoration: none;
+            background: var(--leather-brown); color: white; padding: 15px 40px; text-decoration: none;
             font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; transition: 0.3s;
             border: 1px solid var(--leather-brown);
         }
         .btn-brand:hover { 
-            background: transparent; 
-            color: var(--bone-cream); 
-            border-color: var(--bone-cream);
+            background: transparent; color: var(--bone-cream); border-color: var(--bone-cream);
         }
 
-        /* --- COLECCIONES --- */
+        /* --- SECCIONES --- */
         .section-title { 
             padding: 60px 0 30px; text-align: center; text-transform: uppercase; 
             letter-spacing: 4px; font-size: 1.4rem; color: var(--oxford-blue); 
         }
-        
         .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; padding: 0 5% 80px; }
         
         .card { 
-            position: relative; 
-            background: var(--white); /* Tarjeta blanca sobre fondo crema para resaltar sutilmente */
-            box-shadow: 0 4px 20px rgba(21, 34, 56, 0.05); /* Sombra suave azulada */
+            position: relative; background: var(--white);
+            box-shadow: 0 4px 20px rgba(21, 34, 56, 0.05);
             transition: 0.3s; cursor: pointer; border: 1px solid var(--border-color);
         }
         .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(21, 34, 56, 0.1); }
@@ -192,22 +171,19 @@
             text-align: center; font-size: 7px; font-weight: bold; text-transform: uppercase;
             color: white; line-height: 1.1; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
-        .stamp-red { background: rgba(168, 50, 50, 0.95); /* Ferrari Red */ }
-        .stamp-brown { background: rgba(139, 94, 60, 0.95); /* Café */ }
-        .stamp-navy { background: rgba(21, 34, 56, 0.95); /* Oxford */ }
+        .stamp-red { background: rgba(168, 50, 50, 0.95); }
+        .stamp-brown { background: rgba(139, 94, 60, 0.95); }
+        .stamp-navy { background: rgba(21, 34, 56, 0.95); }
 
         .card-info { padding: 25px 20px; text-align: left; }
         .card-info h3 { font-size: 1rem; text-transform: uppercase; color: var(--oxford-blue); margin: 0; letter-spacing: 1px; }
         .card-info p { font-size: 0.85rem; color: #555; margin-top: 8px; font-weight: 300; }
 
-        /* --- FOOTER --- */
         footer { 
-            padding: 70px 5%; 
-            background: var(--oxford-blue); /* Footer en Azul Oxford para cerrar con autoridad */
-            color: var(--bone-cream); /* Texto Crema */
+            padding: 70px 5%; background: var(--oxford-blue); color: var(--bone-cream);
             display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; 
         }
-        footer h4 { text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 25px; color: var(--leather-brown); /* Títulos en Café */ }
+        footer h4 { text-transform: uppercase; font-size: 0.85rem; letter-spacing: 2px; margin-bottom: 25px; color: var(--leather-brown); }
         footer p, footer a { font-size: 0.85rem; color: #ccc; text-decoration: none; display: block; margin-bottom: 12px; transition: 0.3s; font-weight: 300; }
         footer a:hover { color: var(--leather-brown); padding-left: 5px; }
         
@@ -227,7 +203,6 @@
             .nav-left { order: 3; width: 100%; justify-content: center; border-top: 1px solid var(--border-color); padding-top: 10px; } 
 
             .logo-main { height: 75px; } 
-
             .icon-group { border-left: none; padding-left: 0; justify-content: center; gap: 30px; }
             .menu-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
             .menu-link { font-size: 0.75rem; }
@@ -261,7 +236,7 @@
 
             <div class="nav-center">
                 <a href="index.html">
-                    <img src="Logo color Azul oxford sin fondo 4.png" class="logo-main" alt="Sir Colitas">
+                    <img src="Logo Sir Colitas Oficial Final.jpg" class="logo-main" alt="Sir Colitas">
                 </a>
             </div>
 
