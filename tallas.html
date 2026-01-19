@@ -6,29 +6,107 @@
     <title>Guía de Tallas - Sir Colitas</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #0A192F; --gold: #C5A059; --light: #F9F9F9; --white: #FFFFFF; }
-        body { font-family: 'Montserrat', sans-serif; margin: 0; background: var(--white); color: var(--primary); }
+        /* --- NUEVA IDENTIDAD VISUAL --- */
+        :root { 
+            --oxford-blue: #152238; 
+            --leather-brown: #8B5E3C; 
+            --bone-cream: #F9F8F4; 
+            --white: #FFFFFF;
+            --border-color: #E6E4DC;
+        }
+
+        body { 
+            font-family: 'Montserrat', sans-serif; 
+            margin: 0; 
+            background: var(--bone-cream); /* Fondo Crema */
+            color: var(--oxford-blue); /* Texto Azul Oxford */
+        }
         
-        header { padding: 30px 0; text-align: center; border-bottom: 1px solid var(--gold); }
-        .logo-container img { height: 70px; width: auto; }
+        header { 
+            padding: 40px 0 20px; 
+            text-align: center; 
+            border-bottom: 1px solid var(--border-color); 
+            background: var(--bone-cream);
+        }
+        
+        .logo-container img { height: 90px; width: auto; transition: 0.3s; }
+        .logo-container img:hover { transform: scale(1.05); }
+
         .back-nav { padding: 15px 0; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; text-align: center; }
         .back-nav a { text-decoration: none; color: #888; transition: 0.3s; }
-        .back-nav a:hover { color: var(--gold); }
+        .back-nav a:hover { color: var(--leather-brown); }
 
         .container { width: 90%; max-width: 800px; margin: 60px auto; }
-        .page-title { text-align: center; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 10px; }
-        .subtitle { text-align: center; font-weight: 300; color: #666; margin-bottom: 50px; }
+        .page-title { text-align: center; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 10px; font-weight: 600; }
+        .subtitle { text-align: center; font-weight: 300; color: #555; margin-bottom: 50px; font-size: 1rem; }
 
         /* Estilo de la Tabla */
-        .table-container { overflow-x: auto; background: var(--light); padding: 20px; border-radius: 4px; }
+        .table-container { 
+            overflow-x: auto; 
+            background: var(--white); 
+            padding: 10px; 
+            border-radius: 8px; 
+            box-shadow: 0 4px 15px rgba(21, 34, 56, 0.05);
+            border: 1px solid var(--border-color);
+        }
+        
         table { width: 100%; border-collapse: collapse; background: white; }
-        th, td { padding: 18px; border: 1px solid #eee; text-align: center; font-size: 0.9rem; }
-        th { background: var(--primary); color: var(--gold); text-transform: uppercase; letter-spacing: 1px; }
-        tr:nth-child(even) { background-color: #fcfcfc; }
+        
+        th, td { padding: 18px; border-bottom: 1px solid var(--border-color); text-align: center; font-size: 0.9rem; }
+        
+        th { 
+            background: var(--oxford-blue); 
+            color: var(--bone-cream); 
+            text-transform: uppercase; 
+            letter-spacing: 2px; 
+            font-weight: 400;
+        }
 
-        .tips { margin-top: 50px; padding: 30px; border: 1px dashed var(--gold); background: #fffcf5; }
-        .tips h3 { text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px; margin-top: 0; }
-        .tips ul { font-size: 0.85rem; color: #555; line-height: 1.8; }
+        td strong { color: var(--leather-brown); font-size: 1.1rem; }
+        
+        tr:last-child td { border-bottom: none; }
+        tr:nth-child(even) { background-color: #fafaf8; }
+
+        /* Sección de Tips */
+        .tips { 
+            margin-top: 50px; 
+            padding: 40px; 
+            border: 1px solid var(--border-color); 
+            background: var(--white); 
+            border-radius: 8px;
+        }
+        
+        .tips h3 { 
+            text-transform: uppercase; 
+            font-size: 1rem; 
+            letter-spacing: 2px; 
+            margin-top: 0; 
+            color: var(--leather-brown); /* Título en Café */
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .tips ul { font-size: 0.9rem; color: #444; line-height: 1.8; list-style: none; padding: 0; }
+        .tips ul li { margin-bottom: 15px; padding-left: 20px; position: relative; }
+        .tips ul li::before {
+            content: "•";
+            color: var(--leather-brown);
+            font-weight: bold;
+            display: inline-block; 
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .tips ul li strong { color: var(--oxford-blue); }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .logo-container img { height: 70px; }
+            .container { margin: 30px auto; }
+            th, td { padding: 12px; font-size: 0.8rem; }
+            .tips { padding: 25px; }
+        }
     </style>
 </head>
 <body>
@@ -72,7 +150,7 @@
                 <li><strong>Cuello:</strong> Mide la base del cuello donde descansaría el collar.</li>
                 <li><strong>Pecho:</strong> Mide la parte más ancha del torso (justo detrás de las patas delanteras).</li>
                 <li><strong>Espalda:</strong> Mide desde la base del cuello hasta donde comienza la cola.</li>
-                <li><em>Nota: Si las medidas de tu mascota están entre dos tallas, te recomendamos elegir la más grande.</em></li>
+                <li><strong>Nota:</strong> Si las medidas de tu mascota están entre dos tallas, te recomendamos elegir la <strong>más grande</strong> para su mayor comodidad.</li>
             </ul>
         </div>
     </div>
