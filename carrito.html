@@ -3,165 +3,312 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Pedido - Sir Colitas</title>
+    <title>Tu Selección - Sir Colitas</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #0A192F; --gold: #C5A059; --light: #F9F9F9; --white: #FFFFFF; }
-        body { font-family: 'Montserrat', sans-serif; margin: 0; background: var(--white); color: var(--primary); }
-        
-        header { padding: 30px 0; text-align: center; border-bottom: 1px solid var(--gold); }
-        .logo-container img { height: 70px; width: auto; }
-        .back-nav { padding: 15px 0; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; text-align: center; }
-        .back-nav a { text-decoration: none; color: #888; }
+        /* --- IDENTIDAD VISUAL --- */
+        :root {
+            --oxford-blue: #152238; 
+            --leather-brown: #8B5E3C; 
+            --bone-cream: #F9F8F4; 
+            --white: #FFFFFF;
+            --border-color: #E6E4DC;
+        }
 
-        .container { width: 90%; max-width: 800px; margin: 40px auto; min-height: 60vh; }
-        .page-title { text-align: center; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 40px; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            background-color: var(--white); /* Fondo blanco para el área de contenido como en la imagen */
+            color: var(--oxford-blue);
+        }
 
-        /* Estilos del Carrito */
-        .cart-item {
+        /* --- HEADER DEL CARRITO --- */
+        .cart-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 0;
-            border-bottom: 1px solid #eee;
+            padding: 30px 5%;
+            border-bottom: 1px solid var(--border-color);
         }
-        .item-details h3 { font-size: 0.9rem; margin: 0; text-transform: uppercase; }
-        .item-details p { font-size: 0.8rem; color: var(--gold); margin: 5px 0 0; }
-        
-        .item-right { text-align: right; display: flex; align-items: center; gap: 20px; }
-        .item-price { font-weight: 600; }
-        
-        .btn-remove {
-            background: none;
-            border: none;
-            color: #ff4d4d;
-            cursor: pointer;
-            font-size: 0.7rem;
+
+        .cart-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            padding: 5px;
-        }
-        .btn-remove:hover { text-decoration: underline; }
-
-        .cart-total {
-            margin-top: 40px;
-            text-align: right;
-            font-size: 1.4rem;
-            font-weight: 600;
-            border-top: 2px solid var(--primary);
-            padding-top: 20px;
+            letter-spacing: 2px;
+            font-size: 1.1rem;
+            font-weight: 400;
         }
 
-        .actions {
-            margin-top: 40px;
+        .cart-title svg { width: 22px; fill: var(--oxford-blue); }
+
+        .close-cart {
+            text-decoration: none;
+            color: var(--oxford-blue);
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+        .close-cart:hover { color: var(--leather-brown); }
+
+        /* --- LISTA DE PRODUCTOS --- */
+        .cart-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 5%;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 180px 1fr auto;
+            gap: 30px;
+            padding: 30px 0;
+            border-bottom: 1px solid var(--border-color);
+            position: relative;
+        }
+
+        .item-image {
+            width: 180px;
+            aspect-ratio: 1 / 1.2; /* Proporción parecida a la imagen de referencia */
+            background-color: var(--bone-cream);
+            object-fit: cover;
+        }
+
+        .item-details {
             display: flex;
             flex-direction: column;
-            gap: 15px;
-            align-items: center;
+            gap: 8px;
         }
 
-        .btn-whatsapp {
-            background: #25d366;
-            color: white;
-            padding: 18px 40px;
-            text-decoration: none;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            width: 100%;
-            text-align: center;
-            border-radius: 4px;
+        .item-name {
+            font-size: 1rem;
+            font-weight: 400;
+            margin: 0 0 10px 0;
+            color: var(--oxford-blue);
         }
-        
-        .empty-msg { text-align: center; color: #ccc; margin-top: 50px; }
+
+        .item-meta {
+            font-size: 0.85rem;
+            color: #666;
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .item-sku {
+            font-size: 0.75rem;
+            color: #999;
+            text-transform: uppercase;
+            margin-top: 5px;
+        }
+
+        /* Selector de cantidad */
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--border-color);
+            width: fit-content;
+            margin-top: 15px;
+        }
+
+        .quantity-btn {
+            background: none;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-family: 'Montserrat';
+            color: var(--oxford-blue);
+            transition: 0.3s;
+        }
+        .quantity-btn:hover { color: var(--leather-brown); }
+
+        .quantity-value {
+            padding: 0 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Precio y eliminar */
+        .item-right {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .delete-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: #999;
+            transition: 0.3s;
+        }
+        .delete-btn:hover { color: #e74c3c; }
+        .delete-btn svg { width: 20px; fill: currentColor; }
+
+        .item-price {
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+        }
+
+        /* --- RESUMEN Y PAGO --- */
+        .cart-summary {
+            margin-top: 40px;
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 20px;
+        }
+
+        .total-line {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .btn-checkout {
+            background: var(--oxford-blue);
+            color: var(--white);
+            border: none;
+            padding: 20px 60px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.3s;
+            width: 100%;
+            max-width: 400px;
+        }
+        .btn-checkout:hover { background: var(--leather-brown); }
+
+        .empty-msg {
+            text-align: center;
+            padding: 100px 0;
+            font-weight: 300;
+            color: #888;
+        }
+
+        /* RESPONSIVO */
+        @media (max-width: 768px) {
+            .cart-item {
+                grid-template-columns: 120px 1fr;
+            }
+            .item-image { width: 120px; }
+            .item-right {
+                grid-column: 1 / -1;
+                flex-direction: row;
+                align-items: center;
+                border-top: 1px solid var(--bone-cream);
+                padding-top: 15px;
+            }
+            .delete-btn { position: absolute; top: 30px; right: 0; }
+        }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <a href="index.html"><img src="Logo Sir Colitas Oficial Final.jpg" alt="Sir Colitas"></a>
+    <div class="cart-header">
+        <div class="cart-title">
+            <svg viewBox="0 0 448 512"><path d="M160 112c0-35.3 28.7-64 64-64s64 28.7 64 64v48H160V112zm-48 48H48c-26.5 0-48 21.5-48 48V416c0 53 43 96 96 96H352c53 0 96-43 96-96V208c0-26.5-21.5-48-48-48H336V112z"/></svg>
+            TU SELECCIÓN ( <span id="cart-count">0</span> )
         </div>
-        <div class="back-nav"><a href="index.html">&larr; Seguir Comprando</a></div>
-    </header>
+        <a href="index.html" class="close-cart">✕</a>
+    </div>
 
-    <div class="container">
-        <h1 class="page-title">Tu Selección</h1>
-        
-        <div id="cart-content">
+    <div class="cart-container">
+        <div id="cart-items-list">
             </div>
 
         <div id="cart-footer" style="display: none;">
-            <div class="cart-total">Total: S/ <span id="total-amount">0.00</span></div>
-            <div class="actions">
-                <a href="#" onclick="enviarWhatsApp()" class="btn-whatsapp">Confirmar Pedido vía WhatsApp</a>
-                <a href="javascript:void(0)" onclick="vaciarTodo()" style="color: #888; font-size: 0.7rem; text-decoration: none; text-transform: uppercase;">Vaciar todo el carrito</a>
+            <div class="cart-summary">
+                <div class="total-line">
+                    TOTAL: <span id="cart-total">$ 0.00</span>
+                </div>
+                <button class="btn-checkout" onclick="processCheckout()">Tramitar Pedido</button>
             </div>
+        </div>
+
+        <div id="empty-cart-msg" class="empty-msg" style="display: none;">
+            Tu selección está vacía.
         </div>
     </div>
 
     <script>
         function renderCart() {
             const cart = JSON.parse(localStorage.getItem('sirColitasCart')) || [];
-            const container = document.getElementById('cart-content');
+            const container = document.getElementById('cart-items-list');
+            const countElem = document.getElementById('cart-count');
+            const totalElem = document.getElementById('cart-total');
             const footer = document.getElementById('cart-footer');
-            
+            const emptyMsg = document.getElementById('empty-cart-msg');
+
+            countElem.innerText = cart.length;
+
             if (cart.length === 0) {
-                container.innerHTML = '<p class="empty-msg">Tu carrito está vacío</p>';
+                container.innerHTML = '';
                 footer.style.display = 'none';
+                emptyMsg.style.display = 'block';
                 return;
             }
 
+            emptyMsg.style.display = 'none';
             footer.style.display = 'block';
             container.innerHTML = '';
+
             let total = 0;
 
             cart.forEach((item, index) => {
-                total += item.subtotal;
+                const itemTotal = item.price * (item.quantity || 1);
+                total += itemTotal;
+
                 container.innerHTML += `
                     <div class="cart-item">
+                        <img src="${item.image}" alt="${item.name}" class="item-image">
                         <div class="item-details">
-                            <h3>${item.qty}x ${item.name}</h3>
-                            <p>Talla: ${item.talla}</p>
+                            <h3 class="item-name">${item.name}</h3>
+                            <p class="item-meta">Color: ${item.color || 'Único'}</p>
+                            <p class="item-meta">Talla: ${item.size || 'N/A'}</p>
+                            <p class="item-sku">SKU: SC-${Math.random().toString(36).substr(2, 9).toUpperCase()}</p>
+                            
+                            <div class="quantity-selector">
+                                <button class="quantity-btn" onclick="updateQty(${index}, -1)">−</button>
+                                <span class="quantity-value">${item.quantity || 1}</span>
+                                <button class="quantity-btn" onclick="updateQty(${index}, 1)">+</button>
+                            </div>
                         </div>
                         <div class="item-right">
-                            <span class="item-price">S/ ${item.subtotal.toFixed(2)}</span>
-                            <button class="btn-remove" onclick="removeItem(${index})">Eliminar</button>
+                            <button class="delete-btn" onclick="removeItem(${index})" title="Eliminar">
+                                <svg viewBox="0 0 448 512"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
+                            </button>
+                            <div class="item-price">$ ${itemTotal.toFixed(2)}</div>
                         </div>
                     </div>
                 `;
             });
 
-            document.getElementById('total-amount').innerText = total.toFixed(2);
+            totalElem.innerText = `$ ${total.toFixed(2)}`;
+        }
+
+        function updateQty(index, change) {
+            let cart = JSON.parse(localStorage.getItem('sirColitasCart'));
+            cart[index].quantity = (cart[index].quantity || 1) + change;
+            if (cart[index].quantity < 1) cart[index].quantity = 1;
+            localStorage.setItem('sirColitasCart', JSON.stringify(cart));
+            renderCart();
         }
 
         function removeItem(index) {
-            let cart = JSON.parse(localStorage.getItem('sirColitasCart')) || [];
+            let cart = JSON.parse(localStorage.getItem('sirColitasCart'));
             cart.splice(index, 1);
             localStorage.setItem('sirColitasCart', JSON.stringify(cart));
             renderCart();
         }
 
-        function vaciarTodo() {
-            if(confirm('¿Deseas eliminar todos los productos?')) {
-                localStorage.removeItem('sirColitasCart');
-                renderCart();
-            }
+        function processCheckout() {
+            alert("Redirigiendo a la pasarela de pago segura...");
         }
 
-        function enviarWhatsApp() {
-            const cart = JSON.parse(localStorage.getItem('sirColitasCart')) || [];
-            let msg = "¡Hola Sir Colitas! 👋 Quisiera concretar este pedido:%0A%0A";
-            let total = 0;
-            cart.forEach(item => {
-                msg += `• ${item.qty}x ${item.name} (Talla ${item.talla}) - S/ ${item.subtotal.toFixed(2)}%0A`;
-                total += item.subtotal;
-            });
-            msg += `%0A*TOTAL: S/ ${total.toFixed(2)}*%0A%0A¿Tienen disponibilidad?`;
-            window.open(`https://wa.me/51961743825?text=${msg}`, '_blank');
-        }
-
-        window.onload = renderCart;
+        document.addEventListener('DOMContentLoaded', renderCart);
     </script>
 </body>
 </html>
