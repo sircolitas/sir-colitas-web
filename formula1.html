@@ -176,40 +176,47 @@
 </div>
 
 <script>
-    // Actualiza el precio visualmente al cambiar la talla
     function updatePrice(select) {
         const price = select.value;
         select.closest('.product-card').querySelector('.current-price').innerText = parseFloat(price).toFixed(2);
     }
 
-    // Función principal para añadir al carrito
-    function addToCart(name, image, btn) {
-        const card = btn.closest('.product-card');
+    function addToCart(productName, imageName, btnElement) {
+        // 1. Identificar la tarjeta del producto
+        const card = btnElement.closest('.product-card');
+        
+        // 2. Obtener elementos dentro de esa tarjeta
         const select = card.querySelector('.size-select');
+        const qtyInput = card.querySelector('.qty-input');
+        
+        // 3. Capturar valores
         const price = parseFloat(select.value);
-        const talla = select.options[select.selectedIndex].getAttribute('data-talla');
-        const quantity = parseInt(card.querySelector('.qty-input').value);
+        const quantity = parseInt(qtyInput.value);
+        
+        // TRUCO: Obtenemos el texto de la opción seleccionada (ej. "Talla 2 (S/ 55.00)")
+        // y lo cortamos para quedarnos solo con "Talla 2"
+        const sizeText = select.options[select.selectedIndex].text.split(' (')[0];
 
-        // Crear el objeto del producto con los nombres que espera carrito.html
+        // 4. Crear objeto unificado
         const product = {
-            name: name,
-            image: image,
+            name: productName,
+            image: imageName,
             price: price,
-            size: "Talla " + talla, // Aquí se guarda la talla correctamente
+            size: sizeText, 
             quantity: quantity,
-            color: "Escudería"
+            color: "Formula 1" // <--- AQUÍ ESTABA EL CAMBIO: Antes decía "Escudería"
         };
 
-        // Guardar en LocalStorage
+        // 5. Guardar en LocalStorage
         let cart = JSON.parse(localStorage.getItem('sirColitasCart')) || [];
         cart.push(product);
         localStorage.setItem('sirColitasCart', JSON.stringify(cart));
         
+        // 6. Feedback visual
         updateUI();
-        alert('¡' + name + ' añadido al carrito!');
+        alert('¡Agregado! ' + productName + ' (' + sizeText + ')');
     }
 
-    // Actualiza la barra inferior
     function updateUI() {
         const cart = JSON.parse(localStorage.getItem('sirColitasCart')) || [];
         const bar = document.getElementById('cart-bar');
