@@ -7,148 +7,86 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* --- IDENTIDAD VISUAL --- */
-        :root {
+        :root { 
             --oxford-blue: #152238; 
             --leather-brown: #8B5E3C; 
             --bone-cream: #F9F8F4; 
             --white: #FFFFFF;
             --border-color: #E6E4DC;
         }
+        body { font-family: 'Montserrat', sans-serif; margin: 0; background-color: var(--white); color: var(--oxford-blue); }
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            margin: 0;
-            background-color: var(--white);
-            color: var(--oxford-blue);
-        }
-
-        .cart-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 30px 5%;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .cart-title {
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            font-size: 1.1rem;
-            font-weight: 400;
-        }
-
+        /* HEADER */
+        .cart-header { display: flex; justify-content: space-between; align-items: center; padding: 30px 5%; border-bottom: 1px solid var(--border-color); }
+        .cart-title { display: flex; align-items: center; gap: 15px; text-transform: uppercase; letter-spacing: 2px; font-size: 1.1rem; }
         .cart-title svg { width: 22px; fill: var(--oxford-blue); }
-
+        
         .nav-buttons { display: flex; gap: 20px; align-items: center; }
+        .continue-shopping { text-decoration: none; color: var(--leather-brown); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+        .close-cart { text-decoration: none; color: var(--oxford-blue); font-size: 1.5rem; }
 
-        /* BOTÓN SEGUIR COMPRANDO */
-        .continue-shopping {
-            text-decoration: none;
-            color: var(--leather-brown);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-weight: 600;
-            transition: 0.3s;
-        }
-        .continue-shopping:hover { text-decoration: underline; }
+        /* CONTENEDOR PRINCIPAL */
+        .cart-container { max-width: 800px; margin: 0 auto; padding: 40px 5%; }
 
-        .close-cart {
-            text-decoration: none;
-            color: var(--oxford-blue);
-            font-size: 1.5rem;
+        /* LISTA DE ITEMS (DISEÑO SIN IMAGEN) */
+        .cart-item { 
+            display: grid; 
+            /* Ahora solo 2 columnas: Detalles (Izquierda) y Precio/Acciones (Derecha) */
+            grid-template-columns: 1fr auto; 
+            gap: 20px; 
+            padding: 25px 0; 
+            border-bottom: 1px solid var(--border-color); 
         }
 
-        .cart-container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 40px 5%;
-        }
-
-        .cart-item {
-            display: grid;
-            grid-template-columns: 180px 1fr auto;
-            gap: 30px;
-            padding: 30px 0;
-            border-bottom: 1px solid var(--border-color);
-            position: relative;
-        }
-
-        .item-image {
-            width: 180px;
-            aspect-ratio: 1 / 1.2;
-            background-color: var(--bone-cream);
-            object-fit: cover;
-            border-radius: 4px;
-        }
-
-        .item-details { display: flex; flex-direction: column; gap: 8px; }
-        .item-name { font-size: 1rem; font-weight: 400; margin: 0; }
-        .item-meta { font-size: 0.85rem; color: #666; font-weight: 300; margin: 0; }
-        .item-sku { font-size: 0.75rem; color: #999; text-transform: uppercase; }
-
-        .quantity-selector {
-            display: flex;
-            align-items: center;
-            border: 1px solid var(--border-color);
-            width: fit-content;
-            margin-top: 15px;
-        }
-
-        .quantity-btn {
-            background: none; border: none; padding: 10px 15px;
-            cursor: pointer; color: var(--oxford-blue);
-        }
-
-        .item-right {
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            align-items: flex-end;
-        }
-
-        .delete-btn { background: none; border: none; cursor: pointer; color: #999; }
-        .delete-btn:hover { color: #e74c3c; }
-        .delete-btn svg { width: 20px; fill: currentColor; }
-
-        /* MONEDA EN SOLES */
-        .item-price { font-size: 1.1rem; font-weight: 400; }
-
-        .cart-summary {
-            margin-top: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-            gap: 20px;
-        }
-
-        .total-line { font-size: 1.2rem; text-transform: uppercase; letter-spacing: 2px; }
-
-        .btn-checkout {
-            background: var(--oxford-blue);
-            color: var(--white);
-            border: none;
-            padding: 20px 60px;
+        .item-details { display: flex; flex-direction: column; gap: 5px; justify-content: center; }
+        
+        /* ESTILO NUEVO PARA LA MARCA */
+        .item-brand {
+            font-size: 0.7rem;
             text-transform: uppercase;
             letter-spacing: 2px;
+            color: var(--leather-brown); /* Café Artesanal */
             font-weight: 600;
-            cursor: pointer;
-            transition: 0.3s;
-            width: 100%;
-            max-width: 400px;
+            margin: 0 0 5px 0;
+        }
+
+        .item-name { font-size: 1.1rem; font-weight: 600; margin: 0; color: var(--oxford-blue); }
+        .item-meta { font-size: 0.85rem; color: #666; font-weight: 300; margin: 0; }
+        .item-sku { font-size: 0.75rem; color: #999; text-transform: uppercase; margin-top: 8px; }
+
+        /* CONTROLES CANTIDAD */
+        .quantity-selector { display: flex; align-items: center; border: 1px solid var(--border-color); width: fit-content; margin-top: 15px; }
+        .quantity-btn { background: none; border: none; padding: 8px 15px; cursor: pointer; color: var(--oxford-blue); transition: 0.3s; }
+        .quantity-btn:hover { background: var(--bone-cream); color: var(--leather-brown); }
+        .quantity-value { padding: 0 10px; font-size: 0.9rem; font-weight: 600; }
+
+        /* LADO DERECHO (PRECIO) */
+        .item-right { display: flex; flex-direction: column; justify-content: space-between; align-items: flex-end; }
+        
+        .delete-btn { background: none; border: none; cursor: pointer; color: #ccc; transition: 0.3s; margin-bottom: 10px; }
+        .delete-btn:hover { color: #e74c3c; }
+        .delete-btn svg { width: 16px; fill: currentColor; }
+        
+        .item-price { font-size: 1.2rem; font-weight: 400; color: var(--oxford-blue); letter-spacing: 1px; }
+
+        /* RESUMEN */
+        .cart-summary { margin-top: 40px; display: flex; flex-direction: column; align-items: flex-end; gap: 20px; padding-top: 20px; }
+        .total-line { font-size: 1.3rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+        
+        .btn-checkout { 
+            background: var(--oxford-blue); color: var(--white); border: none; padding: 20px 60px; 
+            text-transform: uppercase; letter-spacing: 2px; font-weight: 600; cursor: pointer; 
+            width: 100%; max-width: 350px; transition: 0.3s; 
         }
         .btn-checkout:hover { background: var(--leather-brown); }
 
         .empty-msg { text-align: center; padding: 100px 0; color: #888; }
+        .clear-cart { font-size: 0.7rem; color: #aaa; text-decoration: underline; cursor: pointer; border: none; background: none; margin-top: 10px; }
 
-        @media (max-width: 768px) {
-            .cart-item { grid-template-columns: 120px 1fr; }
-            .item-image { width: 120px; }
-            .item-right { grid-column: 1 / -1; flex-direction: row; padding-top: 15px; }
-            .delete-btn { position: absolute; top: 30px; right: 0; }
+        @media (max-width: 600px) {
+            .cart-item { grid-template-columns: 1fr; gap: 15px; }
+            .item-right { flex-direction: row; justify-content: space-between; align-items: center; border-top: 1px dashed #eee; padding-top: 15px; }
+            .item-price { font-weight: 600; }
         }
     </style>
 </head>
@@ -157,7 +95,7 @@
     <div class="cart-header">
         <div class="cart-title">
             <svg viewBox="0 0 448 512"><path d="M160 112c0-35.3 28.7-64 64-64s64 28.7 64 64v48H160V112zm-48 48H48c-26.5 0-48 21.5-48 48V416c0 53 43 96 96 96H352c53 0 96-43 96-96V208c0-26.5-21.5-48-48-48H336V112z"/></svg>
-            TU SELECCIÓN ( <span id="cart-count">0</span> )
+            TU PEDIDO ( <span id="cart-count">0</span> )
         </div>
         <div class="nav-buttons">
             <a href="index.html#colecciones" class="continue-shopping">Seguir Comprando</a>
@@ -170,22 +108,22 @@
 
         <div id="cart-footer" style="display: none;">
             <div class="cart-summary">
-                <div class="total-line">
-                    TOTAL: <span id="cart-total">S/ 0.00</span>
-                </div>
-                <button class="btn-checkout" onclick="processCheckout()">Tramitar Pedido</button>
+                <div class="total-line">TOTAL: <span id="cart-total">S/ 0.00</span></div>
+                <button class="btn-checkout" onclick="processCheckout()">Confirmar Pedido</button>
+                <button class="clear-cart" onclick="clearCart()">Vaciar cesta</button>
             </div>
         </div>
 
         <div id="empty-cart-msg" class="empty-msg" style="display: none;">
-            Tu selección está vacía. <br><br>
-            <a href="index.html#colecciones" class="continue-shopping">Ir a ver productos</a>
+            Tu bolsa está vacía. <br><br>
+            <a href="index.html#colecciones" class="continue-shopping">Explorar Colecciones</a>
         </div>
     </div>
 
     <script>
         function renderCart() {
             const cart = JSON.parse(localStorage.getItem('sirColitasCart')) || [];
+            
             const container = document.getElementById('cart-items-list');
             const countElem = document.getElementById('cart-count');
             const totalElem = document.getElementById('cart-total');
@@ -211,22 +149,18 @@
                 const itemTotal = item.price * (item.quantity || 1);
                 total += itemTotal;
 
-                // LOGICA DE IMAGEN ROBUSTA:
-                // Si la imagen es solo un nombre, intentamos cargarla directamente.
-                let imagePath = item.image; 
-
+                // Renderizado SIN IMAGEN
                 container.innerHTML += `
                     <div class="cart-item">
-                        <img src="${imagePath}" alt="${item.name}" class="item-image" 
-                             onerror="this.src='https://placehold.co/180x216/F9F8F4/152238?text=Imagen+No+Encontrada'">
-                        
                         <div class="item-details">
+                            <p class="item-brand">SIR COLITAS</p>
+                            
                             <h3 class="item-name">${item.name}</h3>
-                            <p class="item-meta">Color: ${item.color || 'Único'}</p>
                             
-                            <p class="item-meta"><strong>Talla: ${item.size || 'No seleccionada'}</strong></p>
+                            <p class="item-meta">Talla: <strong>${item.size || 'Estándar'}</strong></p>
+                            <p class="item-meta">Colección: ${item.color || 'Clásica'}</p>
                             
-                            <p class="item-sku">SKU: SC-${index + 100}</p>
+                            <p class="item-sku">REF: SC-${202600 + index}</p>
                             
                             <div class="quantity-selector">
                                 <button class="quantity-btn" onclick="updateQty(${index}, -1)">−</button>
@@ -234,8 +168,9 @@
                                 <button class="quantity-btn" onclick="updateQty(${index}, 1)">+</button>
                             </div>
                         </div>
+
                         <div class="item-right">
-                            <button class="delete-btn" onclick="removeItem(${index})" title="Eliminar">
+                            <button class="delete-btn" onclick="removeItem(${index})" title="Eliminar del pedido">
                                 <svg viewBox="0 0 448 512"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"/></svg>
                             </button>
                             <div class="item-price">S/ ${itemTotal.toFixed(2)}</div>
@@ -262,14 +197,23 @@
             renderCart();
         }
 
+        function clearCart() {
+            if(confirm('¿Estás seguro de vaciar la bolsa?')) {
+                localStorage.removeItem('sirColitasCart');
+                renderCart();
+            }
+        }
+
         function processCheckout() {
             const cart = JSON.parse(localStorage.getItem('sirColitasCart')) || [];
-            let mensaje = "Hola Sir Colitas, deseo tramitar este pedido:\n\n";
+            if(cart.length === 0) return;
+
+            let mensaje = "Hola Sir Colitas, me gustaría confirmar el siguiente pedido:\n\n";
             cart.forEach(item => {
-                mensaje += `- ${item.name} (Talla: ${item.size}, Cant: ${item.quantity}) - S/ ${(item.price * item.quantity).toFixed(2)}\n`;
+                mensaje += `▪ ${item.name} (${item.size})\n   Cant: ${item.quantity} | Subtotal: S/ ${(item.price * item.quantity).toFixed(2)}\n`;
             });
             const total = document.getElementById('cart-total').innerText;
-            mensaje += `\n*TOTAL: ${total}*`;
+            mensaje += `\n----------------\n*TOTAL A PAGAR: ${total}*`;
             
             const url = "https://wa.me/51961743825?text=" + encodeURIComponent(mensaje);
             window.open(url, '_blank');
