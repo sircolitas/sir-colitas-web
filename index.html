@@ -15,8 +15,10 @@
             --oxford-blue: #152238; 
             /* TOQUE HUMANO: Café Artesanal */
             --leather-brown: #8B5E3C; 
-            /* BASE: Crema / Hueso */
-            --bone-cream: #F9F8F4; 
+            
+            /* CAMBIO REALIZADO: Fondo ahora es BLANCO PURO para fusionarse con el logo */
+            --bone-cream: #FFFFFF; 
+            
             /* ACENTOS */
             --white: #FFFFFF;
             --border-color: #E6E4DC;
@@ -27,7 +29,7 @@
             margin: 0;
             padding: 0;
             color: var(--oxford-blue);
-            background-color: var(--bone-cream);
+            background-color: var(--bone-cream); /* Ahora es blanco */
             scroll-behavior: smooth;
         }
 
@@ -128,9 +130,7 @@
 
         /* --- HERO --- */
         .hero {
-            /* IMAGEN LOCAL 'Cuarto de perro.jpg' */
             background: linear-gradient(rgba(21, 34, 56, 0.4), rgba(21, 34, 56, 0.4)), url('Cuarto de perro.jpg');
-            
             background-size: cover; background-position: center;
             height: 450px; display: flex; align-items: center; justify-content: center;
             text-align: center; color: var(--bone-cream); padding: 0 20px;
@@ -165,22 +165,14 @@
         .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(21, 34, 56, 0.1); }
         .card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
         
-        /* --- STAMP CUADRADO Y TEXTO CORREGIDO --- */
+        /* STAMP CUADRADO */
         .stamp {
             position: absolute; top: 15px; left: 15px; width: 60px; height: 60px;
-            border-radius: 4px; /* Cuadrado con bordes suaves */
-            
-            /* FLEXBOX COLUMNA: Esto fuerza a que las palabras se pongan una sobre otra */
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center;
-            align-items: center;
-            gap: 2px; /* Espacio entre renglones */
-            
+            border-radius: 4px; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 2px;
             text-align: center; font-size: 7px; font-weight: bold; text-transform: uppercase;
             color: white; line-height: 1.2; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
-        /* ----------------------------------------- */
 
         .stamp-red { background: rgba(168, 50, 50, 0.95); }
         .stamp-brown { background: rgba(139, 94, 60, 0.95); }
@@ -206,21 +198,17 @@
         .whatsapp-float:hover { transform: scale(1.1); }
         .whatsapp-float svg { fill: white; width: 30px; }
 
-        /* RESPONSIVE */
         @media (max-width: 900px) {
             .nav-container { flex-direction: column; gap: 15px; padding-bottom: 10px; display: flex; }
             .nav-center { order: 1; margin-bottom: 5px; } 
             .nav-right { order: 2; width: 100%; flex-direction: column; gap: 15px; } 
             .nav-left { order: 3; width: 100%; justify-content: center; border-top: 1px solid var(--border-color); padding-top: 10px; } 
-
             .logo-main { height: 75px; } 
             .icon-group { border-left: none; padding-left: 0; justify-content: center; gap: 30px; }
             .menu-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
             .menu-link { font-size: 0.75rem; }
-
             .hero { height: 350px; }
             .hero h1 { font-size: 3.5rem; }
-            
             .search-dropdown { position: static; width: 100%; box-shadow: none; border: 1px solid var(--border-color); margin-top: 10px; }
             .gallery { grid-template-columns: 1fr; padding: 0 20px 60px; }
         }
