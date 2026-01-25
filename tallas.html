@@ -18,8 +18,8 @@
         body { 
             font-family: 'Montserrat', sans-serif; 
             margin: 0; 
-            background: var(--bone-cream); /* Fondo Crema */
-            color: var(--oxford-blue); /* Texto Azul Oxford */
+            background: var(--bone-cream);
+            color: var(--oxford-blue);
         }
         
         header { 
@@ -27,6 +27,20 @@
             text-align: center; 
             border-bottom: 1px solid var(--border-color); 
             background: var(--bone-cream);
+            position: relative;
+        }
+        
+        /* Selector de idioma flotante */
+        .lang-floater {
+            position: absolute;
+            top: 20px;
+            right: 5%;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+        .lang-select {
+            border: none; background: transparent; font-family: 'Montserrat'; 
+            color: var(--leather-brown); font-weight: 600; cursor: pointer; outline: none;
         }
         
         .logo-container img { height: 90px; width: auto; transition: 0.3s; }
@@ -81,7 +95,7 @@
             font-size: 1rem; 
             letter-spacing: 2px; 
             margin-top: 0; 
-            color: var(--leather-brown); /* Título en Café */
+            color: var(--leather-brown);
             border-bottom: 1px solid var(--border-color);
             padding-bottom: 15px;
             margin-bottom: 20px;
@@ -112,26 +126,33 @@
 <body>
 
     <header>
+        <div class="lang-floater">
+            <select id="lang-selector" class="lang-select" onchange="changeLanguage(this.value)">
+                <option value="es">ES</option>
+                <option value="en">EN</option>
+            </select>
+        </div>
+
         <div class="logo-container">
-            <a href="index.html"><img src="Logo color Azul oxford sin fondo 4.png" alt="Sir Colitas"></a>
+            <a href="index.html"><img src="Logo Sir Colitas Oficial Final.jpg" alt="Sir Colitas"></a>
         </div>
         <div class="back-nav">
-            <a href="index.html">&larr; Volver al Inicio</a>
+            <a href="index.html" data-i18n="back_home">&larr; Volver al Inicio</a>
         </div>
     </header>
 
     <div class="container">
-        <h1 class="page-title">Guía de Tallas</h1>
-        <p class="subtitle">Encuentra el ajuste perfecto para tu engreído</p>
+        <h1 class="page-title" data-i18n="page_title">Guía de Tallas</h1>
+        <p class="subtitle" data-i18n="subtitle">Encuentra el ajuste perfecto para tu engreído</p>
         
         <div class="table-container">
             <table>
                 <thead>
                     <tr>
-                        <th>Talla</th>
-                        <th>Cuello (cm)</th>
-                        <th>Pecho (cm)</th>
-                        <th>Espalda (cm)</th>
+                        <th data-i18n="th_size">Talla</th>
+                        <th data-i18n="th_neck">Cuello (cm)</th>
+                        <th data-i18n="th_chest">Pecho (cm)</th>
+                        <th data-i18n="th_back">Espalda (cm)</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -145,15 +166,70 @@
         </div>
 
         <div class="tips">
-            <h3>¿Cómo medir a tu mascota?</h3>
+            <h3 data-i18n="tips_title">¿Cómo medir a tu mascota?</h3>
             <ul>
-                <li><strong>Cuello:</strong> Mide la base del cuello donde descansaría el collar.</li>
-                <li><strong>Pecho:</strong> Mide la parte más ancha del torso (justo detrás de las patas delanteras).</li>
-                <li><strong>Espalda:</strong> Mide desde la base del cuello hasta donde comienza la cola.</li>
-                <li><strong>Nota:</strong> Si las medidas de tu mascota están entre dos tallas, te recomendamos elegir la <strong>más grande</strong> para su mayor comodidad.</li>
+                <li data-i18n="tip_neck"><strong>Cuello:</strong> Mide la base del cuello donde descansaría el collar.</li>
+                <li data-i18n="tip_chest"><strong>Pecho:</strong> Mide la parte más ancha del torso (justo detrás de las patas delanteras).</li>
+                <li data-i18n="tip_back"><strong>Espalda:</strong> Mide desde la base del cuello hasta donde comienza la cola.</li>
+                <li data-i18n="tip_note"><strong>Nota:</strong> Si las medidas de tu mascota están entre dos tallas, te recomendamos elegir la <strong>más grande</strong> para su mayor comodidad.</li>
             </ul>
         </div>
     </div>
 
+    <script>
+        // === DICCIONARIO DE IDIOMAS ===
+        const translations = {
+            'es': {
+                'back_home': '← Volver al Inicio',
+                'page_title': 'Guía de Tallas',
+                'subtitle': 'Encuentra el ajuste perfecto para tu engreído',
+                'th_size': 'Talla',
+                'th_neck': 'Cuello (cm)',
+                'th_chest': 'Pecho (cm)',
+                'th_back': 'Espalda (cm)',
+                'tips_title': '¿Cómo medir a tu mascota?',
+                'tip_neck': '<strong>Cuello:</strong> Mide la base del cuello donde descansaría el collar.',
+                'tip_chest': '<strong>Pecho:</strong> Mide la parte más ancha del torso (justo detrás de las patas delanteras).',
+                'tip_back': '<strong>Espalda:</strong> Mide desde la base del cuello hasta donde comienza la cola.',
+                'tip_note': '<strong>Nota:</strong> Si las medidas de tu mascota están entre dos tallas, te recomendamos elegir la <strong>más grande</strong> para su mayor comodidad.'
+            },
+            'en': {
+                'back_home': '← Back to Home',
+                'page_title': 'Size Guide',
+                'subtitle': 'Find the perfect fit for your beloved pet',
+                'th_size': 'Size',
+                'th_neck': 'Neck (cm)',
+                'th_chest': 'Chest (cm)',
+                'th_back': 'Back (cm)',
+                'tips_title': 'How to measure your pet?',
+                'tip_neck': '<strong>Neck:</strong> Measure the base of the neck where the collar would sit.',
+                'tip_chest': '<strong>Chest:</strong> Measure the widest part of the torso (just behind the front legs.',
+                'tip_back': '<strong>Back:</strong> Measure from the base of the neck to the start of the tail.',
+                'tip_note': '<strong>Note:</strong> If your pet\'s measurements fall between two sizes, we recommend choosing the <strong>larger</strong> one for greater comfort.'
+            }
+        };
+
+        // FUNCIÓN PARA CAMBIAR IDIOMA
+        function changeLanguage(lang) {
+            localStorage.setItem('sirColitasLang', lang);
+            
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    // Usamos innerHTML para respetar las etiquetas <strong>
+                    el.innerHTML = translations[lang][key];
+                }
+            });
+        }
+
+        // AL CARGAR: LEER IDIOMA
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('sirColitasLang') || 'es';
+            const selector = document.getElementById('lang-selector');
+            if(selector) selector.value = savedLang;
+
+            changeLanguage(savedLang);
+        });
+    </script>
 </body>
 </html>
