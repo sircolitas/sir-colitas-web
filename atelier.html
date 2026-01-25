@@ -15,7 +15,7 @@
             --border-color: #E6E4DC;
         }
 
-        body { font-family: 'Montserrat', sans-serif; margin: 0; padding-bottom: 120px; color: var(--oxford-blue); background: var(--bone-cream); }
+        body { font-family: 'Montserrat', sans-serif; margin: 0; padding-bottom: 50px; color: var(--oxford-blue); background: var(--bone-cream); }
         
         /* HEADER */
         header { 
@@ -45,50 +45,45 @@
         .back-nav a { text-decoration: none; color: #888; transition: 0.3s; }
         .back-nav a:hover { color: var(--leather-brown); }
 
-        .container { width: 90%; max-width: 1100px; margin: 40px auto; }
+        .container { width: 90%; max-width: 900px; margin: 40px auto; }
         .page-title { text-align: center; letter-spacing: 5px; margin-bottom: 10px; text-transform: uppercase; font-weight: 600; color: var(--oxford-blue); }
         .page-subtitle { text-align: center; margin-bottom: 50px; color: #666; font-weight: 300; font-size: 0.9rem; letter-spacing: 1px; }
 
-        /* GRID */
-        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+        /* GRID (Centrado para pocos productos) */
+        .products-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+            gap: 40px; 
+            justify-content: center;
+        }
         
         .product-card { 
-            border: 1px solid var(--border-color); padding: 25px; background: var(--white); 
+            border: 1px solid var(--border-color); padding: 30px; background: var(--white); 
             transition: 0.3s; box-shadow: 0 4px 15px rgba(21, 34, 56, 0.05); text-align: center;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(21, 34, 56, 0.1); }
-        .product-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; margin-bottom: 20px; background: var(--bone-cream); }
-        .product-card h3 { text-transform: uppercase; font-size: 1rem; letter-spacing: 1px; margin-bottom: 20px; }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(21, 34, 56, 0.1); }
+        .product-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; margin-bottom: 25px; background: var(--bone-cream); }
+        .product-card h3 { text-transform: uppercase; font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 15px; color: var(--oxford-blue); }
 
-        .controls { margin: 20px 0; display: flex; flex-direction: column; gap: 10px; text-align: left; }
-        label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; color: var(--leather-brown); letter-spacing: 1px; }
-        
-        select, input { 
-            padding: 12px; border: 1px solid var(--border-color); font-family: 'Montserrat'; 
-            outline: none; background: var(--bone-cream); color: var(--oxford-blue); width: 100%; box-sizing: border-box;
+        /* MENSAJE DE COTIZACIÓN */
+        .quote-msg {
+            font-size: 0.85rem;
+            color: #777;
+            font-style: italic;
+            margin: 10px 0 25px;
+            line-height: 1.5;
+            min-height: 40px; /* Para alinear botones */
         }
-
-        .price-display { font-size: 1.5rem; color: var(--oxford-blue); font-weight: 600; margin: 20px 0; }
         
-        .btn-add { 
-            background: var(--oxford-blue); color: white; border: none; padding: 18px; 
+        /* BOTÓN COTIZAR */
+        .btn-quote { 
+            background: var(--leather-brown); color: white; border: none; padding: 18px; 
             cursor: pointer; text-transform: uppercase; font-weight: 600; width: 100%; 
-            letter-spacing: 2px; transition: 0.3s;
+            letter-spacing: 2px; transition: 0.3s; text-decoration: none; display: block;
+            box-sizing: border-box;
         }
-        .btn-add:hover { background: var(--leather-brown); }
-        
-        .size-link { display: block; margin-top: 15px; font-size: 0.7rem; color: #888; text-decoration: underline; }
-
-        /* BARRA FLOTANTE */
-        .cart-bar { 
-            position: fixed; bottom: 0; left: 0; width: 100%; background: var(--oxford-blue); 
-            color: var(--bone-cream); padding: 20px; display: none; justify-content: space-around; 
-            align-items: center; z-index: 1000; box-shadow: 0 -5px 25px rgba(0,0,0,0.2); 
-        }
-        .btn-go-cart { 
-            background: var(--leather-brown); color: white; padding: 12px 30px; 
-            text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem;
-        }
+        .btn-quote:hover { background: var(--oxford-blue); }
     </style>
 </head>
 <body>
@@ -117,70 +112,29 @@
             <img src="Smoking1.jpg" alt="Smoking" onerror="this.src='https://placehold.co/400x400/152238/F9F8F4/png?text=SMOKING'">
             <h3 data-i18n="prod_smoking">Smoking de Gala</h3>
             
-            <div class="controls">
-                <label data-i18n="choose_size">Elegir Talla:</label>
-                <select class="size-select" onchange="updatePrice(this)">
-                    <option value="80.00">Talla S (S/ 80.00)</option>
-                    <option value="90.00">Talla M (S/ 90.00)</option>
-                    <option value="100.00">Talla L (S/ 100.00)</option>
-                    <option value="120.00">A Medida (S/ 120.00)</option>
-                </select>
-                
-                <label data-i18n="quantity">Cantidad:</label>
-                <input type="number" class="qty-input" value="1" min="1">
-            </div>
+            <p class="quote-msg" data-i18n="quote_text">
+                Pieza de alta costura confeccionada exclusivamente a las medidas de tu mascota.
+            </p>
 
-            <div class="price-display">S/ <span class="current-price">80.00</span></div>
-            <button class="btn-add" data-i18n="add_btn" onclick="addToCart('Smoking de Gala', 'Smoking1.jpg', this)">Añadir al pedido</button>
-            <a href="tallas.html" target="_blank" class="size-link" data-i18n="size_guide">Ver Guía de Tallas</a>
+            <a href="#" class="btn-quote" onclick="contactQuote('Smoking de Gala')" data-i18n="btn_quote">
+                Cotizar Diseño
+            </a>
         </div>
 
         <div class="product-card">
             <img src="https://placehold.co/400x400/152238/F9F8F4/png?text=VESTIDO" alt="Vestido de Noche">
             <h3 data-i18n="prod_dress">Vestido de Noche</h3>
             
-            <div class="controls">
-                <label data-i18n="choose_size">Elegir Talla:</label>
-                <select class="size-select" onchange="updatePrice(this)">
-                    <option value="75.00">Talla S (S/ 75.00)</option>
-                    <option value="85.00">Talla M (S/ 85.00)</option>
-                    <option value="95.00">Talla L (S/ 95.00)</option>
-                </select>
-                
-                <label data-i18n="quantity">Cantidad:</label>
-                <input type="number" class="qty-input" value="1" min="1">
-            </div>
+            <p class="quote-msg" data-i18n="quote_text">
+                Pieza de alta costura confeccionada exclusivamente a las medidas de tu mascota.
+            </p>
 
-            <div class="price-display">S/ <span class="current-price">75.00</span></div>
-            <button class="btn-add" data-i18n="add_btn" onclick="addToCart('Vestido de Noche', 'https://placehold.co/400x400/152238/F9F8F4/png?text=VESTIDO', this)">Añadir al pedido</button>
+            <a href="#" class="btn-quote" onclick="contactQuote('Vestido de Noche')" data-i18n="btn_quote">
+                Cotizar Diseño
+            </a>
         </div>
 
-        <div class="product-card">
-            <img src="https://placehold.co/400x400/152238/F9F8F4/png?text=FRAC" alt="Frac">
-            <h3 data-i18n="prod_tailcoat">Frac Ceremonia</h3>
-            
-            <div class="controls">
-                <label data-i18n="choose_size">Elegir Talla:</label>
-                <select class="size-select" onchange="updatePrice(this)">
-                    <option value="110.00">Talla S (S/ 110.00)</option>
-                    <option value="120.00">Talla M (S/ 120.00)</option>
-                    <option value="130.00">Talla L (S/ 130.00)</option>
-                </select>
-                
-                <label data-i18n="quantity">Cantidad:</label>
-                <input type="number" class="qty-input" value="1" min="1">
-            </div>
-
-            <div class="price-display">S/ <span class="current-price">110.00</span></div>
-            <button class="btn-add" data-i18n="add_btn" onclick="addToCart('Frac Ceremonia', 'https://placehold.co/400x400/152238/F9F8F4/png?text=FRAC', this)">Añadir al pedido</button>
         </div>
-
-    </div>
-</div>
-
-<div id="cart-bar" class="cart-bar">
-    <div><span data-i18n="cart_text">Productos en selección:</span> <span id="cart-count">0</span></div>
-    <a href="carrito.html" class="btn-go-cart" data-i18n="go_cart">Ir al Carrito</a>
 </div>
 
 <script>
@@ -192,16 +146,8 @@
             'page_subtitle': 'Lujo accesible diseñado a medida exacta',
             'prod_smoking': 'Smoking de Gala',
             'prod_dress': 'Vestido de Noche',
-            'prod_tailcoat': 'Frac Ceremonia',
-            'choose_size': 'Elegir Talla:',
-            'quantity': 'Cantidad:',
-            'add_btn': 'Añadir al pedido',
-            'size_guide': 'Ver Guía de Tallas',
-            'cart_text': 'Productos en selección:',
-            'go_cart': 'Ir al Carrito',
-            'alert_added': '¡Agregado!',
-            'size_prefix': 'Talla',
-            'size_custom': 'A Medida'
+            'quote_text': 'Pieza de alta costura confeccionada exclusivamente a las medidas de tu mascota.',
+            'btn_quote': 'Cotizar Diseño'
         },
         'en': {
             'back_home': '← Back to Home',
@@ -209,16 +155,8 @@
             'page_subtitle': 'Accessible luxury designed to exact measure',
             'prod_smoking': 'Gala Tuxedo',
             'prod_dress': 'Evening Dress',
-            'prod_tailcoat': 'Ceremony Tailcoat',
-            'choose_size': 'Choose Size:',
-            'quantity': 'Quantity:',
-            'add_btn': 'Add to Order',
-            'size_guide': 'View Size Guide',
-            'cart_text': 'Items in selection:',
-            'go_cart': 'Go to Cart',
-            'alert_added': 'Added!',
-            'size_prefix': 'Size',
-            'size_custom': 'Custom Fit'
+            'quote_text': 'Haute couture piece tailored exclusively to your pet\'s measurements.',
+            'btn_quote': 'Request Quote'
         }
     };
 
@@ -230,93 +168,37 @@
             const key = el.getAttribute('data-i18n');
             if (translations[lang][key]) el.innerText = translations[lang][key];
         });
-
-        // TRADUCCIÓN SELECTORES
-        const selects = document.querySelectorAll('.size-select');
-        selects.forEach(select => {
-            const prefix = translations[lang]['size_prefix'];
-            const custom = translations[lang]['size_custom'];
-            for (let i = 0; i < select.options.length; i++) {
-                let text = select.options[i].text;
-                if(text.includes('Talla')) text = text.replace('Talla', prefix);
-                else if(text.includes('Size')) text = text.replace('Size', prefix);
-                
-                // Caso especial: "A Medida"
-                if(text.includes('A Medida') || text.includes('Custom Fit')) {
-                    // Mantenemos el precio entre paréntesis
-                    const pricePart = text.match(/\(.*\)/)[0];
-                    select.options[i].text = custom + " " + pricePart;
-                } else {
-                    select.options[i].text = text;
-                }
-            }
-        });
     }
 
-    // --- LÓGICA DE CARRITO ---
-    function updatePrice(select) {
-        const price = select.value;
-        select.closest('.product-card').querySelector('.current-price').innerText = parseFloat(price).toFixed(2);
-    }
-
-    function addToCart(productName, imageName, btnElement) {
-        const card = btnElement.closest('.product-card');
-        const select = card.querySelector('.size-select');
-        const qtyInput = card.querySelector('.qty-input');
-        
-        const price = parseFloat(select.value);
-        const quantity = parseInt(qtyInput.value);
-        const sizeText = select.options[select.selectedIndex].text.split(' (')[0];
-        
+    // FUNCIÓN PARA CONTACTAR POR WHATSAPP DIRECTAMENTE
+    function contactQuote(productName) {
         const lang = localStorage.getItem('sirColitasLang') || 'es';
-
-        // Intentamos traducir el nombre del producto para el carrito si está en inglés
-        // (Esto es opcional, pero ayuda a la coherencia)
+        
+        // Traducimos el nombre del producto si está en inglés para el mensaje
         let finalName = productName;
         if(lang === 'en') {
-             // Búsqueda inversa simple o manual
              if(productName === 'Smoking de Gala') finalName = 'Gala Tuxedo';
              if(productName === 'Vestido de Noche') finalName = 'Evening Dress';
-             if(productName === 'Frac Ceremonia') finalName = 'Ceremony Tailcoat';
         }
 
-        const product = {
-            name: finalName,
-            image: imageName,
-            price: price,
-            size: sizeText, 
-            quantity: quantity,
-            color: "Línea Atelier"
-        };
-
-        let cart = JSON.parse(localStorage.getItem('sirColitasCart')) || [];
-        cart.push(product);
-        localStorage.setItem('sirColitasCart', JSON.stringify(cart));
-        
-        updateUI();
-        alert(translations[lang]['alert_added'] + ' ' + finalName);
-    }
-
-    function updateUI() {
-        const cart = JSON.parse(localStorage.getItem('sirColitasCart')) || [];
-        const bar = document.getElementById('cart-bar');
-        const count = document.getElementById('cart-count');
-        
-        if(cart.length > 0) {
-            bar.style.display = 'flex';
-            count.innerText = cart.length;
+        let message = "";
+        if(lang === 'es') {
+            message = `Hola Sir Colitas, estoy interesado en cotizar una pieza de la Línea Atelier: *${finalName}* a medida.`;
         } else {
-            bar.style.display = 'none';
+            message = `Hello Sir Colitas, I am interested in quoting a bespoke piece from the Atelier Line: *${finalName}*.`;
         }
+
+        const url = "https://wa.me/51961743825?text=" + encodeURIComponent(message);
+        window.open(url, '_blank');
     }
 
+    // AL CARGAR
     document.addEventListener('DOMContentLoaded', () => {
         const savedLang = localStorage.getItem('sirColitasLang') || 'es';
         const selector = document.getElementById('lang-selector');
         if(selector) selector.value = savedLang;
 
         changeLanguage(savedLang);
-        updateUI();
     });
 </script>
 </body>
