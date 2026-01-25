@@ -128,7 +128,7 @@
 
         /* --- HERO --- */
         .hero {
-            /* IMAGEN LOCAL 'Cuarto de perro.jpg' CON FILTRO AZUL OXFORD SUAVE */
+            /* IMAGEN LOCAL 'Cuarto de perro.jpg' */
             background: linear-gradient(rgba(21, 34, 56, 0.4), rgba(21, 34, 56, 0.4)), url('Cuarto de perro.jpg');
             
             background-size: cover; background-position: center;
@@ -165,14 +165,20 @@
         .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(21, 34, 56, 0.1); }
         .card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
         
-        /* --- MODIFICACIÓN AQUÍ: STAMP CUADRADO --- */
+        /* --- STAMP CUADRADO Y TEXTO CORREGIDO --- */
         .stamp {
             position: absolute; top: 15px; left: 15px; width: 60px; height: 60px;
-            /* Se cambió 50% por 4px para hacerlo cuadrado con bordes suaves */
-            border-radius: 4px; 
-            display: flex; align-items: center; justify-content: center;
+            border-radius: 4px; /* Cuadrado con bordes suaves */
+            
+            /* FLEXBOX COLUMNA: Esto fuerza a que las palabras se pongan una sobre otra */
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+            gap: 2px; /* Espacio entre renglones */
+            
             text-align: center; font-size: 7px; font-weight: bold; text-transform: uppercase;
-            color: white; line-height: 1.1; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            color: white; line-height: 1.2; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
         /* ----------------------------------------- */
 
@@ -288,7 +294,10 @@
     <section class="gallery">
         <a href="formula1.html" style="text-decoration:none">
             <div class="card">
-                <div class="stamp stamp-red"><span data-i18n="special_ed">Edición</span><br><span data-i18n="special">Especial</span></div>
+                <div class="stamp stamp-red">
+                    <span data-i18n="special_ed">Edición</span>
+                    <span data-i18n="special">Especial</span>
+                </div>
                 <img src="Polera Ferrari.png" alt="F1">
                 <div class="card-info">
                     <h3 data-i18n="col_f1">Colección Formula 1</h3>
@@ -298,7 +307,10 @@
         </a>
         <a href="alba.html" style="text-decoration:none">
             <div class="card">
-                <div class="stamp stamp-brown"><span data-i18n="summer">Verano</span><br>2026</div>
+                <div class="stamp stamp-brown">
+                    <span data-i18n="summer">Verano</span>
+                    <span>2026</span>
+                </div>
                 <img src="bandana.jpg" alt="Alba">
                 <div class="card-info">
                     <h3 data-i18n="col_alba">Colección Alba</h3>
@@ -308,7 +320,10 @@
         </a>
         <a href="atelier.html" style="text-decoration:none">
             <div class="card">
-                <div class="stamp stamp-navy"><span data-i18n="service">Servicio</span><br><span data-i18n="exclusive">Exclusivo</span></div>
+                <div class="stamp stamp-navy">
+                    <span data-i18n="service">Servicio</span>
+                    <span data-i18n="exclusive">Exclusivo</span>
+                </div>
                 <img src="Smoking1.jpg" alt="Atelier">
                 <div class="card-info">
                     <h3 data-i18n="col_atelier">Línea Atelier</h3>
