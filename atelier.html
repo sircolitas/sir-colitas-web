@@ -4,116 +4,320 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Línea Atelier - Sir Colitas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Oranienbaum&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #0A192F; --gold: #C5A059; --light: #F9F9F9; --white: #FFFFFF; }
-        body { font-family: 'Montserrat', sans-serif; margin: 0; background: var(--white); color: var(--primary); }
+        /* --- IDENTIDAD VISUAL --- */
+        :root { 
+            --oxford-blue: #152238; 
+            --leather-brown: #8B5E3C; 
+            --bone-cream: #F9F8F4; 
+            --white: #FFFFFF;
+            --border-color: #E6E4DC;
+        }
+
+        body { font-family: 'Montserrat', sans-serif; margin: 0; padding-bottom: 120px; color: var(--oxford-blue); background: var(--bone-cream); }
         
-        /* Header Boutique */
-        header { padding: 30px 0; text-align: center; border-bottom: 1px solid var(--gold); }
-        .logo-container img { height: 70px; width: auto; }
-        .back-nav { padding: 15px 0; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; text-align: center; }
+        /* HEADER */
+        header { 
+            padding: 20px 0; 
+            text-align: center; 
+            border-bottom: 1px solid var(--border-color); 
+            background: var(--white); 
+            position: relative; 
+        }
+        header img { height: 80px; transition: 0.3s; }
+        header img:hover { transform: scale(1.05); }
+
+        /* SELECTOR DE IDIOMA */
+        .lang-floater {
+            position: absolute;
+            top: 20px;
+            right: 5%;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+        }
+        .lang-select {
+            border: none; background: transparent; font-family: 'Montserrat'; 
+            color: var(--leather-brown); font-weight: 600; cursor: pointer; outline: none;
+        }
+
+        .back-nav { padding: 15px; text-align: center; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; }
         .back-nav a { text-decoration: none; color: #888; transition: 0.3s; }
-        .back-nav a:hover { color: var(--gold); }
+        .back-nav a:hover { color: var(--leather-brown); }
 
-        .container { width: 90%; max-width: 1200px; margin: 40px auto; }
-        .page-title { text-align: center; text-transform: uppercase; letter-spacing: 4px; color: var(--primary); margin-bottom: 10px; }
-        .subtitle { text-align: center; font-style: italic; color: #777; margin-bottom: 50px; font-weight: 300; }
+        .container { width: 90%; max-width: 1100px; margin: 40px auto; }
+        .page-title { text-align: center; letter-spacing: 5px; margin-bottom: 10px; text-transform: uppercase; font-weight: 600; color: var(--oxford-blue); }
+        .page-subtitle { text-align: center; margin-bottom: 50px; color: #666; font-weight: 300; font-size: 0.9rem; letter-spacing: 1px; }
 
-        /* Grid de Atelier */
-        .products-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 40px; 
-        }
-        .product-card { text-align: left; position: relative; border: 1px solid #f0f0f0; padding-bottom: 20px; }
-        .product-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; background: var(--light); }
+        /* GRID */
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
         
-        .product-info { padding: 20px; }
-        .product-info h3 { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px; margin: 0; color: var(--primary); }
-        .product-tag { font-size: 0.7rem; color: var(--gold); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; display: block; }
-        .product-price { color: var(--gold); font-weight: 600; margin-top: 10px; font-size: 0.9rem; }
+        .product-card { 
+            border: 1px solid var(--border-color); padding: 25px; background: var(--white); 
+            transition: 0.3s; box-shadow: 0 4px 15px rgba(21, 34, 56, 0.05); text-align: center;
+        }
+        .product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(21, 34, 56, 0.1); }
+        .product-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; margin-bottom: 20px; background: var(--bone-cream); }
+        .product-card h3 { text-transform: uppercase; font-size: 1rem; letter-spacing: 1px; margin-bottom: 20px; }
+
+        .controls { margin: 20px 0; display: flex; flex-direction: column; gap: 10px; text-align: left; }
+        label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; color: var(--leather-brown); letter-spacing: 1px; }
         
-        .buy-link, .size-guide-link { 
-            display: inline-block; 
-            margin-top: 15px; 
-            font-size: 0.7rem; 
-            font-weight: 600; 
-            text-transform: uppercase; 
-            letter-spacing: 1px; 
-            color: var(--primary); 
-            text-decoration: none; 
-            border-bottom: 1px solid var(--gold); 
-            padding-bottom: 2px; 
-            margin-right: 15px;
-        }
-        .size-guide-link {
-            color: #666;
-            border-bottom: 1px dashed #bbb;
-        }
-        .size-guide-link:hover {
-            color: var(--gold);
-            border-bottom-style: solid;
+        select, input { 
+            padding: 12px; border: 1px solid var(--border-color); font-family: 'Montserrat'; 
+            outline: none; background: var(--bone-cream); color: var(--oxford-blue); width: 100%; box-sizing: border-box;
         }
 
-        .atelier-footer {
-            margin-top: 60px;
-            text-align: center;
-            background: var(--light);
-            padding: 40px;
-            border-top: 1px solid #eee;
+        .price-display { font-size: 1.5rem; color: var(--oxford-blue); font-weight: 600; margin: 20px 0; }
+        
+        .btn-add { 
+            background: var(--oxford-blue); color: white; border: none; padding: 18px; 
+            cursor: pointer; text-transform: uppercase; font-weight: 600; width: 100%; 
+            letter-spacing: 2px; transition: 0.3s;
+        }
+        .btn-add:hover { background: var(--leather-brown); }
+        
+        .size-link { display: block; margin-top: 15px; font-size: 0.7rem; color: #888; text-decoration: underline; }
+
+        /* BARRA FLOTANTE */
+        .cart-bar { 
+            position: fixed; bottom: 0; left: 0; width: 100%; background: var(--oxford-blue); 
+            color: var(--bone-cream); padding: 20px; display: none; justify-content: space-around; 
+            align-items: center; z-index: 1000; box-shadow: 0 -5px 25px rgba(0,0,0,0.2); 
+        }
+        .btn-go-cart { 
+            background: var(--leather-brown); color: white; padding: 12px 30px; 
+            text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="logo-container">
-            <a href="index.html"><img src="Logo Sir Colitas Oficial Final.jpg" alt="Sir Colitas"></a>
-        </div>
-        <div class="back-nav">
-            <a href="index.html">&larr; Volver a Colecciones</a>
-        </div>
-    </header>
-
-    <div class="container">
-        <h1 class="page-title">Línea Atelier</h1>
-        <p class="subtitle">Alta Costura Canina - Confección exclusiva a medida exacta</p>
-        
-        <div class="products-grid">
-            
-            <div class="product-card">
-                <img src="Smoking1.jpg" alt="Sastrería de Gala Atelier">
-                <div class="product-info">
-                    <span class="product-tag">Pieza de Gala</span>
-                    <h3>Sastrería Clásica Atelier</h3>
-                    <div class="product-price">Consultar Cotización</div>
-                    <a href="https://wa.me/51961743825?text=Hola,%20me%20interesa%20una%20pieza%20de%20Sastreria%20Atelier" class="buy-link">Cotizar</a>
-                    <a href="tallas.html" class="size-guide-link" target="_blank">Ver Tallas</a>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://placehold.co/500x500/0A192F/FFFFFF/png?text=ROYAL+VELVET" alt="Esmoquin Royal Velvet">
-                <div class="product-info">
-                    <span class="product-tag">Edición Terciopelo</span>
-                    <h3>Esmoquin "Royal Velvet"</h3>
-                    <div class="product-price">Consultar Cotización</div>
-                    <a href="https://wa.me/51961743825?text=Hola,%20me%20interesa%20el%20Esmoquin%20Royal%20Velvet" class="buy-link">Cotizar</a>
-                    <a href="tallas.html" class="size-guide-link" target="_blank">Ver Tallas</a>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="atelier-footer">
-            <h2 style="font-family: 'Oranienbaum', serif; font-style: italic; font-size: 1.5rem;">Lujo al alcance de tu mano</h2>
-            <p style="font-size: 0.85rem; max-width: 600px; margin: 20px auto; color: #555;">
-                Nuestras piezas Atelier requieren una cita virtual para toma de medidas y elección de textiles exclusivos. Cada detalle es trabajado a mano por nuestros maestros sastres.
-            </p>
-            <a href="https://wa.me/51961743825?text=Hola,%20quisiera%20agendar%20una%20cita%20para%20la%20linea%20Atelier" class="buy-link" style="border: 1px solid var(--gold); padding: 10px 20px; border-radius: 2px;">Agendar Cita de Medidas</a>
-        </div>
+<header>
+    <div class="lang-floater">
+        <select id="lang-selector" class="lang-select" onchange="changeLanguage(this.value)">
+            <option value="es">ES</option>
+            <option value="en">EN</option>
+        </select>
     </div>
 
+    <a href="index.html"><img src="Logo Sir Colitas Oficial Final.jpg" alt="Sir Colitas"></a>
+    <div class="back-nav">
+        <a href="index.html" data-i18n="back_home">&larr; Volver al Inicio</a>
+    </div>
+</header>
+
+<div class="container">
+    <h1 class="page-title" data-i18n="page_title">Línea Atelier</h1>
+    <p class="page-subtitle" data-i18n="page_subtitle">Lujo accesible diseñado a medida exacta</p>
+    
+    <div class="products-grid">
+        
+        <div class="product-card">
+            <img src="Smoking1.jpg" alt="Smoking" onerror="this.src='https://placehold.co/400x400/152238/F9F8F4/png?text=SMOKING'">
+            <h3 data-i18n="prod_smoking">Smoking de Gala</h3>
+            
+            <div class="controls">
+                <label data-i18n="choose_size">Elegir Talla:</label>
+                <select class="size-select" onchange="updatePrice(this)">
+                    <option value="80.00">Talla S (S/ 80.00)</option>
+                    <option value="90.00">Talla M (S/ 90.00)</option>
+                    <option value="100.00">Talla L (S/ 100.00)</option>
+                    <option value="120.00">A Medida (S/ 120.00)</option>
+                </select>
+                
+                <label data-i18n="quantity">Cantidad:</label>
+                <input type="number" class="qty-input" value="1" min="1">
+            </div>
+
+            <div class="price-display">S/ <span class="current-price">80.00</span></div>
+            <button class="btn-add" data-i18n="add_btn" onclick="addToCart('Smoking de Gala', 'Smoking1.jpg', this)">Añadir al pedido</button>
+            <a href="tallas.html" target="_blank" class="size-link" data-i18n="size_guide">Ver Guía de Tallas</a>
+        </div>
+
+        <div class="product-card">
+            <img src="https://placehold.co/400x400/152238/F9F8F4/png?text=VESTIDO" alt="Vestido de Noche">
+            <h3 data-i18n="prod_dress">Vestido de Noche</h3>
+            
+            <div class="controls">
+                <label data-i18n="choose_size">Elegir Talla:</label>
+                <select class="size-select" onchange="updatePrice(this)">
+                    <option value="75.00">Talla S (S/ 75.00)</option>
+                    <option value="85.00">Talla M (S/ 85.00)</option>
+                    <option value="95.00">Talla L (S/ 95.00)</option>
+                </select>
+                
+                <label data-i18n="quantity">Cantidad:</label>
+                <input type="number" class="qty-input" value="1" min="1">
+            </div>
+
+            <div class="price-display">S/ <span class="current-price">75.00</span></div>
+            <button class="btn-add" data-i18n="add_btn" onclick="addToCart('Vestido de Noche', 'https://placehold.co/400x400/152238/F9F8F4/png?text=VESTIDO', this)">Añadir al pedido</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://placehold.co/400x400/152238/F9F8F4/png?text=FRAC" alt="Frac">
+            <h3 data-i18n="prod_tailcoat">Frac Ceremonia</h3>
+            
+            <div class="controls">
+                <label data-i18n="choose_size">Elegir Talla:</label>
+                <select class="size-select" onchange="updatePrice(this)">
+                    <option value="110.00">Talla S (S/ 110.00)</option>
+                    <option value="120.00">Talla M (S/ 120.00)</option>
+                    <option value="130.00">Talla L (S/ 130.00)</option>
+                </select>
+                
+                <label data-i18n="quantity">Cantidad:</label>
+                <input type="number" class="qty-input" value="1" min="1">
+            </div>
+
+            <div class="price-display">S/ <span class="current-price">110.00</span></div>
+            <button class="btn-add" data-i18n="add_btn" onclick="addToCart('Frac Ceremonia', 'https://placehold.co/400x400/152238/F9F8F4/png?text=FRAC', this)">Añadir al pedido</button>
+        </div>
+
+    </div>
+</div>
+
+<div id="cart-bar" class="cart-bar">
+    <div><span data-i18n="cart_text">Productos en selección:</span> <span id="cart-count">0</span></div>
+    <a href="carrito.html" class="btn-go-cart" data-i18n="go_cart">Ir al Carrito</a>
+</div>
+
+<script>
+    // === DICCIONARIO DE IDIOMAS (ATELIER) ===
+    const translations = {
+        'es': {
+            'back_home': '← Volver al Inicio',
+            'page_title': 'Línea Atelier',
+            'page_subtitle': 'Lujo accesible diseñado a medida exacta',
+            'prod_smoking': 'Smoking de Gala',
+            'prod_dress': 'Vestido de Noche',
+            'prod_tailcoat': 'Frac Ceremonia',
+            'choose_size': 'Elegir Talla:',
+            'quantity': 'Cantidad:',
+            'add_btn': 'Añadir al pedido',
+            'size_guide': 'Ver Guía de Tallas',
+            'cart_text': 'Productos en selección:',
+            'go_cart': 'Ir al Carrito',
+            'alert_added': '¡Agregado!',
+            'size_prefix': 'Talla',
+            'size_custom': 'A Medida'
+        },
+        'en': {
+            'back_home': '← Back to Home',
+            'page_title': 'Atelier Line',
+            'page_subtitle': 'Accessible luxury designed to exact measure',
+            'prod_smoking': 'Gala Tuxedo',
+            'prod_dress': 'Evening Dress',
+            'prod_tailcoat': 'Ceremony Tailcoat',
+            'choose_size': 'Choose Size:',
+            'quantity': 'Quantity:',
+            'add_btn': 'Add to Order',
+            'size_guide': 'View Size Guide',
+            'cart_text': 'Items in selection:',
+            'go_cart': 'Go to Cart',
+            'alert_added': 'Added!',
+            'size_prefix': 'Size',
+            'size_custom': 'Custom Fit'
+        }
+    };
+
+    // FUNCIÓN PARA CAMBIAR IDIOMA
+    function changeLanguage(lang) {
+        localStorage.setItem('sirColitasLang', lang);
+        
+        document.querySelectorAll('[data-i18n]').forEach(el => {
+            const key = el.getAttribute('data-i18n');
+            if (translations[lang][key]) el.innerText = translations[lang][key];
+        });
+
+        // TRADUCCIÓN SELECTORES
+        const selects = document.querySelectorAll('.size-select');
+        selects.forEach(select => {
+            const prefix = translations[lang]['size_prefix'];
+            const custom = translations[lang]['size_custom'];
+            for (let i = 0; i < select.options.length; i++) {
+                let text = select.options[i].text;
+                if(text.includes('Talla')) text = text.replace('Talla', prefix);
+                else if(text.includes('Size')) text = text.replace('Size', prefix);
+                
+                // Caso especial: "A Medida"
+                if(text.includes('A Medida') || text.includes('Custom Fit')) {
+                    // Mantenemos el precio entre paréntesis
+                    const pricePart = text.match(/\(.*\)/)[0];
+                    select.options[i].text = custom + " " + pricePart;
+                } else {
+                    select.options[i].text = text;
+                }
+            }
+        });
+    }
+
+    // --- LÓGICA DE CARRITO ---
+    function updatePrice(select) {
+        const price = select.value;
+        select.closest('.product-card').querySelector('.current-price').innerText = parseFloat(price).toFixed(2);
+    }
+
+    function addToCart(productName, imageName, btnElement) {
+        const card = btnElement.closest('.product-card');
+        const select = card.querySelector('.size-select');
+        const qtyInput = card.querySelector('.qty-input');
+        
+        const price = parseFloat(select.value);
+        const quantity = parseInt(qtyInput.value);
+        const sizeText = select.options[select.selectedIndex].text.split(' (')[0];
+        
+        const lang = localStorage.getItem('sirColitasLang') || 'es';
+
+        // Intentamos traducir el nombre del producto para el carrito si está en inglés
+        // (Esto es opcional, pero ayuda a la coherencia)
+        let finalName = productName;
+        if(lang === 'en') {
+             // Búsqueda inversa simple o manual
+             if(productName === 'Smoking de Gala') finalName = 'Gala Tuxedo';
+             if(productName === 'Vestido de Noche') finalName = 'Evening Dress';
+             if(productName === 'Frac Ceremonia') finalName = 'Ceremony Tailcoat';
+        }
+
+        const product = {
+            name: finalName,
+            image: imageName,
+            price: price,
+            size: sizeText, 
+            quantity: quantity,
+            color: "Línea Atelier"
+        };
+
+        let cart = JSON.parse(localStorage.getItem('sirColitasCart')) || [];
+        cart.push(product);
+        localStorage.setItem('sirColitasCart', JSON.stringify(cart));
+        
+        updateUI();
+        alert(translations[lang]['alert_added'] + ' ' + finalName);
+    }
+
+    function updateUI() {
+        const cart = JSON.parse(localStorage.getItem('sirColitasCart')) || [];
+        const bar = document.getElementById('cart-bar');
+        const count = document.getElementById('cart-count');
+        
+        if(cart.length > 0) {
+            bar.style.display = 'flex';
+            count.innerText = cart.length;
+        } else {
+            bar.style.display = 'none';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        const savedLang = localStorage.getItem('sirColitasLang') || 'es';
+        const selector = document.getElementById('lang-selector');
+        if(selector) selector.value = savedLang;
+
+        changeLanguage(savedLang);
+        updateUI();
+    });
+</script>
 </body>
 </html>
