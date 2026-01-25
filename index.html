@@ -165,12 +165,17 @@
         .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(21, 34, 56, 0.1); }
         .card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; display: block; }
         
+        /* --- MODIFICACIÓN AQUÍ: STAMP CUADRADO --- */
         .stamp {
             position: absolute; top: 15px; left: 15px; width: 60px; height: 60px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            /* Se cambió 50% por 4px para hacerlo cuadrado con bordes suaves */
+            border-radius: 4px; 
+            display: flex; align-items: center; justify-content: center;
             text-align: center; font-size: 7px; font-weight: bold; text-transform: uppercase;
             color: white; line-height: 1.1; z-index: 2; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
+        /* ----------------------------------------- */
+
         .stamp-red { background: rgba(168, 50, 50, 0.95); }
         .stamp-brown { background: rgba(139, 94, 60, 0.95); }
         .stamp-navy { background: rgba(21, 34, 56, 0.95); }
@@ -236,7 +241,7 @@
 
             <div class="nav-center">
                 <a href="index.html">
-                    <img src="Logo color Azul oxford sin fondo 4.png" class="logo-main" alt="Sir Colitas">
+                    <img src="Logo Sir Colitas Oficial Final.jpg" class="logo-main" alt="Sir Colitas">
                 </a>
             </div>
 
