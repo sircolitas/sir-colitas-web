@@ -155,6 +155,30 @@
             <button class="btn-add" data-i18n="add_btn" onclick="addToCart('Polera Red Bull', 'https://placehold.co/400x400/152238/F9F8F4/png?text=RED+BULL', this)">Añadir al pedido</button>
             <a href="tallas.html" target="_blank" class="size-link" data-i18n="size_guide">Ver Guía de Tallas</a>
         </div>
+
+        <div class="product-card">
+            <img src="Polera McLaren.png" alt="Polera McLaren">
+            <h3 data-i18n="prod_mclaren">Polera Escudería McLaren</h3>
+            
+            <div class="controls">
+                <label data-i18n="choose_size">Elegir Talla:</label>
+                <select class="size-select" onchange="updatePrice(this)">
+                    <option value="45.00">Talla 0 (S/ 45.00)</option>
+                    <option value="45.00">Talla 1 (S/ 45.00)</option>
+                    <option value="55.00">Talla 2 (S/ 55.00)</option>
+                    <option value="69.00">Talla 3 (S/ 69.00)</option>
+                    <option value="69.00">Talla 4 (S/ 69.00)</option>
+                </select>
+                
+                <label data-i18n="quantity">Cantidad:</label>
+                <input type="number" class="qty-input" value="1" min="1">
+            </div>
+
+            <div class="price-display">S/ <span class="current-price">45.00</span></div>
+            
+            <button class="btn-add" data-i18n="add_btn" onclick="addToCart('Polera McLaren', 'Polera McLaren.png', this)">Añadir al pedido</button>
+            <a href="tallas.html" target="_blank" class="size-link" data-i18n="size_guide">Ver Guía de Tallas</a>
+        </div>
     </div>
 </div>
 
@@ -171,6 +195,7 @@
             'page_title': 'Colección Formula 1',
             'prod_ferrari': 'Polera Escudería Ferrari',
             'prod_redbull': 'Polera Escudería Red Bull',
+            'prod_mclaren': 'Polera Escudería McLaren', // Agregado
             'choose_size': 'Elegir Talla:',
             'quantity': 'Cantidad:',
             'add_btn': 'Añadir al pedido',
@@ -185,6 +210,7 @@
             'page_title': 'Formula 1 Collection',
             'prod_ferrari': 'Ferrari Team Hoodie',
             'prod_redbull': 'Red Bull Team Hoodie',
+            'prod_mclaren': 'McLaren Team Hoodie', // Agregado
             'choose_size': 'Choose Size:',
             'quantity': 'Quantity:',
             'add_btn': 'Add to Order',
