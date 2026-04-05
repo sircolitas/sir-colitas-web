@@ -43,8 +43,18 @@
             color: var(--leather-brown); font-weight: 600; cursor: pointer; outline: none;
         }
         
-        .logo-container img { height: 90px; width: auto; transition: 0.3s; }
-        .logo-container img:hover { transform: scale(1.05); }
+        .logo-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem; /* Lo hice un poquitito más grande aquí para que destaque bien al centro */
+            color: var(--oxford-blue);
+            margin: 0;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .logo-text:hover {
+            transform: scale(1.02);
+            color: var(--leather-brown);
+        }
 
         .back-nav { padding: 15px 0; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; text-align: center; }
         .back-nav a { text-decoration: none; color: #888; transition: 0.3s; }
@@ -134,7 +144,9 @@
         </div>
 
         <div class="logo-container">
-            <a href="index.html"><img src="Logo color Azul oxford sin fondo 4.png" alt="Sir Colitas"></a>
+            <a href="index.html" class="logo-text" style="text-decoration: none;">
+                Sir Colitas
+            </a>
         </div>
         <div class="back-nav">
             <a href="index.html" data-i18n="back_home">&larr; Volver al Inicio</a>
