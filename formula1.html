@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formula 1 - Sir Colitas</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         /* --- IDENTIDAD VISUAL --- */
         :root { 
@@ -25,7 +25,18 @@
             background: var(--white); 
             position: relative; /* Para posicionar el idioma */
         }
-        header img { height: 80px; transition: 0.3s; }
+        .logo-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem; 
+            color: var(--oxford-blue);
+            margin: 0;
+            transition: 0.3s;
+            display: inline-block;
+        }
+        .logo-text:hover {
+            transform: scale(1.02);
+            color: var(--leather-brown);
+        }
         
         /* Selector de idioma flotante en la esquina */
         .lang-floater {
@@ -98,7 +109,9 @@
         </select>
     </div>
 
-    <a href="index.html"><img src="Logo color Azul oxford sin fondo 4.png" alt="Sir Colitas"></a>
+    <a href="index.html" class="logo-text" style="text-decoration: none;">
+        Sir Colitas
+    </a>
     <div class="back-nav">
         <a href="index.html" data-i18n="back_home">&larr; Volver al Inicio</a>
     </div>
