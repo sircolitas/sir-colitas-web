@@ -25,8 +25,24 @@ function changeLanguage(lang) {
 }
 
 function updatePrice(select) {
-    const price = select.value;
-    select.closest('.product-card').querySelector('.current-price').innerText = parseFloat(price).toFixed(2);
+    const card = select.closest('.product-card');
+    const originalPrice = parseFloat(select.value);
+    const discount = parseFloat(card.dataset.discount || 0);
+    const active = card.dataset.active === 'SI';
+
+    const originalWrap = card.querySelector('.price-original');
+    const originalValue = card.querySelector('.original-price-value');
+    const currentEl = card.querySelector('.current-price');
+
+    if (active && discount > 0) {
+        const finalPrice = originalPrice * (1 - discount / 100);
+        if (originalWrap) originalWrap.style.display = 'inline';
+        if (originalValue) originalValue.innerText = originalPrice.toFixed(2);
+        currentEl.innerText = finalPrice.toFixed(2);
+    } else {
+        if (originalWrap) originalWrap.style.display = 'none';
+        currentEl.innerText = originalPrice.toFixed(2);
+    }
 }
 
 function addToCart(productName, imageName, btnElement, collectionName) {
