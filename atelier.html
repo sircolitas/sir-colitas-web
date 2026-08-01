@@ -5,91 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Línea Atelier - Sir Colitas</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
     <style>
-        /* --- IDENTIDAD VISUAL --- */
-        :root { 
-            --oxford-blue: #152238; 
-            --leather-brown: #8B5E3C; 
-            --bone-cream: #FFFFF0; 
-            --white: #FFFFFF;
-            --border-color: #E6E4DC;
-        }
+        /* Ajustes propios de la página Atelier */
+        body { padding-bottom: 50px; }
 
-        body { font-family: 'Montserrat', sans-serif; margin: 0; padding-bottom: 50px; color: var(--oxford-blue); background: var(--bone-cream); }
-        
-        /* HEADER */
-        header { 
-            padding: 20px 0; 
-            text-align: center; 
-            border-bottom: 1px solid var(--border-color); 
-            background: var(--white); 
-            position: relative; 
-        }
-        .logo-text {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3rem; 
-            color: var(--oxford-blue);
-            margin: 0;
-            transition: 0.3s;
-            display: inline-block;
-        }
-        .logo-text:hover {
-            transform: scale(1.02);
-            color: var(--leather-brown);
-        }
+        .products-grid { justify-content: center; }
 
-        /* SELECTOR DE IDIOMA */
-        .lang-floater {
-            position: absolute;
-            top: 20px;
-            right: 5%;
-            font-size: 0.7rem;
-            text-transform: uppercase;
+        .product-card {
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
-        .lang-select {
-            border: none; background: transparent; font-family: 'Montserrat'; 
-            color: var(--leather-brown); font-weight: 600; cursor: pointer; outline: none;
-        }
+        .product-card:hover { box-shadow: 0 10px 30px rgba(21, 34, 56, 0.1); }
+        .product-card img { margin-bottom: 25px; }
+        .product-card h3 { font-size: 1.1rem; letter-spacing: 2px; color: var(--oxford-blue); }
 
-        .back-nav { padding: 15px; text-align: center; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; }
-        .back-nav a { text-decoration: none; color: #888; transition: 0.3s; }
-        .back-nav a:hover { color: var(--leather-brown); }
-
-        .container { width: 90%; max-width: 1100px; margin: 40px auto; }
-        .page-title { text-align: center; letter-spacing: 5px; margin-bottom: 10px; text-transform: uppercase; font-weight: 600; color: var(--oxford-blue); }
-        .page-subtitle { text-align: center; margin-bottom: 50px; color: #666; font-weight: 300; font-size: 0.9rem; letter-spacing: 1px; }
-
-        /* GRID */
-        .products-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-            gap: 40px; 
-            justify-content: center;
-        }
-        
-        .product-card { 
-            border: 1px solid var(--border-color); padding: 30px; background: var(--white); 
-            transition: 0.3s; box-shadow: 0 4px 15px rgba(21, 34, 56, 0.05); text-align: center;
-            display: flex; flex-direction: column; justify-content: space-between;
-        }
-        .product-card:hover { transform: translateY(-5px); box-shadow: 0 10px 30px rgba(21, 34, 56, 0.1); }
-        .product-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; margin-bottom: 25px; background: var(--bone-cream); }
-        .product-card h3 { text-transform: uppercase; font-size: 1.1rem; letter-spacing: 2px; margin-bottom: 15px; color: var(--oxford-blue); }
-
-        /* MENSAJE DE COTIZACIÓN */
         .quote-msg {
             font-size: 0.85rem;
             color: #777;
             font-style: italic;
             margin: 10px 0 25px;
             line-height: 1.5;
-            min-height: 40px; 
+            min-height: 40px;
         }
-        
-        /* BOTÓN COTIZAR */
-        .btn-quote { 
-            background: var(--leather-brown); color: white; border: none; padding: 18px; 
-            cursor: pointer; text-transform: uppercase; font-weight: 600; width: 100%; 
+
+        .btn-quote {
+            background: var(--leather-brown); color: white; border: none; padding: 18px;
+            cursor: pointer; text-transform: uppercase; font-weight: 600; width: 100%;
             letter-spacing: 2px; transition: 0.3s; text-decoration: none; display: block;
             box-sizing: border-box;
         }
@@ -117,9 +61,9 @@
 <div class="container">
     <h1 class="page-title" data-i18n="page_title">Línea Atelier</h1>
     <p class="page-subtitle" data-i18n="page_subtitle">Lujo accesible diseñado a medida exacta</p>
-    
+
     <div class="products-grid">
-        
+
         <div class="product-card">
             <img src="Smoking1.jpg" alt="Smoking" onerror="this.src='https://placehold.co/400x400/152238/F9F8F4/png?text=SMOKING'">
             <h3 data-i18n="prod_smoking">Smoking de Gala</h3>
@@ -156,8 +100,8 @@
     </div>
 </div>
 
+<script src="carrito.js"></script>
 <script>
-    // === DICCIONARIO DE IDIOMAS (ATELIER) ===
     const translations = {
         'es': {
             'back_home': '← Volver al Inicio',
@@ -183,30 +127,18 @@
         }
     };
 
-    // FUNCIÓN PARA CAMBIAR IDIOMA
-    function changeLanguage(lang) {
-        localStorage.setItem('sirColitasLang', lang);
-        
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-            const key = el.getAttribute('data-i18n');
-            if (translations[lang][key]) el.innerText = translations[lang][key];
-        });
-    }
-
-    // FUNCIÓN PARA CONTACTAR POR WHATSAPP DIRECTAMENTE
     function contactQuote(productName) {
         const lang = localStorage.getItem('sirColitasLang') || 'es';
-        
-        // Traducimos el nombre del producto si está en inglés para el mensaje
+
         let finalName = productName;
-        if(lang === 'en') {
-             if(productName === 'Smoking de Gala') finalName = 'Gala Tuxedo';
-             if(productName === 'Vestido de Noche') finalName = 'Evening Dress';
-             if(productName === 'Diseño Personalizado') finalName = 'Custom Design';
+        if (lang === 'en') {
+            if (productName === 'Smoking de Gala') finalName = 'Gala Tuxedo';
+            if (productName === 'Vestido de Noche') finalName = 'Evening Dress';
+            if (productName === 'Diseño Personalizado') finalName = 'Custom Design';
         }
 
         let message = "";
-        if(lang === 'es') {
+        if (lang === 'es') {
             message = `Hola Sir Colitas, estoy interesado en cotizar una pieza de la Línea Atelier: *${finalName}* a medida.`;
         } else {
             message = `Hello Sir Colitas, I am interested in quoting a bespoke piece from the Atelier Line: *${finalName}*.`;
@@ -215,15 +147,6 @@
         const url = "https://wa.me/51961743825?text=" + encodeURIComponent(message);
         window.open(url, '_blank');
     }
-
-    // AL CARGAR
-    document.addEventListener('DOMContentLoaded', () => {
-        const savedLang = localStorage.getItem('sirColitasLang') || 'es';
-        const selector = document.getElementById('lang-selector');
-        if(selector) selector.value = savedLang;
-
-        changeLanguage(savedLang);
-    });
 </script>
 </body>
 </html>
