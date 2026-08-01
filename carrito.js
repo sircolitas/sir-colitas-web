@@ -26,19 +26,19 @@ function changeLanguage(lang) {
 
 function updatePrice(select) {
     const card = select.closest('.product-card');
+    const selectedOption = select.options[select.selectedIndex];
     const originalPrice = parseFloat(select.value);
-    const discount = parseFloat(card.dataset.discount || 0);
-    const active = card.dataset.active === 'SI';
+    const promoPrice = parseFloat(selectedOption.dataset.promo);
+    const active = card.dataset.active === 'SI' && !isNaN(promoPrice) && promoPrice > 0;
 
     const originalWrap = card.querySelector('.price-original');
     const originalValue = card.querySelector('.original-price-value');
     const currentEl = card.querySelector('.current-price');
 
-    if (active && discount > 0) {
-        const finalPrice = originalPrice * (1 - discount / 100);
+    if (active) {
         if (originalWrap) originalWrap.style.display = 'inline';
         if (originalValue) originalValue.innerText = originalPrice.toFixed(2);
-        currentEl.innerText = finalPrice.toFixed(2);
+        currentEl.innerText = promoPrice.toFixed(2);
     } else {
         if (originalWrap) originalWrap.style.display = 'none';
         currentEl.innerText = originalPrice.toFixed(2);
@@ -50,10 +50,11 @@ function addToCart(productName, imageName, btnElement, collectionName) {
     const select = card.querySelector('.size-select');
     const qtyInput = card.querySelector('.qty-input');
 
+    const selectedOption = select.options[select.selectedIndex];
     const originalPrice = parseFloat(select.value);
-    const discount = parseFloat(card.dataset.discount || 0);
-    const active = card.dataset.active === 'SI';
-    const price = active && discount > 0 ? +(originalPrice * (1 - discount / 100)).toFixed(2) : originalPrice;
+    const promoPrice = parseFloat(selectedOption.dataset.promo);
+    const active = card.dataset.active === 'SI' && !isNaN(promoPrice) && promoPrice > 0;
+    const price = active ? promoPrice : originalPrice;
     const quantity = parseInt(qtyInput.value);
     const sizeText = select.options[select.selectedIndex].text.split(' (')[0];
     const lang = localStorage.getItem('sirColitasLang') || 'es';
