@@ -29,88 +29,8 @@
     <h1 class="page-title" data-i18n="page_title">Colección Alba</h1>
     <p class="page-subtitle" data-i18n="page_subtitle">Frescura y accesorios</p>
 
-    <div class="products-grid">
-
-        <div class="product-card">
-            <img src="bandana.jpg" alt="Bandana Alba" onerror="this.src='https://placehold.co/400x400/152238/F9F8F4/png?text=BANDANA'">
-            <h3 data-i18n="prod_bandana">Bandana Alba</h3>
-
-            <div class="controls">
-                <label data-i18n="choose_size">Elegir Talla:</label>
-                <select class="size-select" onchange="updatePrice(this)">
-                    <option value="35.00">Talla S (S/ 35.00)</option>
-                    <option value="35.00">Talla M (S/ 35.00)</option>
-                    <option value="35.00">Talla L (S/ 35.00)</option>
-                </select>
-
-                <label data-i18n="quantity">Cantidad:</label>
-                <input type="number" class="qty-input" value="1" min="1">
-            </div>
-
-            <div class="price-display">S/ <span class="current-price">35.00</span></div>
-            <button class="btn-add" data-i18n="add_btn" onclick="addToCart('Bandana Alba', 'bandana.jpg', this, 'Colección Alba')">Añadir al pedido</button>
-            <a href="tallas.html" target="_blank" class="size-link" data-i18n="size_guide">Ver Guía de Tallas</a>
-        </div>
-
-        <div class="product-card">
-            <img src="Imagen Match 3.jpeg" alt="Match 1 Alba">
-            <h3 data-i18n="prod_pajarita">Match 1 Alba</h3>
-
-            <div class="controls">
-                <label data-i18n="choose_size">Elegir Talla:</label>
-                <select class="size-select" onchange="updatePrice(this)">
-                    <option value="28.00">Única (S/ 28.00)</option>
-                </select>
-
-                <label data-i18n="quantity">Cantidad:</label>
-                <input type="number" class="qty-input" value="1" min="1">
-            </div>
-
-            <div class="price-display">S/ <span class="current-price">28.00</span></div>
-            <button class="btn-add" data-i18n="add_btn" onclick="addToCart('Match 1 Alba', 'https://placehold.co/400x400/152238/F9F8F4/png?text=PAJARITA', this, 'Colección Alba')">Añadir al pedido</button>
-        </div>
-
-        <div class="product-card">
-            <img src="Imagen Match 4.jpeg" alt="Match 2 Alba">
-            <h3 data-i18n="prod_collar">Match 2 Alba</h3>
-
-            <div class="controls">
-                <label data-i18n="choose_size">Elegir Talla:</label>
-                <select class="size-select" onchange="updatePrice(this)">
-                    <option value="35.00">Talla S (S/ 35.00)</option>
-                    <option value="35.00">Talla M (S/ 35.00)</option>
-                    <option value="35.00">Talla L (S/ 35.00)</option>
-                </select>
-
-                <label data-i18n="quantity">Cantidad:</label>
-                <input type="number" class="qty-input" value="1" min="1">
-            </div>
-
-            <div class="price-display">S/ <span class="current-price">35.00</span></div>
-            <button class="btn-add" data-i18n="add_btn" onclick="addToCart('Match 2 Alba', 'https://placehold.co/400x400/152238/F9F8F4/png?text=COLLAR', this, 'Colección Alba')">Añadir al pedido</button>
-        </div>
-
-        <div class="product-card">
-            <img src="https://placehold.co/400x400/152238/F9F8F4/png?text=PECHERA" alt="Match 3 Alba">
-            <h3 data-i18n="prod_pechera">Match 3 Alba</h3>
-
-            <div class="controls">
-                <label data-i18n="choose_size">Elegir Talla:</label>
-                <select class="size-select" onchange="updatePrice(this)">
-                    <option value="45.00">Talla S (S/ 45.00)</option>
-                    <option value="45.00">Talla M (S/ 45.00)</option>
-                    <option value="45.00">Talla L (S/ 45.00)</option>
-                </select>
-
-                <label data-i18n="quantity">Cantidad:</label>
-                <input type="number" class="qty-input" value="1" min="1">
-            </div>
-
-            <div class="price-display">S/ <span class="current-price">45.00</span></div>
-            <button class="btn-add" data-i18n="add_btn" onclick="addToCart('Match 3 Alba', 'https://placehold.co/400x400/152238/F9F8F4/png?text=PECHERA', this, 'Colección Alba')">Añadir al pedido</button>
-            <a href="tallas.html" target="_blank" class="size-link" data-i18n="size_guide">Ver Guía de Tallas</a>
-        </div>
-
+    <div id="products-container" class="products-grid">
+        <p style="text-align:center; color:#888; grid-column: 1/-1;">Cargando productos...</p>
     </div>
 </div>
 
@@ -120,16 +40,13 @@
 </div>
 
 <script src="carrito.js"></script>
+<script src="catalogo.js"></script>
 <script>
     const translations = {
         'es': {
             'back_home': '← Volver al Inicio',
             'page_title': 'Colección Alba',
             'page_subtitle': 'Frescura y accesorios de autor',
-            'prod_bandana': 'Bandana Alba',
-            'prod_pajarita': 'Match 1 Alba',
-            'prod_collar': 'Match 2 Alba',
-            'prod_pechera': 'Match 3 Alba',
             'choose_size': 'Elegir Talla:',
             'quantity': 'Cantidad:',
             'add_btn': 'Añadir al pedido',
@@ -143,10 +60,6 @@
             'back_home': '← Back to Home',
             'page_title': 'Alba Collection',
             'page_subtitle': 'Freshness and signature accessories',
-            'prod_bandana': 'Alba Signature',
-            'prod_pajarita': 'Match 1 Alba',
-            'prod_collar': 'Match 2 Alba',
-            'prod_pechera': 'Match 3 Alba',
             'choose_size': 'Choose Size:',
             'quantity': 'Quantity:',
             'add_btn': 'Add to Order',
@@ -157,6 +70,10 @@
             'size_prefix': 'Size'
         }
     };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        loadCatalog('alba', 'Colección Alba');
+    });
 </script>
 </body>
 </html>
