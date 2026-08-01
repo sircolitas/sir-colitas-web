@@ -1,0 +1,102 @@
+/* ============================================
+   ESTILOS COMPARTIDOS - SIR COLITAS
+   Identidad visual "Old Money" + componentes de producto
+   ============================================ */
+
+:root {
+    --oxford-blue: #152238;
+    --leather-brown: #8B5E3C;
+    --bone-cream: #FFFFF0;
+    --white: #FFFFFF;
+    --border-color: #E6E4DC;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+    padding-bottom: 120px;
+    color: var(--oxford-blue);
+    background: var(--bone-cream);
+}
+
+/* HEADER CON SELECTOR DE IDIOMA */
+header {
+    padding: 20px 0;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+    background: var(--white);
+    position: relative;
+}
+.logo-text {
+    font-family: 'Great Vibes', cursive;
+    font-size: 3rem;
+    color: var(--oxford-blue);
+    margin: 0;
+    transition: 0.3s;
+    display: inline-block;
+}
+.logo-text:hover {
+    transform: scale(1.02);
+    color: var(--leather-brown);
+}
+
+.lang-floater {
+    position: absolute;
+    top: 20px;
+    right: 5%;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+}
+.lang-select {
+    border: none; background: transparent; font-family: 'Montserrat';
+    color: var(--leather-brown); font-weight: 600; cursor: pointer; outline: none;
+}
+
+.back-nav { padding: 15px; text-align: center; font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; }
+.back-nav a { text-decoration: none; color: #888; transition: 0.3s; }
+.back-nav a:hover { color: var(--leather-brown); }
+
+.container { width: 90%; max-width: 1100px; margin: 40px auto; }
+.page-title { text-align: center; letter-spacing: 5px; margin-bottom: 10px; text-transform: uppercase; font-weight: 600; color: var(--oxford-blue); }
+.page-subtitle { text-align: center; margin-bottom: 50px; color: #666; font-weight: 300; font-size: 0.9rem; letter-spacing: 1px; }
+
+/* GRID DE PRODUCTOS */
+.products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
+
+.product-card {
+    border: 1px solid var(--border-color); padding: 25px; background: var(--white);
+    transition: 0.3s; box-shadow: 0 4px 15px rgba(21, 34, 56, 0.05); text-align: center;
+}
+.product-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(21, 34, 56, 0.1); }
+.product-card img { width: 100%; aspect-ratio: 1/1; object-fit: cover; margin-bottom: 20px; background: var(--bone-cream); }
+.product-card h3 { text-transform: uppercase; font-size: 1rem; letter-spacing: 1px; margin-bottom: 20px; }
+
+.controls { margin: 20px 0; display: flex; flex-direction: column; gap: 10px; text-align: left; }
+label { font-size: 0.7rem; font-weight: 600; text-transform: uppercase; color: var(--leather-brown); letter-spacing: 1px; }
+
+select, input {
+    padding: 12px; border: 1px solid var(--border-color); font-family: 'Montserrat';
+    outline: none; background: var(--bone-cream); color: var(--oxford-blue); width: 100%; box-sizing: border-box;
+}
+
+.price-display { font-size: 1.5rem; color: var(--oxford-blue); font-weight: 600; margin: 20px 0; }
+
+.btn-add {
+    background: var(--oxford-blue); color: white; border: none; padding: 18px;
+    cursor: pointer; text-transform: uppercase; font-weight: 600; width: 100%;
+    letter-spacing: 2px; transition: 0.3s;
+}
+.btn-add:hover { background: var(--leather-brown); }
+
+.size-link { display: block; margin-top: 15px; font-size: 0.7rem; color: #888; text-decoration: underline; }
+
+/* BARRA FLOTANTE DEL CARRITO */
+.cart-bar {
+    position: fixed; bottom: 0; left: 0; width: 100%; background: var(--oxford-blue);
+    color: var(--bone-cream); padding: 20px; display: none; justify-content: space-around;
+    align-items: center; z-index: 1000; box-shadow: 0 -5px 25px rgba(0,0,0,0.2);
+}
+.btn-go-cart {
+    background: var(--leather-brown); color: white; padding: 12px 30px;
+    text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem;
+}
