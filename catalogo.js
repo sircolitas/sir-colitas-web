@@ -55,15 +55,19 @@ function groupProducts(rows, collectionId) {
                 id: id,
                 nombre: row['Nombre'] || id,
                 imagen: row['Imagen'] || '',
-                descuento: parseFloat(row['Descuento']) || 0,
                 activa: (row['Activa'] || '').toUpperCase() === 'SI',
                 tallas: []
             });
         }
 
         const precio = parseFloat(row['Precio_Original']);
+        const promo = parseFloat(row['Precio_Promocional']);
         if (row['Talla'] && !isNaN(precio)) {
-            products.get(id).tallas.push({ talla: row['Talla'], precio: precio });
+            products.get(id).tallas.push({
+                talla: row['Talla'],
+                precio: precio,
+                promo: !isNaN(promo) && promo > 0 ? promo : null
+            });
         }
     });
 
@@ -76,16 +80,17 @@ function buildProductCard(product, collectionName) {
         ? product.imagen
         : `https://placehold.co/400x400/152238/F9F8F4/png?text=${encodeURIComponent(product.id.toUpperCase())}`;
 
-    const options = product.tallas.map(t =>
-        `<option value="${t.precio}">${t.talla} (S/ ${t.precio.toFixed(2)})</option>`
-    ).join('');
+    const options = product.tallas.map(t => {
+        const promoAttr = t.promo ? ` data-promo="${t.promo}"` : '';
+        return `<option value="${t.precio}"${promoAttr}>${t.talla} (S/ ${t.precio.toFixed(2)})</option>`;
+    }).join('');
 
     const firstPrice = product.tallas.length ? product.tallas[0].precio : 0;
     const showSizeGuide = product.tallas.length > 1 || (product.tallas[0] && product.tallas[0].talla !== 'Única');
     const nombreEscapado = product.nombre.replace(/'/g, "\\'");
 
     return `
-    <div class="product-card" data-discount="${product.descuento}" data-active="${product.activa ? 'SI' : 'NO'}">
+    <div class="product-card" data-active="${product.activa ? 'SI' : 'NO'}">
         <img src="${imgSrc}" alt="${product.nombre}" onerror="this.src='https://placehold.co/400x400/152238/F9F8F4/png?text=${encodeURIComponent(product.id.toUpperCase())}'">
         <h3>${product.nombre}</h3>
 
