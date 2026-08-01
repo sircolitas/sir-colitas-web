@@ -28,78 +28,8 @@
 <div class="container">
     <h1 class="page-title" data-i18n="page_title">Colección Formula 1</h1>
 
-    <div class="products-grid">
-        <div class="product-card">
-            <img src="Polera Ferrari.png" alt="Polera Ferrari">
-            <h3 data-i18n="prod_ferrari">Polera Escudería Ferrari</h3>
-
-            <div class="controls">
-                <label data-i18n="choose_size">Elegir Talla:</label>
-                <select class="size-select" onchange="updatePrice(this)">
-                    <option value="45.00">Talla 0 (S/ 45.00)</option>
-                    <option value="45.00">Talla 1 (S/ 45.00)</option>
-                    <option value="55.00">Talla 2 (S/ 55.00)</option>
-                    <option value="69.00">Talla 3 (S/ 69.00)</option>
-                    <option value="69.00">Talla 4 (S/ 69.00)</option>
-                </select>
-
-                <label data-i18n="quantity">Cantidad:</label>
-                <input type="number" class="qty-input" value="1" min="1">
-            </div>
-
-            <div class="price-display">S/ <span class="current-price">45.00</span></div>
-
-            <button class="btn-add" data-i18n="add_btn" onclick="addToCart('Polera Ferrari', 'Polera Ferrari.png', this, 'Formula 1')">Añadir al pedido</button>
-            <a href="tallas.html" target="_blank" class="size-link" data-i18n="size_guide">Ver Guía de Tallas</a>
-        </div>
-
-        <div class="product-card">
-            <img src="Polera RedBull.png" alt="Polera Red Bull">
-            <h3 data-i18n="prod_redbull">Polera Escudería Red Bull</h3>
-
-            <div class="controls">
-                <label data-i18n="choose_size">Elegir Talla:</label>
-                <select class="size-select" onchange="updatePrice(this)">
-                    <option value="45.00">Talla 0 (S/ 45.00)</option>
-                    <option value="45.00">Talla 1 (S/ 45.00)</option>
-                    <option value="55.00">Talla 2 (S/ 55.00)</option>
-                    <option value="69.00">Talla 3 (S/ 69.00)</option>
-                    <option value="69.00">Talla 4 (S/ 69.00)</option>
-                </select>
-
-                <label data-i18n="quantity">Cantidad:</label>
-                <input type="number" class="qty-input" value="1" min="1">
-            </div>
-
-            <div class="price-display">S/ <span class="current-price">45.00</span></div>
-
-            <button class="btn-add" data-i18n="add_btn" onclick="addToCart('Polera Red Bull', 'https://placehold.co/400x400/152238/F9F8F4/png?text=RED+BULL', this, 'Formula 1')">Añadir al pedido</button>
-            <a href="tallas.html" target="_blank" class="size-link" data-i18n="size_guide">Ver Guía de Tallas</a>
-        </div>
-
-        <div class="product-card">
-            <img src="Polera McLaren.png" alt="Polera McLaren">
-            <h3 data-i18n="prod_mclaren">Polera Escudería McLaren</h3>
-
-            <div class="controls">
-                <label data-i18n="choose_size">Elegir Talla:</label>
-                <select class="size-select" onchange="updatePrice(this)">
-                    <option value="45.00">Talla 0 (S/ 45.00)</option>
-                    <option value="45.00">Talla 1 (S/ 45.00)</option>
-                    <option value="55.00">Talla 2 (S/ 55.00)</option>
-                    <option value="69.00">Talla 3 (S/ 69.00)</option>
-                    <option value="69.00">Talla 4 (S/ 69.00)</option>
-                </select>
-
-                <label data-i18n="quantity">Cantidad:</label>
-                <input type="number" class="qty-input" value="1" min="1">
-            </div>
-
-            <div class="price-display">S/ <span class="current-price">45.00</span></div>
-
-            <button class="btn-add" data-i18n="add_btn" onclick="addToCart('Polera McLaren', 'Polera McLaren.png', this, 'Formula 1')">Añadir al pedido</button>
-            <a href="tallas.html" target="_blank" class="size-link" data-i18n="size_guide">Ver Guía de Tallas</a>
-        </div>
+    <div id="products-container" class="products-grid">
+        <p style="text-align:center; color:#888; grid-column: 1/-1;">Cargando productos...</p>
     </div>
 </div>
 
@@ -109,14 +39,12 @@
 </div>
 
 <script src="carrito.js"></script>
+<script src="catalogo.js"></script>
 <script>
     const translations = {
         'es': {
             'back_home': '← Volver al Inicio',
             'page_title': 'Colección Formula 1',
-            'prod_ferrari': 'Polera Escudería Ferrari',
-            'prod_redbull': 'Polera Escudería Red Bull',
-            'prod_mclaren': 'Polera Escudería McLaren',
             'choose_size': 'Elegir Talla:',
             'quantity': 'Cantidad:',
             'add_btn': 'Añadir al pedido',
@@ -129,9 +57,6 @@
         'en': {
             'back_home': '← Back to Home',
             'page_title': 'Formula 1 Collection',
-            'prod_ferrari': 'Ferrari Team Hoodie',
-            'prod_redbull': 'Red Bull Team Hoodie',
-            'prod_mclaren': 'McLaren Team Hoodie',
             'choose_size': 'Choose Size:',
             'quantity': 'Quantity:',
             'add_btn': 'Add to Order',
@@ -142,6 +67,10 @@
             'size_prefix': 'Size'
         }
     };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        loadCatalog('formula1', 'Formula 1');
+    });
 </script>
 </body>
 </html>
