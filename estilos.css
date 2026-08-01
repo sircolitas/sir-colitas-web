@@ -79,7 +79,12 @@ select, input {
     outline: none; background: var(--bone-cream); color: var(--oxford-blue); width: 100%; box-sizing: border-box;
 }
 
-.price-display { font-size: 1.5rem; color: var(--oxford-blue); font-weight: 600; margin: 20px 0; }
+.price-display { margin: 20px 0; }
+.price-original { text-decoration: line-through; color: #b0b0b0; font-size: 1rem; margin-right: 10px; }
+.price-final { font-size: 1.5rem; color: var(--oxford-blue); font-weight: 600; }
+@media (max-width: 480px) {
+    .price-display { display: flex; flex-direction: column; gap: 4px; align-items: center; }
+}
 
 .btn-add {
     background: var(--oxford-blue); color: white; border: none; padding: 18px;
