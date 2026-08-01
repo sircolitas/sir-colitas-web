@@ -7,7 +7,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
-        /* --- NUEVA IDENTIDAD VISUAL --- */
         :root { 
             --oxford-blue: #152238; 
             --leather-brown: #8B5E3C; 
@@ -42,10 +41,9 @@
 
         .page-wrapper { display: flex; min-height: 85vh; }
 
-        /* LADO IZQUIERDO: BENEFICIOS */
         .benefits-side {
             flex: 1; 
-            background: var(--oxford-blue); /* Azul Oxford */
+            background: var(--oxford-blue);
             color: var(--bone-cream); 
             padding: 60px;
             display: flex; 
@@ -58,7 +56,7 @@
         .benefits-side h2 { 
             font-family: 'Great Vibes', cursive; 
             font-size: 4rem; 
-            color: var(--leather-brown); /* Café */
+            color: var(--leather-brown);
             margin: 0 0 10px 0; 
             font-weight: normal; 
         }
@@ -90,7 +88,6 @@
             margin-top: 2px; 
         }
 
-        /* LADO DERECHO: FORMULARIO */
         .forms-side {
             flex: 1; 
             padding: 60px; 
@@ -143,7 +140,7 @@
         }
 
         .btn-submit {
-            background: var(--leather-brown); /* Café */
+            background: var(--leather-brown);
             color: var(--white); 
             border: none; 
             width: 100%; 
@@ -162,6 +159,8 @@
             transform: translateY(-2px);
         }
 
+        .btn-submit:disabled { background: #ccc; cursor: not-allowed; transform: none; }
+
         .disclaimer { 
             font-size: 0.75rem; 
             color: #777; 
@@ -171,7 +170,6 @@
             font-weight: 300;
         }
 
-        /* RESPONSIVO */
         @media (max-width: 900px) {
             .page-wrapper { flex-direction: column; }
             .benefits-side { padding: 60px 30px; }
@@ -213,7 +211,9 @@
     </div>
 
     <script>
-        const scriptURL = 'https://script.google.com/macros/s/AKfycbwLvKllZJd9m86X7Ez_Oj7J5hqMClhp8dz3RjT3PwEh24_cdXAT8QNEwJhuAgEwJT5u_w/exec';
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbw266wvrnM3g2wbUcgNsEgvuI-TzIkR_h3A91reHtA8yIWv8DW_2zyMOL1JrB123TCabw/exec';
+        const SECRET_KEY = 'SirColitas2026-CambiaEsto123';
+
         const form = document.getElementById('register-form');
         const regResult = document.getElementById('register-result');
         const btnRegister = document.getElementById('btn-register');
@@ -222,8 +222,10 @@
             e.preventDefault();
             btnRegister.disabled = true;
             btnRegister.innerHTML = "GUARDANDO...";
-            
+            regResult.innerHTML = "";
+
             const data = new FormData();
+            data.append('secret', SECRET_KEY);
             data.append('Dueño', form.dueno_nombre.value);
             data.append('Mascota', form.mascota_nombre.value);
             data.append('Raza', form.mascota_raza.value);
@@ -231,17 +233,25 @@
             data.append('Cumpleanos', form.mascota_cumple.value);
 
             fetch(scriptURL, { method: 'POST', body: data })
-                .then(response => {
-                    regResult.innerHTML = "¡REGISTRO EXITOSO! BIENVENIDO.";
-                    regResult.style.color = "#2ecc71";
-                    btnRegister.innerHTML = "MIEMBRO REGISTRADO";
-                    form.reset();
+                .then(response => response.json())
+                .then(result => {
+                    if (result.result === 'success') {
+                        regResult.innerHTML = "¡REGISTRO EXITOSO! BIENVENIDO.";
+                        regResult.style.color = "#2ecc71";
+                        btnRegister.innerHTML = "MIEMBRO REGISTRADO";
+                        form.reset();
+                    } else {
+                        regResult.innerHTML = "HUBO UN PROBLEMA AL GUARDAR. INTÉNTALO DE NUEVO.";
+                        regResult.style.color = "#e74c3c";
+                        btnRegister.innerHTML = "UNIRME AL CLUB";
+                        btnRegister.disabled = false;
+                    }
                 })
                 .catch(error => {
-                    regResult.innerHTML = "¡REGISTRO EXITOSO! (Datos guardados)"; 
-                    regResult.style.color = "#2ecc71";
-                    btnRegister.innerHTML = "MIEMBRO REGISTRADO";
-                    form.reset();
+                    regResult.innerHTML = "HUBO UN ERROR DE CONEXIÓN. INTÉNTALO DE NUEVO.";
+                    regResult.style.color = "#e74c3c";
+                    btnRegister.innerHTML = "UNIRME AL CLUB";
+                    btnRegister.disabled = false;
                 });
         });
     </script>
