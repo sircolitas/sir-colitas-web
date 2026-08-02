@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Sir Colitas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<header>
+    <div class="lang-floater">
+        <select id="lang-selector" class="lang-select" onchange="changeLanguage(this.value)">
+            <option value="es">ES</option>
+            <option value="en">EN</option>
+        </select>
+    </div>
+
+    <a href="index.html" class="logo-text" style="text-decoration: none;">
+        Sir Colitas
+    </a>
+    <div class="back-nav">
+        <a href="index.html" data-i18n="back_home">&larr; Volver al Inicio</a>
+    </div>
+</header>
+
+<div class="container">
+    <h1 class="page-title" data-i18n="page_title">Blog</h1>
+    <p class="page-subtitle" data-i18n="page_subtitle">Consejos de expertos para el bienestar de tu mascota</p>
+
+    <div id="posts-container" class="posts-grid">
+        <p style="text-align:center; color:#888; grid-column: 1/-1;" data-i18n="loading">Cargando artículos...</p>
+    </div>
+</div>
+
+<script src="carrito.js"></script>
+<script src="catalogo.js"></script>
+<script src="blog.js"></script>
+<script>
+    const translations = {
+        'es': {
+            'back_home': '← Volver al Inicio',
+            'page_title': 'Blog',
+            'page_subtitle': 'Consejos de expertos para el bienestar de tu mascota',
+            'loading': 'Cargando artículos...',
+            'no_posts': 'Todavía no hay artículos publicados. ¡Vuelve pronto!',
+            'read_more': 'Leer más',
+            'read_less': 'Leer menos'
+        },
+        'en': {
+            'back_home': '← Back to Home',
+            'page_title': 'Blog',
+            'page_subtitle': 'Expert advice for your pet\'s wellbeing',
+            'loading': 'Loading articles...',
+            'no_posts': 'No articles published yet. Check back soon!',
+            'read_more': 'Read more',
+            'read_less': 'Read less'
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', loadBlog);
+</script>
+</body>
+</html>
