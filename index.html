@@ -157,12 +157,12 @@
         .hero p { font-size: 1.1rem; font-weight: 300; letter-spacing: 2px; margin-bottom: 35px; text-transform: uppercase; color: #f0f0f0; line-height: 1.6; }
         
         .btn-brand {
-            background: var(--leather-brown); color: white; padding: 15px 40px; text-decoration: none;
+            background: transparent; color: var(--bone-cream); padding: 15px 40px; text-decoration: none;
             font-size: 0.9rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; transition: 0.3s;
-            border: 1px solid var(--leather-brown);
+            border: 1px solid var(--bone-cream);
         }
         .btn-brand:hover { 
-            background: transparent; color: var(--bone-cream); border-color: var(--bone-cream);
+            background: var(--bone-cream); color: var(--oxford-blue); border-color: var(--bone-cream);
         }
 
         /* --- SECCIONES --- */
@@ -362,7 +362,7 @@
         const translations = {
             'es': {
                 'contact': 'Contáctanos', 'collections': 'Colecciones', 'sizes': 'Tallas', 'news': 'Noticias',
-                'hero_text': 'Elegancia y confort para los engreídos de la casa', 'view_models': 'Ver Modelos',
+                'hero_text': 'Elegancia y confort<br>para los engreídos de la casa', 'view_models': 'Ver Modelos',
                 'our_collections': 'Nuestras Colecciones', 'special_ed': 'Edición', 'special': 'Especial',
                 'col_f1': 'Colección Formula 1', 'desc_f1': 'Inspiración Racing para los más veloces.',
                 'summer': 'Colección', 'col_alba': 'Colección Alba', 'desc_alba': 'Frescura y accesorios de autor.',
@@ -374,7 +374,7 @@
             },
             'en': {
                 'contact': 'Contact Us', 'collections': 'Collections', 'sizes': 'Sizes', 'news': 'News',
-                'hero_text': 'Elegance and comfort for the spoiled ones at home', 'view_models': 'View Models',
+                'hero_text': 'Elegance and comfort<br>for the spoiled ones at home', 'view_models': 'View Models',
                 'our_collections': 'Our Collections', 'special_ed': 'Special', 'special': 'Edition',
                 'col_f1': 'Formula 1 Collection', 'desc_f1': 'Racing inspiration for the fastest ones.',
                 'summer': 'Summer', 'col_alba': 'Alba Collection', 'desc_alba': 'Freshness and signature accessories.',
@@ -390,7 +390,7 @@
             localStorage.setItem('sirColitasLang', lang);
             document.querySelectorAll('[data-i18n]').forEach(el => {
                 const key = el.getAttribute('data-i18n');
-                if (translations[lang][key]) el.innerText = translations[lang][key];
+                if (translations[lang][key]) el.innerHTML = translations[lang][key];
             });
         }
 
