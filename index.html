@@ -153,7 +153,8 @@
             font-family: 'Great Vibes', cursive; font-size: 5.5rem; 
             color: var(--bone-cream); margin: 0; text-shadow: 0px 4px 10px rgba(0,0,0,0.3); 
         }
-        .hero p { font-size: 1.1rem; font-weight: 300; letter-spacing: 2px; margin-bottom: 35px; text-transform: uppercase; color: #f0f0f0; }
+        .hero-content { max-width: 600px; margin: 0 auto; }
+        .hero p { font-size: 1.1rem; font-weight: 300; letter-spacing: 2px; margin-bottom: 35px; text-transform: uppercase; color: #f0f0f0; line-height: 1.6; }
         
         .btn-brand {
             background: var(--leather-brown); color: white; padding: 15px 40px; text-decoration: none;
@@ -222,7 +223,8 @@
             .menu-links { flex-wrap: wrap; justify-content: center; gap: 15px; }
             .menu-link { font-size: 0.75rem; }
             .hero { height: 350px; }
-            .hero h1 { font-size: 3.5rem; }
+            .hero-content { max-width: 85%; }
+            .hero p { font-size: 0.95rem; letter-spacing: 1px; }
             .search-dropdown { position: static; width: 100%; box-shadow: none; border: 1px solid var(--border-color); margin-top: 10px; }
             .gallery { grid-template-columns: 1fr; padding: 0 20px 60px; }
         }
@@ -285,7 +287,6 @@
 
     <section class="hero">
         <div class="hero-content">
-            <h1>Sir Colitas</h1>
             <p data-i18n="hero_text">Elegancia y confort para los engreídos de la casa</p>
             <a href="#colecciones" class="btn-brand" data-i18n="view_models">Ver Modelos</a>
         </div>
