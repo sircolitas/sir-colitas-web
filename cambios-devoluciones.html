@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambios y Devoluciones - Sir Colitas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+    <style>
+        .policy-section { margin-bottom: 40px; }
+        .policy-section h2 {
+            font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;
+            color: var(--leather-brown); border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px; margin-bottom: 18px;
+        }
+        .policy-section p, .policy-section li { font-size: 0.9rem; color: #444; line-height: 1.7; }
+        .policy-section ul { padding-left: 20px; margin: 10px 0; }
+        .policy-section li { margin-bottom: 8px; }
+        .policy-intro {
+            background: var(--white); border: 1px solid var(--border-color); border-radius: 8px;
+            padding: 25px 30px; margin-bottom: 40px; font-size: 0.9rem; color: #555; line-height: 1.7;
+        }
+        .policy-updated { text-align: center; font-size: 0.75rem; color: #999; margin-top: 50px; letter-spacing: 1px; text-transform: uppercase; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="lang-floater">
+        <select id="lang-selector" class="lang-select" onchange="changeLanguage(this.value)">
+            <option value="es">ES</option>
+            <option value="en">EN</option>
+        </select>
+    </div>
+
+    <a href="index.html" class="logo-text" style="text-decoration: none;">
+        Sir Colitas
+    </a>
+    <div class="back-nav">
+        <a href="index.html" data-i18n="back_home">&larr; Volver al Inicio</a>
+    </div>
+</header>
+
+<div class="container">
+    <h1 class="page-title" data-i18n="page_title">Cambios y Devoluciones</h1>
+    <p class="page-subtitle" data-i18n="page_subtitle">Todo lo que debes saber antes de solicitar un cambio</p>
+
+    <div class="policy-intro" data-i18n="intro">
+        Esta política aplica para todas las ventas realizadas a través de nuestros canales digitales (redes sociales y WhatsApp), y establece los lineamientos para la gestión de cambios y devoluciones de las prendas y accesorios de Sir Colitas.
+    </div>
+
+    <div class="policy-section">
+        <h2 data-i18n="s1_title">Condiciones generales de recepción</h2>
+        <ul>
+            <li data-i18n="s1_1">Por medidas de higiene y bioseguridad, toda prenda sujeta a cambio debe regresar en estado impecable: sin uso, sin lavar, sin manchas ni rastro de pelo de mascota.</li>
+            <li data-i18n="s1_2">Debe incluir el empaque original y todas las etiquetas intactas adheridas al producto.</li>
+            <li data-i18n="s1_3">Sir Colitas se reserva el derecho de rechazar la solicitud si, tras la inspección en nuestro almacén, el producto no cumple con estos estándares.</li>
+        </ul>
+    </div>
+
+    <div class="policy-section">
+        <h2 data-i18n="s2_title">Plazo para solicitar un cambio</h2>
+        <p data-i18n="s2_1">Tienes un plazo máximo de <strong>7 días calendario</strong>, contados desde la fecha de entrega de tu pedido, para registrar tu solicitud de cambio.</p>
+    </div>
+
+    <div class="policy-section">
+        <h2 data-i18n="s3_title">Cambios por talla o preferencia</h2>
+        <ul>
+            <li data-i18n="s3_1">Solicita el cambio por nuestros canales oficiales, indicando el número de pedido y la nueva talla o modelo que necesitas.</li>
+            <li data-i18n="s3_2">El costo del envío de ida y vuelta (retorno del producto y reenvío del nuevo) corre por cuenta del cliente.</li>
+            <li data-i18n="s3_3">La aprobación queda sujeta a la disponibilidad de inventario al momento de recibir la prenda original.</li>
+            <li data-i18n="s3_4">No se reciben productos de forma presencial — todo el tránsito debe hacerse mediante courier o delivery.</li>
+        </ul>
+    </div>
+
+    <div class="policy-section">
+        <h2 data-i18n="s4_title">Fallas de fábrica o errores de despacho</h2>
+        <p data-i18n="s4_1">Si tu prenda llega con un defecto de confección o es distinta a lo que pediste, notifícanos dentro de las <strong>48 horas</strong> siguientes a la recepción, adjuntando fotos claras del problema. Una vez validado el caso, Sir Colitas asume el costo total del recojo y envío del producto de reemplazo.</p>
+    </div>
+
+    <div class="policy-section">
+        <h2 data-i18n="s5_title">Reembolsos y restricciones</h2>
+        <ul>
+            <li data-i18n="s5_1">No se realizan devoluciones de dinero por errores del cliente al elegir la talla, cambios de parecer, o demoras atribuibles únicamente a la empresa de mensajería.</li>
+            <li data-i18n="s5_2">Si hay una falla de fábrica comprobada y no contamos con stock para el reemplazo, se emite una nota de crédito o, según el caso, el reembolso correspondiente.</li>
+            <li data-i18n="s5_3">Los productos adquiridos en liquidación, con descuento especial, o de colecciones pasadas se consideran venta final y no tienen cambio ni devolución.</li>
+        </ul>
+    </div>
+
+    <p class="policy-updated" data-i18n="updated">Última actualización: Agosto 2026</p>
+</div>
+
+<script src="carrito.js"></script>
+<script>
+    const translations = {
+        'es': {
+            'back_home': '← Volver al Inicio',
+            'page_title': 'Cambios y Devoluciones',
+            'page_subtitle': 'Todo lo que debes saber antes de solicitar un cambio',
+            'intro': 'Esta política aplica para todas las ventas realizadas a través de nuestros canales digitales (redes sociales y WhatsApp), y establece los lineamientos para la gestión de cambios y devoluciones de las prendas y accesorios de Sir Colitas.',
+            's1_title': 'Condiciones generales de recepción',
+            's1_1': 'Por medidas de higiene y bioseguridad, toda prenda sujeta a cambio debe regresar en estado impecable: sin uso, sin lavar, sin manchas ni rastro de pelo de mascota.',
+            's1_2': 'Debe incluir el empaque original y todas las etiquetas intactas adheridas al producto.',
+            's1_3': 'Sir Colitas se reserva el derecho de rechazar la solicitud si, tras la inspección en nuestro almacén, el producto no cumple con estos estándares.',
+            's2_title': 'Plazo para solicitar un cambio',
+            's2_1': 'Tienes un plazo máximo de <strong>7 días calendario</strong>, contados desde la fecha de entrega de tu pedido, para registrar tu solicitud de cambio.',
+            's3_title': 'Cambios por talla o preferencia',
+            's3_1': 'Solicita el cambio por nuestros canales oficiales, indicando el número de pedido y la nueva talla o modelo que necesitas.',
+            's3_2': 'El costo del envío de ida y vuelta (retorno del producto y reenvío del nuevo) corre por cuenta del cliente.',
+            's3_3': 'La aprobación queda sujeta a la disponibilidad de inventario al momento de recibir la prenda original.',
+            's3_4': 'No se reciben productos de forma presencial — todo el tránsito debe hacerse mediante courier o delivery.',
+            's4_title': 'Fallas de fábrica o errores de despacho',
+            's4_1': 'Si tu prenda llega con un defecto de confección o es distinta a lo que pediste, notifícanos dentro de las <strong>48 horas</strong> siguientes a la recepción, adjuntando fotos claras del problema. Una vez validado el caso, Sir Colitas asume el costo total del recojo y envío del producto de reemplazo.',
+            's5_title': 'Reembolsos y restricciones',
+            's5_1': 'No se realizan devoluciones de dinero por errores del cliente al elegir la talla, cambios de parecer, o demoras atribuibles únicamente a la empresa de mensajería.',
+            's5_2': 'Si hay una falla de fábrica comprobada y no contamos con stock para el reemplazo, se emite una nota de crédito o, según el caso, el reembolso correspondiente.',
+            's5_3': 'Los productos adquiridos en liquidación, con descuento especial, o de colecciones pasadas se consideran venta final y no tienen cambio ni devolución.',
+            'updated': 'Última actualización: Agosto 2026'
+        },
+        'en': {
+            'back_home': '← Back to Home',
+            'page_title': 'Exchanges & Returns',
+            'page_subtitle': 'Everything you need to know before requesting an exchange',
+            'intro': 'This policy applies to all sales made through our digital channels (social media and WhatsApp), and sets out the guidelines for managing exchanges and returns of Sir Colitas garments and accessories.',
+            's1_title': 'General return conditions',
+            's1_1': 'For hygiene and biosecurity reasons, any garment submitted for exchange must be returned in pristine condition: unused, unwashed, without stains or any trace of pet hair.',
+            's1_2': 'It must include the original packaging and all tags intact and attached to the product.',
+            's1_3': 'Sir Colitas reserves the right to reject the request if, after inspection at our warehouse, the product does not meet these standards.',
+            's2_title': 'Timeframe to request an exchange',
+            's2_1': 'You have a maximum of <strong>7 calendar days</strong>, counted from the delivery date of your order, to register your exchange request.',
+            's3_title': 'Exchanges for size or preference',
+            's3_1': 'Request the exchange through our official channels, providing your order number and the new size or model you need.',
+            's3_2': 'The cost of shipping both ways (returning the product and sending the new one) is covered by the customer.',
+            's3_3': 'Approval is subject to inventory availability at the time we receive the original garment.',
+            's3_4': 'Products are not received in person — all transit must go through courier or delivery services.',
+            's4_title': 'Factory defects or shipping errors',
+            's4_1': 'If your garment arrives with a manufacturing defect or is different from what you ordered, notify us within <strong>48 hours</strong> of receiving it, attaching clear photos of the issue. Once validated, Sir Colitas covers the full cost of pickup and shipping of the replacement item.',
+            's5_title': 'Refunds and restrictions',
+            's5_1': 'No monetary refunds are issued for customer sizing errors, changes of mind, or delays solely attributable to the courier company.',
+            's5_2': 'If a factory defect is confirmed and no replacement stock is available, a store credit note is issued or, where applicable, the corresponding refund.',
+            's5_3': 'Products purchased during clearance sales, at special discounts, or from past-season collections are considered final sale and are not eligible for exchange or return.',
+            'updated': 'Last updated: August 2026'
+        }
+    };
+</script>
+</body>
+</html>
