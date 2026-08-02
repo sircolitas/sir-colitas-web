@@ -105,3 +105,23 @@ select, input {
     background: var(--leather-brown); color: white; padding: 12px 30px;
     text-decoration: none; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem;
 }
+/* BLOG */
+.posts-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+
+.post-card {
+    border: 1px solid var(--border-color); background: var(--white);
+    box-shadow: 0 4px 15px rgba(21, 34, 56, 0.05); transition: 0.3s; overflow: hidden;
+}
+.post-card:hover { box-shadow: 0 8px 25px rgba(21, 34, 56, 0.1); }
+.post-card img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+.post-body { padding: 25px; }
+.post-date { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; color: var(--leather-brown); font-weight: 600; margin: 0 0 10px; }
+.post-title { font-size: 1.1rem; margin: 0 0 10px; color: var(--oxford-blue); }
+.post-author { font-size: 0.8rem; color: #777; margin: 0 0 15px; font-style: italic; }
+.post-author strong { color: var(--oxford-blue); font-style: normal; }
+.post-summary, .post-content { font-size: 0.9rem; color: #555; line-height: 1.6; margin: 0 0 20px; }
+.btn-read-more {
+    background: none; border: none; color: var(--leather-brown); font-weight: 600;
+    text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; cursor: pointer; padding: 0;
+}
+.btn-read-more:hover { color: var(--oxford-blue); }
