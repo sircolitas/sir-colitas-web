@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colección Navidad - Sir Colitas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+
+<header>
+    <div class="lang-floater">
+        <select id="lang-selector" class="lang-select" onchange="changeLanguage(this.value)">
+            <option value="es">ES</option>
+            <option value="en">EN</option>
+        </select>
+    </div>
+
+    <a href="index.html" class="logo-text" style="text-decoration: none;">
+        Sir Colitas
+    </a>
+    <div class="back-nav">
+        <a href="index.html" data-i18n="back_home">&larr; Volver al Inicio</a>
+    </div>
+</header>
+
+<div class="container">
+    <h1 class="page-title" data-i18n="page_title">Colección Navidad</h1>
+    <p class="page-subtitle" data-i18n="page_subtitle">Piezas festivas para celebrar en familia</p>
+
+    <div id="products-container" class="products-grid">
+        <p style="text-align:center; color:#888; grid-column: 1/-1;">Cargando productos...</p>
+    </div>
+</div>
+
+<div id="cart-bar" class="cart-bar">
+    <div><span data-i18n="cart_text">Productos en selección:</span> <span id="cart-count">0</span></div>
+    <a href="carrito.html" class="btn-go-cart" data-i18n="go_cart">Ir al Carrito</a>
+</div>
+
+<script src="carrito.js"></script>
+<script src="catalogo.js"></script>
+<script>
+    const translations = {
+        'es': {
+            'back_home': '← Volver al Inicio',
+            'page_title': 'Colección Navidad',
+            'page_subtitle': 'Piezas festivas para celebrar en familia',
+            'choose_size': 'Elegir Talla:',
+            'quantity': 'Cantidad:',
+            'add_btn': 'Añadir al pedido',
+            'size_guide': 'Ver Guía de Tallas',
+            'cart_text': 'Productos en selección:',
+            'go_cart': 'Ir al Carrito',
+            'alert_added': '¡Agregado!',
+            'size_prefix': 'Talla'
+        },
+        'en': {
+            'back_home': '← Back to Home',
+            'page_title': 'Christmas Collection',
+            'page_subtitle': 'Festive pieces to celebrate with family',
+            'choose_size': 'Choose Size:',
+            'quantity': 'Quantity:',
+            'add_btn': 'Add to Order',
+            'size_guide': 'View Size Guide',
+            'cart_text': 'Items in selection:',
+            'go_cart': 'Go to Cart',
+            'alert_added': 'Added!',
+            'size_prefix': 'Size'
+        }
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+        loadCatalog('navidad', 'Colección Navidad');
+    });
+</script>
+</body>
+</html>
