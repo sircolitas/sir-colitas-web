@@ -4,7 +4,7 @@
 // Sir Colitas
 // ============================================
 
-const BLOG_CSV_URL = 'PEGA_AQUI_TU_ENLACE_CSV_DEL_BLOG';
+const BLOG_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vR2HR8pr6iIMNJJ_DJfZmyQcysV2zmSAW6Fr2SMJan3Q46vedT3mGivvFIs0gPcTr7OzfJ6p31s-6I9/pub?output=csv';
 
 function buildPostCard(post) {
     const imgSrc = post.imagen || 'https://placehold.co/800x400/152238/F9F8F4/png?text=SIR+COLITAS';
