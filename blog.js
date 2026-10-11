@@ -49,8 +49,23 @@ async function loadBlog() {
     if (!container) return;
 
     try {
-        const response = await fetch(BLOG_CSV_URL);
-        const text = await response.text();
+        // 1. Revisamos si ya tenemos los datos guardados en la memoria temporal (sessionStorage)
+        let text = sessionStorage.getItem('sirColitasBlogCache');
+
+        // 2. Si la variable está vacía, hacemos el viaje largo a Google Sheets
+        if (!text) {
+            console.log("Descargando datos desde Google Sheets...");
+            const response = await fetch(BLOG_CSV_URL);
+            text = await response.text();
+            
+            // 3. ¡Guardamos la respuesta en la memoria para que el próximo viaje sea instantáneo!
+            sessionStorage.setItem('sirColitasBlogCache', text);
+        } else {
+            // Si la variable ya tenía datos, verás este mensaje en la consola de tu navegador
+            console.log("Cargando datos súper rápido desde la caché local.");
+        }
+
+        // 4. Continuamos procesando el texto (ya sea que vino de Google o de la memoria)
         const rows = parseCSV(text);
 
         const posts = rows
