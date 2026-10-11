@@ -120,8 +120,23 @@ async function loadCatalog(collectionId, collectionName) {
     if (!container) return;
 
     try {
-        const response = await fetch(CATALOG_CSV_URL);
-        const text = await response.text();
+        // 1. Revisamos si ya tenemos el catálogo guardado en la memoria temporal (sessionStorage)
+        let text = sessionStorage.getItem('sirColitasCatalogCache');
+
+        // 2. Si la variable está vacía, hacemos el viaje largo a Google Sheets
+        if (!text) {
+            console.log("Descargando catálogo desde Google Sheets...");
+            const response = await fetch(CATALOG_CSV_URL);
+            text = await response.text();
+            
+            // 3. ¡Guardamos la respuesta en la memoria para que los próximos viajes sean instantáneos!
+            sessionStorage.setItem('sirColitasCatalogCache', text);
+        } else {
+            // Si la variable ya tenía datos, verás este mensaje en la consola de tu navegador
+            console.log("Cargando catálogo súper rápido desde la caché local.");
+        }
+
+        // 4. Continuamos procesando el texto (ya sea que vino de Google o de la memoria)
         const rows = parseCSV(text);
         const products = groupProducts(rows, collectionId);
 
@@ -138,7 +153,11 @@ async function loadCatalog(collectionId, collectionName) {
         // Traducir las tarjetas nuevas según el idioma guardado
         const savedLang = localStorage.getItem('sirColitasLang') || 'es';
         if (typeof translations !== 'undefined') changeLanguage(savedLang);
-        updateUI();
+        
+        // Verifica si existe updateUI antes de llamarla para evitar errores si no está en otro archivo
+        if (typeof updateUI === 'function') {
+            updateUI();
+        }
 
     } catch (error) {
         console.error('Error al cargar el catálogo:', error);
